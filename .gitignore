@@ -4,6 +4,7 @@
 export.cfg
 export_presets.cfg
 maps/autosave/
+dist/
 
 # Mono-specific ignores
 .mono/
