@@ -1,3 +1,5 @@
+// https://github.com/hiulit/Godot-3-2D-CRT-Shader
+
 shader_type canvas_item;
 
 uniform float boost : hint_range(1.0, 2.0, 0.01) = float(1.2);
@@ -18,7 +20,7 @@ vec2 CRTCurveUV(vec2 uv) {
 	if(show_curvature) {
 		uv = uv * 2.0 - 1.0;
     // Default values 8.0, 4.0
-		vec2 offset = abs(uv.yx) / vec2(8.0, 2.0);
+		vec2 offset = abs(uv.yx) / vec2(8.0, 2.5);
 		uv = uv - uv * offset * offset;
 		uv = uv * 0.5 + 0.5;
 	}

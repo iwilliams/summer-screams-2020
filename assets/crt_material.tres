@@ -4,10 +4,10 @@
 
 [resource]
 shader = ExtResource( 1 )
-shader_param/boost = 1.2
+shader_param/boost = 1.5
 shader_param/grille_opacity = 0.85
 shader_param/scanlines_opacity = 0.95
-shader_param/vignette_opacity = 0.2
+shader_param/vignette_opacity = 0.34
 shader_param/scanlines_speed = 1.0
 shader_param/show_grille = true
 shader_param/show_scanlines = true
