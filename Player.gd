@@ -3,6 +3,8 @@ extends RigidBody
 var thrust = 1
 var torque_thrust = thrust*.5
 
+onready var hud = find_node("HUD")
+
 onready var left_arm = get_node("../LeftArm")
 onready var left_arm_joint = get_node("../LeftArmJoint")
 var left_arm_grab_joint: Joint = null
@@ -95,5 +97,6 @@ func _physics_process(delta):
 #            left_body.mode = RigidBody.MODE_STATIC
             left_body.set_mass(0.1)
             print("GRAB")
-        
-    $Camera/CanvasLayer/CenterContainer/TextureRect2.rect_rotation = rotation_degrees.z
+    
+    
+    hud.set_pos(translation, rotation_degrees)
