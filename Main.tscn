@@ -1283,6 +1283,7 @@ points = PoolVector3Array( -4.82018, -3.5, -7.17982, -4.82018, -4.5, -7.17982, 7
 size = Vector3( 0.35, 0.35, 0.35 )
 
 [sub_resource type="ConvexPolygonShape" id=284]
+margin = 0.01
 points = PoolVector3Array( -0.25, 0.25, 0.25, 0.25, 0.25, -0.25, 0.25, 0.25, 0.25, -0.25, 0.25, -0.25, -0.25, -0.25, 0.25, 0.25, -0.25, -0.25, 0.25, -0.25, 0.25, -0.25, -0.25, -0.25, 0.25, 0.25, 0.25, -0.25, 0.25, -0.25, 0.25, 0.25, -0.25, -0.25, 0.25, 0.25, 0.25, -0.25, 0.25, -0.25, -0.25, -0.25, 0.25, -0.25, -0.25, -0.25, -0.25, 0.25, 0.25, 0.25, 0.25, -0.25, -0.25, 0.25, -0.25, 0.25, 0.25, 0.25, -0.25, 0.25, 0.25, 0.25, -0.25, -0.25, -0.25, -0.25, -0.25, 0.25, -0.25, 0.25, -0.25, -0.25 )
 
 [node name="Main" type="Spatial"]
@@ -2206,6 +2207,9 @@ omni_range = 3.8
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0 )
 can_sleep = false
 
+[node name="TextureRect" parent="Player/Camera/CanvasLayer/CenterContainer" index="0"]
+modulate = Color( 1, 1, 1, 0.196078 )
+
 [node name="LeftArmJoint" type="Generic6DOFJoint" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 4.82094, -0.104 )
 nodes/node_a = NodePath("../Player")
@@ -2220,7 +2224,7 @@ angular_motor_y/target_velocity = -2.0
 angular_motor_y/force_limit = 1.0
 
 [node name="LeftArm" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 4.82094, -0.104 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 4.82094, 0.646 )
 can_sleep = false
 
 [node name="RightArmJoint" type="Generic6DOFJoint" parent="."]
@@ -2237,7 +2241,7 @@ angular_motor_y/target_velocity = 2.0
 angular_motor_y/force_limit = 1.0
 
 [node name="RightArm" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 4.82094, -0.104 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 4.82094, 0.646 )
 can_sleep = false
 
 [node name="Box" type="RigidBody" parent="."]
