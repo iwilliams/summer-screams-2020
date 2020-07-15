@@ -1293,7 +1293,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
-map_file = "/home/iwilliams/godot/summer-screams-2020/maps/test.map"
+map_file = "./maps/test.map"
 inverse_scale_factor = 16.0
 entity_fgd = ExtResource( 2 )
 base_texture_dir = "res://addons/qodot/textures"
