@@ -1,11 +1,10 @@
-[gd_scene load_steps=298 format=2]
+[gd_scene load_steps=297 format=2]
 
 [ext_resource path="res://addons/qodot/src/nodes/qodot_map.gd" type="Script" id=1]
 [ext_resource path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" type="Resource" id=2]
 [ext_resource path="res://RPlayer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Arm.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/spaceship-ambience.wav" type="AudioStream" id=5]
-[ext_resource path="res://Hall.tscn" type="PackedScene" id=6]
 [ext_resource path="res://addons/qodot/textures/base/grid.png" type="Texture" id=9]
 [ext_resource path="res://addons/qodot/textures/base/checkerboard.png" type="Texture" id=10]
 [ext_resource path="res://addons/qodot/textures/base/yellow_metal.png" type="Texture" id=11]
@@ -2211,7 +2210,7 @@ light_color = Color( 0, 0.772549, 0.00392157, 1 )
 omni_range = 3.8
 
 [node name="PlayerSpawn" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.47276, 5, 24.14 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.47276, 5, 1.14 )
 
 [node name="Player" parent="PlayerSpawn" instance=ExtResource( 3 )]
 
@@ -2333,9 +2332,3 @@ material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody6"]
 shape = SubResource( 286 )
-
-[node name="Hall" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20 )
-
-[node name="Hall2" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 20 )

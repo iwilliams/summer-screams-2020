@@ -96,15 +96,17 @@ func _physics_process(delta):
         if right_body == left_body && right_arm_grab_joint == null && left_arm_grab_joint == null && right_body is RigidBody && left_body is RigidBody:
             right_arm_grab_joint = Generic6DOFJoint.new()
             right_arm_grab_joint.translation = right_arm.get_node("GrabPosition").global_transform.origin
-            right_arm_grab_joint.set_node_a(NodePath("../RightArm"))
-            right_arm_grab_joint.set_node_b(NodePath("../" + right_body.name))
-            get_parent().add_child(right_arm_grab_joint)
+            right_arm_grab_joint.set_node_a(right_arm.get_path())
+            right_arm_grab_joint.set_node_b(right_body.get_path())
+#            get_parent().add_child(right_arm_grab_joint)
+            right_body.get_parent().add_child(right_arm_grab_joint)
             
             left_arm_grab_joint = Generic6DOFJoint.new()
-            left_arm_grab_joint.translation = right_arm.get_node("GrabPosition").global_transform.origin
-            left_arm_grab_joint.set_node_a(NodePath("../LeftArm"))
-            left_arm_grab_joint.set_node_b(NodePath("../" + left_body.name))
-            get_parent().add_child(left_arm_grab_joint)
+            left_arm_grab_joint.translation = left_arm.get_node("GrabPosition").global_transform.origin
+            left_arm_grab_joint.set_node_a(left_arm.get_path())
+            left_arm_grab_joint.set_node_b(left_body.get_path())
+            left_body.get_parent().add_child(left_arm_grab_joint)
+#            get_parent().add_child(left_arm_grab_joint)
             
 #            left_body.mode = RigidBody.MODE_STATIC
             left_body.set_mass(0.1)
