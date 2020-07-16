@@ -223,6 +223,10 @@ window/stretch/aspect="expand"
 
 enabled=PoolStringArray( "qodot" )
 
+[global]
+
+shadow=true
+
 [input]
 
 ui_left={

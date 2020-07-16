@@ -11,21 +11,25 @@
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 7 )
 shader_param/color = Color( 1, 1, 1, 1 )
-shader_param/specular_intensity = null
+shader_param/specular_intensity = 0.5
 shader_param/resolution = 256.0
 shader_param/cull_distance = 13.7
 shader_param/uv_scale = Vector2( 1, 1 )
 shader_param/uv_offset = Vector2( 0, 0 )
+shader_param/affine = true
+shader_param/use_normal_mapping = false
 shader_param/albedoTex = ExtResource( 4 )
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 7 )
 shader_param/color = Color( 1, 1, 1, 1 )
-shader_param/specular_intensity = null
+shader_param/specular_intensity = 0.5
 shader_param/resolution = 256.0
 shader_param/cull_distance = 13.7
 shader_param/uv_scale = Vector2( 1, 1 )
 shader_param/uv_offset = Vector2( 0, 0 )
+shader_param/affine = true
+shader_param/use_normal_mapping = false
 shader_param/albedoTex = ExtResource( 1 )
 
 [sub_resource type="ArrayMesh" id=3]
@@ -489,11 +493,13 @@ points = PoolVector3Array( 12, 8.5, 0, 12, 6.5, 0, 14, 6.5, 0, 14, 8.5, 0, 12, 8
 [sub_resource type="ShaderMaterial" id=148]
 shader = ExtResource( 7 )
 shader_param/color = Color( 1, 1, 1, 1 )
-shader_param/specular_intensity = null
+shader_param/specular_intensity = 0.5
 shader_param/resolution = 256.0
 shader_param/cull_distance = 13.7
 shader_param/uv_scale = Vector2( 1, 1 )
 shader_param/uv_offset = Vector2( 0, 0 )
+shader_param/affine = true
+shader_param/use_normal_mapping = false
 shader_param/albedoTex = ExtResource( 5 )
 
 [sub_resource type="ArrayMesh" id=149]
