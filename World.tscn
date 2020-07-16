@@ -1,20 +1,23 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
+[ext_resource path="res://assets/psx_lit.tres" type="Material" id=1]
 [ext_resource path="res://RPlayer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Arm.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/spaceship-ambience.wav" type="AudioStream" id=5]
 [ext_resource path="res://Hall.tscn" type="PackedScene" id=6]
 
-[sub_resource type="CapsuleMesh" id=283]
+[sub_resource type="CapsuleMesh" id=1]
+material = ExtResource( 1 )
 radius = 0.1
 mid_height = 0.5
 
-[sub_resource type="ConvexPolygonShape" id=284]
+[sub_resource type="ConvexPolygonShape" id=2]
 points = PoolVector3Array( -0.0983283, -0.00453757, -0.266681, -0.0983281, -0.00453756, 0.266681, -0.0967726, 0.0243829, -0.251019, -0.0961193, -0.0273404, 0.23786, -0.0912542, -0.0391822, -0.257478, -0.0904047, 0.0414421, 0.255115, -0.0853378, -0.0506836, 0.257121, -0.0817988, -0.0283648, -0.299834, -0.0793426, 0.0589035, -0.262109, -0.0786896, -0.0615312, -0.248599, -0.0642992, 0.013231, 0.325166, -0.0638675, 0.0368658, -0.317088, -0.0615329, -0.0786883, -0.248599, -0.0615329, -0.0786883, 0.248599, -0.0571282, 0.0714499, 0.289334, -0.0562642, 0.0819324, 0.256272, -0.0498165, 0.0865701, -0.241526, -0.0460577, -0.0579027, 0.316849, -0.0403949, -0.0523114, -0.324738, -0.0391848, -0.0912531, 0.257476, -0.0332715, 0.093572, 0.256606, -0.0287112, -0.00468092, -0.345352, -0.0285956, 0.0371974, -0.338028, -0.0283905, 0.0607018, 0.323804, -0.0227309, -0.0167065, 0.345584, -0.0223582, 0.0841421, -0.298798, -0.0220496, 0.0947429, -0.271499, -0.0220495, 0.0947426, 0.271498, -0.0217945, -0.0968776, -0.257026, -0.0102144, 0.0994402, -0.239497, -0.00454117, -0.0983316, -0.266638, -0.00454118, -0.0983317, 0.266639, 0.0128115, 0.0990653, 0.238582, 0.0132455, -0.0642971, -0.325165, 0.0191839, 0.0549568, 0.330793, 0.0243925, -0.0967754, -0.250978, 0.0243922, -0.0967743, 0.250975, 0.0248699, -0.0870245, 0.291505, 0.0249147, 0.083913, 0.297971, 0.0252177, -0.0405129, 0.337653, 0.0253462, 0.013314, -0.345489, 0.0358039, 0.093282, -0.25004, 0.0431636, 0.0192478, 0.337862, 0.0487976, 0.0547308, -0.317506, 0.0488278, -0.0461835, -0.323659, 0.0529193, -0.0847084, 0.249453, 0.053855, 0.0772205, -0.283159, 0.058291, 0.081099, 0.247912, 0.0589124, -0.0793375, -0.262096, 0.0607132, -0.0283867, 0.3238, 0.0758388, 0.0643602, -0.255124, 0.0772132, 0.0538629, 0.283163, 0.0811017, 0.0582874, 0.247947, 0.0819293, -0.0562659, 0.256289, 0.0839087, 0.0249022, -0.297987, 0.0841415, -0.0223371, -0.298826, 0.0880225, -0.0449184, -0.262977, 0.0898715, 0.00721093, 0.292246, 0.0932826, 0.0357948, -0.250067, 0.0932827, 0.0357948, 0.250067, 0.0935623, -0.033268, 0.256604, 0.0990668, 0.0128012, 0.238655, 0.0994403, -0.0102135, 0.239567, 0.099772, -0.00446836, -0.246181 )
 
-[sub_resource type="CubeMesh" id=285]
+[sub_resource type="CubeMesh" id=3]
+material = ExtResource( 1 )
 
-[sub_resource type="ConvexPolygonShape" id=286]
+[sub_resource type="ConvexPolygonShape" id=4]
 points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
 
 [node name="Main" type="Spatial"]
@@ -67,12 +70,12 @@ gravity_scale = 0.0
 
 [node name="MeshInstance" type="MeshInstance" parent="Tube"]
 transform = Transform( 0.560581, -0.756412, -0.33703, 0.828099, 0.512053, 0.228152, 0, -0.406992, 0.913432, 0.104902, 0.519436, 0 )
-mesh = SubResource( 283 )
+mesh = SubResource( 1 )
 material/0 = null
 
 [node name="CollisionShape2" type="CollisionShape" parent="Tube"]
 transform = Transform( 0.560581, -0.756412, -0.33703, 0.828099, 0.512053, 0.228152, 0, -0.406992, 0.913432, 0.104902, 0.519436, 0 )
-shape = SubResource( 284 )
+shape = SubResource( 2 )
 
 [node name="AmbiencePlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
@@ -87,66 +90,66 @@ transform = Transform( 0.719632, 0.437971, -0.538804, -0.530039, 0.847764, -0.01
 gravity_scale = 0.0
 
 [node name="MeshInstance" type="MeshInstance" parent="RigidBody"]
-mesh = SubResource( 285 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
-shape = SubResource( 286 )
+shape = SubResource( 4 )
 
 [node name="RigidBody2" type="RigidBody" parent="."]
 transform = Transform( 0.719632, 0.437971, -0.538804, -0.139617, 0.8514, 0.505594, 0.680174, -0.288615, 0.673843, -12.8572, 2.89946, 2.39976 )
 gravity_scale = 0.0
 
 [node name="MeshInstance" type="MeshInstance" parent="RigidBody2"]
-mesh = SubResource( 285 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody2"]
-shape = SubResource( 286 )
+shape = SubResource( 4 )
 
 [node name="RigidBody3" type="RigidBody" parent="."]
 transform = Transform( 0.719632, 0.437971, -0.538804, 0.261022, 0.548425, 0.794416, 0.643425, -0.712327, 0.280344, -20.7578, 4.56987, 2.52262 )
 gravity_scale = 0.0
 
 [node name="MeshInstance" type="MeshInstance" parent="RigidBody3"]
-mesh = SubResource( 285 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody3"]
-shape = SubResource( 286 )
+shape = SubResource( 4 )
 
 [node name="RigidBody4" type="RigidBody" parent="."]
 transform = Transform( 0.719632, 0.437971, -0.538804, 0.512212, 0.189057, 0.837792, 0.468794, -0.878885, -0.0882832, -18.4957, 5.404, 3.68403 )
 gravity_scale = 0.0
 
 [node name="MeshInstance" type="MeshInstance" parent="RigidBody4"]
-mesh = SubResource( 285 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody4"]
-shape = SubResource( 286 )
+shape = SubResource( 4 )
 
 [node name="RigidBody5" type="RigidBody" parent="."]
 transform = Transform( 0.719632, 0.437971, -0.538804, 0.692396, -0.394388, 0.60419, 0.0521196, -0.80786, -0.587065, -13.4784, 3.07816, 6.03857 )
 gravity_scale = 0.0
 
 [node name="MeshInstance" type="MeshInstance" parent="RigidBody5"]
-mesh = SubResource( 285 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody5"]
-shape = SubResource( 286 )
+shape = SubResource( 4 )
 
 [node name="RigidBody6" type="RigidBody" parent="."]
 transform = Transform( 0.719632, 0.437971, -0.538804, 0.605073, -0.7762, 0.177202, -0.34061, -0.453536, -0.823583, -29.8966, 2.86606, 4.38168 )
 gravity_scale = 0.0
 
 [node name="MeshInstance" type="MeshInstance" parent="RigidBody6"]
-mesh = SubResource( 285 )
+mesh = SubResource( 3 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody6"]
-shape = SubResource( 286 )
+shape = SubResource( 4 )
 
 [node name="Hall" parent="." instance=ExtResource( 6 )]
 

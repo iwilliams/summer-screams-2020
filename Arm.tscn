@@ -2,19 +2,18 @@
 
 [ext_resource path="res://assets/thud.wav" type="AudioStream" id=1]
 [ext_resource path="res://Arm.gd" type="Script" id=2]
+[ext_resource path="res://assets/psx_lit.tres" type="Material" id=3]
 
 [sub_resource type="CubeMesh" id=1]
+material = ExtResource( 3 )
 size = Vector3( 0.1, 0.15, 1.5 )
 
 [sub_resource type="ConvexPolygonShape" id=2]
 margin = 0.01
 points = PoolVector3Array( -0.05, -0.0734997, -0.706278, -0.05, -0.0734997, 0.706278, -0.05, 0.0714969, -0.706278, -0.05, 0.0714969, 0.706278, 0.05, -0.0722108, -0.693722, 0.05, -0.0722108, 0.693722, 0.05, 0.0702081, -0.693722, 0.05, 0.0702081, 0.693722 )
 
-[sub_resource type="SpatialMaterial" id=3]
-albedo_color = Color( 0.945098, 0, 0, 1 )
-
-[sub_resource type="SphereMesh" id=4]
-material = SubResource( 3 )
+[sub_resource type="SphereMesh" id=3]
+material = ExtResource( 3 )
 radius = 0.2
 height = 0.4
 
@@ -42,5 +41,5 @@ stream = ExtResource( 1 )
 max_db = 0.1
 
 [node name="MeshInstance" type="MeshInstance" parent="ThudPlayer"]
-mesh = SubResource( 4 )
+mesh = SubResource( 3 )
 material/0 = null
