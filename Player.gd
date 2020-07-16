@@ -77,8 +77,8 @@ func _physics_process(delta):
         
         if left_arm_grab_joint:
             get_node(right_arm_grab_joint.get_node_b()).set_mass(1)
-            get_parent().remove_child(right_arm_grab_joint)
-            get_parent().remove_child(left_arm_grab_joint)
+            right_arm_grab_joint.get_parent().remove_child(right_arm_grab_joint)
+            left_arm_grab_joint.get_parent().remove_child(left_arm_grab_joint)
             right_arm_grab_joint.queue_free()
             left_arm_grab_joint.queue_free()
             right_arm_grab_joint = null
