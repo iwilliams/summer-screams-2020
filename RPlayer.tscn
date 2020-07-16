@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/thud.wav" type="AudioStream" id=2]
 [ext_resource path="res://Player.gd" type="Script" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
@@ -9,6 +10,10 @@ height = 0.2
 
 [node name="Player" type="RigidBody"]
 gravity_scale = 0.0
+continuous_cd = true
+contacts_reported = 3
+contact_monitor = true
+can_sleep = false
 script = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
@@ -28,3 +33,6 @@ transform = Transform( 1, 0, 0, 0, -0.996561, 0.0828607, 0, -0.0828607, -0.99656
 light_color = Color( 0.6, 0.643137, 0.192157, 1 )
 light_energy = 5.0
 spot_range = 12.2
+
+[node name="ThudPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 2 )
