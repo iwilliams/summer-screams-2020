@@ -15,6 +15,7 @@ var right_arm_grab_joint: Joint = null
 func _ready():
     self.connect("body_entered", self, "_thud")
 
+
 var local_collision_pos
 
 func _thud(body):
