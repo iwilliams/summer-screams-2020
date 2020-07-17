@@ -32,8 +32,7 @@ fov = 90.0
 transform = Transform( 1, 0, 0, 0, -0.996561, 0.0828607, 0, -0.0828607, -0.996561, 0, 0.231844, 0.4 )
 light_color = Color( 0.6, 0.643137, 0.192157, 1 )
 light_energy = 5.0
-shadow_bias = 0.39
-spot_range = 12.2
+spot_range = 15.0
 
 [node name="ThudPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 2 )

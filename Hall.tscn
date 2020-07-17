@@ -656,6 +656,9 @@ points = PoolVector3Array( -5.78125, -5.55112e-16, -0.5, -7.53125, -5.55112e-16,
 
 [node name="Hall" type="Spatial"]
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
 map_file = "./maps/hallway.map"
 inverse_scale_factor = 16.0
 entity_fgd = ExtResource( 3 )

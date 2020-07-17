@@ -1406,7 +1406,7 @@ material/0 = null
 shape = SubResource( 4 )
 
 [node name="RigidBody2" type="RigidBody" parent="."]
-transform = Transform( 0.719632, 0.437971, -0.538804, -0.139617, 0.8514, 0.505594, 0.680174, -0.288615, 0.673843, -12.8572, 2.89946, 2.39976 )
+transform = Transform( 0.719632, 0.437971, -0.538804, -0.139617, 0.8514, 0.505594, 0.680174, -0.288615, 0.673843, -6.8572, 3.89946, 2.39976 )
 gravity_scale = 0.0
 
 [node name="MeshInstance" type="MeshInstance" parent="RigidBody2"]
@@ -1455,7 +1455,7 @@ shape = SubResource( 4 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 0 )
 
 [node name="Joint" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 2, -11 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0 )
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_group_": true
@@ -2684,8 +2684,3 @@ transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 16, 0, 
 
 [node name="Hall5" parent="." instance=ExtResource( 6 )]
 transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 34 )
-
-[node name="SpotLight" type="SpotLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, -19, 1, 7 )
-light_color = Color( 0.823529, 0.101961, 0.101961, 1 )
-spot_range = 9.0
