@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://assets/crt_material.tres" type="Material" id=2]
 [ext_resource path="res://World.tscn" type="PackedScene" id=3]
+[ext_resource path="res://default_env.tres" type="Environment" id=4]
+[ext_resource path="res://test_env.tres" type="Environment" id=5]
+
+[sub_resource type="World" id=1]
+environment = ExtResource( 5 )
+fallback_environment = ExtResource( 4 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -22,8 +28,8 @@ __meta__ = {
 
 [node name="Viewport" type="Viewport" parent="ViewportContainer"]
 size = Vector2( 640, 360 )
+world = SubResource( 1 )
 handle_input_locally = false
-hdr = false
 keep_3d_linear = true
 render_target_update_mode = 3
 audio_listener_enable_3d = true

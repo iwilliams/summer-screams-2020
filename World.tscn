@@ -1455,8 +1455,11 @@ shape = SubResource( 4 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 0 )
 
 [node name="Joint" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 2, -11 )
 script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
 map_file = "./maps/joint.map"
 inverse_scale_factor = 16.0
 entity_fgd = ExtResource( 10 )

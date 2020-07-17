@@ -216,6 +216,7 @@ window/size/width=640
 window/size/height=360
 window/size/test_width=1280
 window/size/test_height=720
+window/dpi/allow_hidpi=true
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
@@ -297,3 +298,4 @@ drone_tool_secondary={
 
 environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"
+quality/dynamic_fonts/use_oversampling=false
