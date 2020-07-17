@@ -1,9 +1,8 @@
-[gd_scene load_steps=395 format=2]
+[gd_scene load_steps=394 format=2]
 
 [ext_resource path="res://assets/psx_lit.tres" type="Material" id=1]
 [ext_resource path="res://addons/qodot/textures/base/floor.png" type="Texture" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Arm.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/spaceship-ambience.wav" type="AudioStream" id=5]
 [ext_resource path="res://Hall.tscn" type="PackedScene" id=6]
 [ext_resource path="res://addons/qodot/textures/base/yellow_metal.png" type="Texture" id=7]
@@ -1336,42 +1335,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9991, 8.69318, 4 )
 light_color = Color( 0, 0.772549, 0.00392157, 1 )
 omni_range = 3.8
 
-[node name="PlayerSpawn" type="Spatial" parent="."]
+[node name="Player" parent="." instance=ExtResource( 3 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 5, 5 )
-
-[node name="Player" parent="PlayerSpawn" instance=ExtResource( 3 )]
-
-[node name="LeftArmJoint" type="Generic6DOFJoint" parent="PlayerSpawn"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.17906, -0.104 )
-nodes/node_a = NodePath("../Player")
-nodes/node_b = NodePath("../LeftArm")
-linear_motor_x/target_velocity = -2.0
-linear_motor_x/force_limit = 1.0
-angular_motor_x/target_velocity = 1.0
-angular_limit_y/upper_angle = 10.0
-angular_limit_y/lower_angle = -25.0
-angular_motor_y/enabled = true
-angular_motor_y/target_velocity = -2.0
-angular_motor_y/force_limit = 1.0
-
-[node name="LeftArm" parent="PlayerSpawn" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.17906, 0.646 )
-
-[node name="RightArmJoint" type="Generic6DOFJoint" parent="PlayerSpawn"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, -0.17906, -0.104 )
-nodes/node_a = NodePath("../Player")
-nodes/node_b = NodePath("../RightArm")
-linear_motor_x/target_velocity = -2.0
-linear_motor_x/force_limit = 1.0
-angular_motor_x/target_velocity = 1.0
-angular_limit_y/upper_angle = 25.0
-angular_limit_y/lower_angle = -10.0
-angular_motor_y/enabled = true
-angular_motor_y/target_velocity = 2.0
-angular_motor_y/force_limit = 1.0
-
-[node name="RightArm" parent="PlayerSpawn" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, -0.17906, 0.646 )
 
 [node name="Tube" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.378917, 4.82552, 4.62391 )
