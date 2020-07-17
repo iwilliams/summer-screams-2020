@@ -113,3 +113,28 @@ func _physics_process(delta):
     
     
     hud.set_pos(translation, rotation_degrees)
+    
+    
+var mouse_sensitivity = 0.03
+var camera_anglev=0
+var camera_y_min = -120
+var camera_y_max = 120
+
+func _input(event):
+    if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+#        rotate_y(-event.relative.x * mouse_sensitivity)
+        $Pivot.rotate_x(event.relative.y * mouse_sensitivity)
+        $Pivot.rotation.x = clamp($Pivot.rotation.x, -1.2, 1.2)
+        $Pivot.rotate_y(-event.relative.x * mouse_sensitivity)
+        $Pivot.rotation.y = clamp($Pivot.rotation.y, -1.2, 1.2)
+        $Pivot.rotation.z = 0
+        
+#    if event is InputEventMouseMotion:
+#        var camera_y = rad2deg(($Camera as Camera).rotation.rotated(Vector3(0, 1, 0), deg2rad(-event.relative.x*mouse_sens)).y)
+#        print(camera_y)
+#        if camera_y_min >= camera_y:
+#            $Camera.rotate_y(deg2rad(-event.relative.x*mouse_sens))
+#        var changev=-event.relative.y*mouse_sens
+#        if camera_anglev+changev>-50 and camera_anglev+changev<50:
+#            camera_anglev+=changev
+#            $Camera.rotate_x(deg2rad(changev))

@@ -1,118 +1,28 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/psx_lit.tres" type="Material" id=1]
+[ext_resource path="res://Hall2.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Battery.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/spaceship-ambience.wav" type="AudioStream" id=5]
-[ext_resource path="res://Hall.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Joint.tscn" type="PackedScene" id=11]
-
-[sub_resource type="CubeMesh" id=3]
-material = ExtResource( 1 )
-
-[sub_resource type="ConvexPolygonShape" id=4]
-points = PoolVector3Array( -1, 1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, -1, 1, 1, -1, -1, 1, 1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, 1, 1, 1, -1, -1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, -1, -1, -1, -1, 1, -1, 1, -1, -1 )
 
 [node name="Main" type="Spatial"]
-
-[node name="OmniLight" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9991, 8.69318, 4 )
-light_color = Color( 0, 0.772549, 0.00392157, 1 )
-omni_range = 3.8
-
-[node name="Player" parent="." instance=ExtResource( 3 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 5, 5 )
-
-[node name="Battery" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.03516, 4.18123, 3.63257 )
 
 [node name="AmbiencePlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 volume_db = -18.79
 autoplay = true
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( -0.210749, -0.322765, -0.922718, -0.0348476, 0.945798, -0.322879, 0.976919, -0.0358918, -0.210573, -2.36354, 3.54112, 1.32613 )
+[node name="Player" parent="." instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 1, 2 )
 
-[node name="RigidBody" type="RigidBody" parent="."]
-transform = Transform( 0.719632, 0.437971, -0.538804, -0.530039, 0.847764, -0.0188128, 0.44854, 0.299125, 0.842221, -15.6684, 4.93961, 5.00574 )
-gravity_scale = 0.0
+[node name="QodotMap" parent="." instance=ExtResource( 2 )]
 
-[node name="MeshInstance" type="MeshInstance" parent="RigidBody"]
-mesh = SubResource( 3 )
-material/0 = null
+[node name="Battery2" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 1 )
 
-[node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
-shape = SubResource( 4 )
-
-[node name="RigidBody2" type="RigidBody" parent="."]
-transform = Transform( 0.719632, 0.437971, -0.538804, -0.139617, 0.8514, 0.505594, 0.680174, -0.288615, 0.673843, -6.8572, 3.89946, 2.39976 )
-gravity_scale = 0.0
-
-[node name="MeshInstance" type="MeshInstance" parent="RigidBody2"]
-mesh = SubResource( 3 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="RigidBody2"]
-shape = SubResource( 4 )
-
-[node name="RigidBody3" type="RigidBody" parent="."]
-transform = Transform( 0.719632, 0.437971, -0.538804, 0.261022, 0.548425, 0.794416, 0.643425, -0.712327, 0.280344, -20.7578, 4.56987, 2.52262 )
-gravity_scale = 0.0
-
-[node name="MeshInstance" type="MeshInstance" parent="RigidBody3"]
-mesh = SubResource( 3 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="RigidBody3"]
-shape = SubResource( 4 )
-
-[node name="RigidBody4" type="RigidBody" parent="."]
-transform = Transform( 0.719632, 0.437971, -0.538804, 0.512212, 0.189057, 0.837792, 0.468794, -0.878885, -0.0882832, -18.4957, 5.404, 3.68403 )
-gravity_scale = 0.0
-
-[node name="MeshInstance" type="MeshInstance" parent="RigidBody4"]
-mesh = SubResource( 3 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="RigidBody4"]
-shape = SubResource( 4 )
-
-[node name="RigidBody5" type="RigidBody" parent="."]
-transform = Transform( 0.719632, 0.437971, -0.538804, 0.692396, -0.394388, 0.60419, 0.0521196, -0.80786, -0.587065, -13.4784, 3.07816, 6.03857 )
-gravity_scale = 0.0
-
-[node name="MeshInstance" type="MeshInstance" parent="RigidBody5"]
-mesh = SubResource( 3 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="RigidBody5"]
-shape = SubResource( 4 )
-
-[node name="Hall" parent="." instance=ExtResource( 6 )]
-
-[node name="Hall2" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, 0 )
-
-[node name="Hall3" parent="." instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 25, 0, 9 )
-
-[node name="Joint" parent="." instance=ExtResource( 11 )]
-
-[node name="Joint2" parent="." instance=ExtResource( 11 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 25, 0, 25 )
-
-[node name="Joint3" parent="." instance=ExtResource( 11 )]
-transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -16, 0, 34 )
-
-[node name="Joint4" parent="." instance=ExtResource( 11 )]
-transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -25, 0, 9 )
-
-[node name="Hall6" parent="." instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25, 0, 25 )
-
-[node name="Hall4" parent="." instance=ExtResource( 6 )]
-transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 16, 0, 34 )
-
-[node name="Hall5" parent="." instance=ExtResource( 6 )]
-transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 34 )
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.61743, 2.53902 )
+light_energy = 2.07
+light_indirect_energy = 0.93
+light_specular = 0.56
+omni_range = 0.936188
