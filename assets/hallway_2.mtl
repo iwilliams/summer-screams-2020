@@ -1,0 +1,5 @@
+newmtl base/canvas_panel128x256
+newmtl base/electronics_panel128x256
+newmtl base/floor
+newmtl base/space_panel_256
+newmtl special/skip
