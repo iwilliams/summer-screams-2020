@@ -91,10 +91,17 @@ func _physics_process(delta):
     var right_colliding_bodies = right_arm.get_colliding_bodies()
     var left_colliding_bodies = left_arm.get_colliding_bodies()
     
-    if Input.is_action_pressed("drone_tool_primary") && right_colliding_bodies.size() > 0 && left_colliding_bodies.size() > 0:
+    if Input.is_action_pressed("drone_tool_primary") \
+            && right_colliding_bodies.size() > 0 \
+            && left_colliding_bodies.size() > 0:
         var right_body = right_colliding_bodies[0]
         var left_body = left_colliding_bodies[0]
-        if right_body == left_body && right_arm_grab_joint == null && left_arm_grab_joint == null && right_body is RigidBody && left_body is RigidBody:
+        
+        if right_body == left_body \
+                && right_arm_grab_joint == null \
+                && left_arm_grab_joint == null \
+                && (right_body is RigidBody || right_body is PhysicalBone) \
+                && (left_body is RigidBody || left_body is PhysicalBone):
             right_arm_grab_joint = Generic6DOFJoint.new()
             right_arm_grab_joint.translation = right_arm.get_node("GrabPosition").global_transform.origin
             right_arm_grab_joint.set_node_a(right_arm.get_path())
@@ -114,8 +121,28 @@ func _physics_process(delta):
     
     hud.set_pos(translation, rotation_degrees)
     
+    if Input.is_action_just_pressed("ui_up"):
+        $ForwardThrustPlayer.play()
+    elif Input.is_action_just_released("ui_up"):
+        $ForwardThrustPlayer.stop()
+        
+    if Input.is_action_just_pressed("ui_down"):
+        $BackwardThrustPlayer.play()
+    elif Input.is_action_just_released("ui_down"):
+        $BackwardThrustPlayer.stop()
+        
+    if Input.is_action_just_pressed("ui_left"):
+        $LeftThrustPlayer.play()
+    elif Input.is_action_just_released("ui_left"):
+        $LeftThrustPlayer.stop()
+        
+    if Input.is_action_just_pressed("ui_right"):
+        $RightThrustPlayer.play()
+    elif Input.is_action_just_released("ui_right"):
+        $RightThrustPlayer.stop()
     
-var mouse_sensitivity = 1
+    
+var mouse_sensitivity = .1
         
 onready var cam = find_node("Pivot")
 func _input(event):
