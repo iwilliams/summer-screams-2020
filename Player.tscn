@@ -73,25 +73,25 @@ stream = ExtResource( 2 )
 [node name="ForwardThrustPlayer" type="AudioStreamPlayer3D" parent="Player"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14076e-08, 0, -0.260976 )
 stream = ExtResource( 8 )
-unit_db = -15.0
+unit_db = -30.0
 max_db = 6.0
 
 [node name="LeftThrustPlayer" type="AudioStreamPlayer3D" parent="Player"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33822, 0, 0.0140235 )
 stream = ExtResource( 8 )
-unit_db = -15.0
+unit_db = -30.0
 max_db = 6.0
 
 [node name="RightThrustPlayer" type="AudioStreamPlayer3D" parent="Player"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.349697, 0, 0.0140234 )
 stream = ExtResource( 8 )
-unit_db = -15.0
+unit_db = -30.0
 max_db = 6.0
 
 [node name="BackwardThrustPlayer" type="AudioStreamPlayer3D" parent="Player"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.619e-10, 0, 0.0174302 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25737e-08, 0, 0.516427 )
 stream = ExtResource( 8 )
-unit_db = -15.0
+unit_db = -30.0
 max_db = 6.0
 
 [node name="Sprite3D" type="Sprite3D" parent="Player"]
@@ -103,14 +103,19 @@ texture = ExtResource( 5 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.400001, -0.273591, -0.381953 )
 nodes/node_a = NodePath("../Player")
 nodes/node_b = NodePath("../LeftArm")
-linear_motor_x/target_velocity = -2.0
-linear_motor_x/force_limit = 1.0
-angular_motor_x/target_velocity = 1.0
+linear_limit_x/softness = 0.01
+linear_limit_x/restitution = 0.01
+angular_limit_x/softness = 0.01
+linear_limit_y/softness = 0.01
+linear_limit_y/restitution = 0.01
 angular_limit_y/upper_angle = 10.0
 angular_limit_y/lower_angle = -25.0
 angular_motor_y/enabled = true
 angular_motor_y/target_velocity = -2.0
 angular_motor_y/force_limit = 1.0
+linear_limit_z/softness = 0.01
+linear_limit_z/restitution = 0.01
+angular_limit_z/softness = 0.01
 
 [node name="LeftArm" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.273591, 0.368048 )
@@ -119,14 +124,18 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.273591, 0.368048 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.399999, -0.273591, -0.381952 )
 nodes/node_a = NodePath("../Player")
 nodes/node_b = NodePath("../RightArm")
-linear_motor_x/target_velocity = -2.0
-linear_motor_x/force_limit = 1.0
-angular_motor_x/target_velocity = 1.0
+linear_limit_x/softness = 0.01
+linear_limit_x/restitution = 0.01
+angular_limit_x/softness = 0.01
+linear_limit_y/softness = 0.01
+linear_limit_y/restitution = 0.01
 angular_limit_y/upper_angle = 25.0
 angular_limit_y/lower_angle = -10.0
 angular_motor_y/enabled = true
 angular_motor_y/target_velocity = 2.0
 angular_motor_y/force_limit = 1.0
+linear_limit_z/restitution = 0.01
+angular_limit_z/softness = 0.01
 
 [node name="RightArm" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, -0.273591, 0.368048 )
