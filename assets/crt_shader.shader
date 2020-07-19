@@ -51,6 +51,7 @@ void DrawScanline(inout vec3 color, vec2 uv, float time) {
 
 	color *= boost;
 }
+//Screen-space 8x8 bayer dithering effect
 
 //Function to get fragment luminosity (B&W)
 float luma(vec4 color) {
@@ -59,12 +60,12 @@ float luma(vec4 color) {
 
 //Dithering code
 float dither8x8internal(vec2 position, float brightness) {
-	int x = int(mod(position.x, 16.0));
-	int y = int(mod(position.y, 16.0));
-	int index = x + y * 16;
+	int x = int(mod(position.x, 8.0));
+	int y = int(mod(position.y, 8.0));
+	int index = x + y * 8;
 	float limit = 0.0;
 
-	if (x < 16) {
+	if (x < 8) {
 		if (index == 0) limit = 0.015625;
 		if (index == 1) limit = 0.515625;
 		if (index == 2) limit = 0.140625;
@@ -141,7 +142,7 @@ vec4 dither8x8(vec2 position, vec4 color) {
 
 void fragment() {
 	vec2 screen_crtUV = CRTCurveUV(SCREEN_UV);
-	vec3 color = texture(SCREEN_TEXTURE, screen_crtUV).rgb;
+	vec3 color = texture(TEXTURE, screen_crtUV).rgb;
 	
 	if (aberration_amount > 0.0) {
 		float adjusted_amount = aberration_amount / screen_size.x;
@@ -150,9 +151,9 @@ void fragment() {
 			adjusted_amount = (aberration_amount / screen_size.x) * cos((2.0 * 3.14159265359) * (TIME / aberration_speed));
 		} 
 		
-		color.r = texture(SCREEN_TEXTURE, vec2(screen_crtUV.x + adjusted_amount, screen_crtUV.y)).r;
-		color.g = texture(SCREEN_TEXTURE, screen_crtUV).g;
-		color.b = texture(SCREEN_TEXTURE, vec2(screen_crtUV.x - adjusted_amount, screen_crtUV.y)).b;
+		color.r = texture(TEXTURE, vec2(screen_crtUV.x + adjusted_amount, screen_crtUV.y)).r;
+		color.g = texture(TEXTURE, screen_crtUV).g;
+		color.b = texture(TEXTURE, vec2(screen_crtUV.x - adjusted_amount, screen_crtUV.y)).b;
 	}
 	
 	vec2 crtUV = CRTCurveUV(UV);
@@ -164,5 +165,5 @@ void fragment() {
 	DrawScanline(color, crtUV, TIME * scanlines_speed);
 	
 	COLOR = vec4(color, 1.0);
-//    COLOR = dither8x8(FRAGCOORD.xy, COLOR);
+//    COLOR = dither8x8(crtUV.xy, vec4(color, 1.0));
 }

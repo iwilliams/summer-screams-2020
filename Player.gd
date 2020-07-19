@@ -3,7 +3,7 @@ extends RigidBody
 var thrust = 20
 var torque_thrust = thrust*.5
 
-onready var hud = find_node("HUD")
+onready var hud = get_parent().find_node("HUD")
 
 onready var left_arm = get_node("../LeftArm")
 onready var left_arm_joint = get_node("../LeftArmJoint")

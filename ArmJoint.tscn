@@ -1,0 +1,19 @@
+[gd_scene format=2]
+
+[node name="LeftArmJoint" type="Generic6DOFJoint"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 0, 0.118 )
+nodes/node_a = NodePath("../Player")
+nodes/node_b = NodePath("../LeftArm")
+linear_limit_x/softness = 0.01
+linear_limit_x/restitution = 0.01
+angular_limit_x/softness = 0.01
+linear_limit_y/softness = 0.01
+linear_limit_y/restitution = 0.01
+angular_limit_y/upper_angle = 10.0
+angular_limit_y/lower_angle = -25.0
+angular_motor_y/enabled = true
+angular_motor_y/target_velocity = -2.0
+angular_motor_y/force_limit = 1.0
+linear_limit_z/softness = 0.01
+linear_limit_z/restitution = 0.01
+angular_limit_z/softness = 0.01

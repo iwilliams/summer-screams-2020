@@ -1,29 +1,55 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/thud.wav" type="AudioStream" id=2]
 [ext_resource path="res://Player.gd" type="Script" id=3]
 [ext_resource path="res://addons/qodot/textures/base/dev_grey_256.png" type="Texture" id=4]
-[ext_resource path="res://assets/box.png" type="Texture" id=5]
+[ext_resource path="res://HUD3D.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Arm.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/reticle.png" type="Texture" id=7]
+[ext_resource path="res://PlayerContainer.gd" type="Script" id=7]
 [ext_resource path="res://assets/thruster.wav" type="AudioStream" id=8]
+[ext_resource path="res://ArmJoint.tscn" type="PackedScene" id=9]
 
-[sub_resource type="SphereShape" id=1]
+[sub_resource type="World" id=1]
+
+[sub_resource type="SphereShape" id=2]
 radius = 0.36481
 
-[sub_resource type="SpatialMaterial" id=2]
+[sub_resource type="SpatialMaterial" id=3]
 params_blend_mode = 1
 albedo_texture = ExtResource( 4 )
 
-[sub_resource type="CapsuleMesh" id=3]
-material = SubResource( 2 )
+[sub_resource type="CapsuleMesh" id=4]
+material = SubResource( 3 )
 flip_faces = true
 radius = 0.4
 mid_height = 0.2
 
-[node name="Player" type="Spatial"]
+[node name="PlayerContainer" type="Spatial"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
+script = ExtResource( 7 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource( 1 )]
+
+[node name="ViewportContainer" type="ViewportContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="CanvasLayer/ViewportContainer"]
+size = Vector2( 640, 360 )
+own_world = true
+world = SubResource( 1 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Hud3D" parent="CanvasLayer/ViewportContainer/Viewport" instance=ExtResource( 5 )]
 
 [node name="Player" type="RigidBody" parent="."]
 gravity_scale = 0.0
@@ -39,32 +65,22 @@ script = ExtResource( 3 )
 transform = Transform( -1, 3.25841e-07, 0, 3.25841e-07, 1, 3.25841e-07, 1.06581e-13, 3.25841e-07, -1, 0, 0, 0 )
 current = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Player/Pivot/Camera"]
-
-[node name="HUD" parent="Player/Pivot/Camera/CanvasLayer" instance=ExtResource( 1 )]
-
-[node name="Sprite3D" type="Sprite3D" parent="Player/Pivot/Camera"]
-transform = Transform( 0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 0, 0, -0.5 )
-opacity = 0.74
-texture = ExtResource( 7 )
-
 [node name="CollisionShape" type="CollisionShape" parent="Player"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.93014e-09, 0, 0.112788 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Player"]
 transform = Transform( 1, -1.41787e-14, 0, 0, 1, 0, 0, 6.19773e-22, 1, 0, 0, 0 )
 visible = false
-mesh = SubResource( 3 )
+mesh = SubResource( 4 )
 material/0 = null
 
 [node name="SpotLight" type="SpotLight" parent="Player"]
-transform = Transform( 1, -4.00452e-09, 5.20135e-10, -4.03385e-09, -0.984662, 0.174473, -1.86525e-10, -0.174473, -0.984662, 0, 0.277194, 0.4 )
+transform = Transform( 1, -4.00452e-09, 5.20139e-10, -4.03385e-09, -0.984662, 0.174473, -1.86525e-10, -0.174473, -0.984662, 0, 0.277194, 0.4 )
 light_color = Color( 0.905882, 0.905882, 0.905882, 1 )
 light_energy = 2.17
 light_indirect_energy = 1.76
 shadow_enabled = true
-shadow_bias = 0.07
 spot_range = 15.0
 
 [node name="ThudPlayer" type="AudioStreamPlayer3D" parent="Player"]
@@ -94,48 +110,21 @@ stream = ExtResource( 8 )
 unit_db = -30.0
 max_db = 6.0
 
-[node name="Sprite3D" type="Sprite3D" parent="Player"]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0.5 )
-opacity = 0.74
-texture = ExtResource( 5 )
+[node name="OmniLight" type="OmniLight" parent="Player"]
+visible = false
+omni_range = 1.4
+omni_attenuation = 0.901251
 
-[node name="LeftArmJoint" type="Generic6DOFJoint" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.400001, -0.273591, -0.381953 )
-nodes/node_a = NodePath("../Player")
-nodes/node_b = NodePath("../LeftArm")
-linear_limit_x/softness = 0.01
-linear_limit_x/restitution = 0.01
-angular_limit_x/softness = 0.01
-linear_limit_y/softness = 0.01
-linear_limit_y/restitution = 0.01
-angular_limit_y/upper_angle = 10.0
-angular_limit_y/lower_angle = -25.0
-angular_motor_y/enabled = true
-angular_motor_y/target_velocity = -2.0
-angular_motor_y/force_limit = 1.0
-linear_limit_z/softness = 0.01
-linear_limit_z/restitution = 0.01
-angular_limit_z/softness = 0.01
+[node name="LeftArmJoint" parent="." instance=ExtResource( 9 )]
 
 [node name="LeftArm" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, -0.273591, 0.368048 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 0, 0.118 )
 
-[node name="RightArmJoint" type="Generic6DOFJoint" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.399999, -0.273591, -0.381952 )
-nodes/node_a = NodePath("../Player")
+[node name="RightArmJoint" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 0, 0.118 )
 nodes/node_b = NodePath("../RightArm")
-linear_limit_x/softness = 0.01
-linear_limit_x/restitution = 0.01
-angular_limit_x/softness = 0.01
-linear_limit_y/softness = 0.01
-linear_limit_y/restitution = 0.01
 angular_limit_y/upper_angle = 25.0
 angular_limit_y/lower_angle = -10.0
-angular_motor_y/enabled = true
-angular_motor_y/target_velocity = 2.0
-angular_motor_y/force_limit = 1.0
-linear_limit_z/restitution = 0.01
-angular_limit_z/softness = 0.01
 
 [node name="RightArm" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, -0.273591, 0.368048 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, 0, 0.118 )

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/box.png" type="Texture" id=1]
+[ext_resource path="res://assets/reticle.png" type="Texture" id=2]
+[ext_resource path="res://HUD3D.gd" type="Script" id=3]
+
+[node name="Hud3D" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="Pivot" type="Spatial" parent="."]
+
+[node name="Camera" type="Camera" parent="Pivot"]
+current = true
+
+[node name="Sprite3D" type="Sprite3D" parent="Pivot/Camera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+texture = ExtResource( 2 )
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2 )
+texture = ExtResource( 1 )

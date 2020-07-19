@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/canvas_panel128x256.png-f158e6bdc8ad41d2a4cb08d1bbd7ca8c.s3tc.stex"
-path.etc2="res://.import/canvas_panel128x256.png-f158e6bdc8ad41d2a4cb08d1bbd7ca8c.etc2.stex"
+path.s3tc="res://.import/arm.png-d0188e57afd32a6e104c1ec46c733da9.s3tc.stex"
+path.etc2="res://.import/arm.png-d0188e57afd32a6e104c1ec46c733da9.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://addons/qodot/textures/base/canvas_panel128x256.png"
-dest_files=[ "res://.import/canvas_panel128x256.png-f158e6bdc8ad41d2a4cb08d1bbd7ca8c.s3tc.stex", "res://.import/canvas_panel128x256.png-f158e6bdc8ad41d2a4cb08d1bbd7ca8c.etc2.stex" ]
+source_file="res://assets/arm.png"
+dest_files=[ "res://.import/arm.png-d0188e57afd32a6e104c1ec46c733da9.s3tc.stex", "res://.import/arm.png-d0188e57afd32a6e104c1ec46c733da9.etc2.stex" ]
 
 [params]
 
@@ -24,7 +24,7 @@ compress/normal_map=0
 flags/repeat=true
 flags/filter=false
 flags/mipmaps=true
-flags/anisotropic=true
+flags/anisotropic=false
 flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false

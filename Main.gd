@@ -12,4 +12,4 @@ func _input(event):
         
 
 func myfunc():
-    $ColorRect.material.set_shader_param("screen_size", get_viewport_rect().size)
+    $ViewportContainer.material.set_shader_param("screen_size", get_viewport_rect().size)

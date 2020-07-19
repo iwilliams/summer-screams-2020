@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/thud.wav" type="AudioStream" id=1]
 [ext_resource path="res://Arm.gd" type="Script" id=2]
 [ext_resource path="res://assets/psx_lit.tres" type="Material" id=3]
+[ext_resource path="res://arm_mesh.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/psx_lit.shader" type="Shader" id=5]
 
 [sub_resource type="Gradient" id=1]
@@ -28,9 +29,9 @@ shader_param/albedoTex = SubResource( 2 )
 material = SubResource( 3 )
 size = Vector3( 0.1, 0.15, 0.75 )
 
-[sub_resource type="ConvexPolygonShape" id=5]
-margin = 0.001
-points = PoolVector3Array( -0.05, 0.075, 0.375, 0.05, 0.075, -0.375, 0.05, 0.075, 0.375, -0.05, 0.075, -0.375, -0.05, -0.075, 0.375, 0.05, -0.075, -0.375, 0.05, -0.075, 0.375, -0.05, -0.075, -0.375, 0.05, 0.075, 0.375, -0.05, 0.075, -0.375, 0.05, 0.075, -0.375, -0.05, 0.075, 0.375, 0.05, -0.075, 0.375, -0.05, -0.075, -0.375, 0.05, -0.075, -0.375, -0.05, -0.075, 0.375, 0.05, 0.075, 0.375, -0.05, -0.075, 0.375, -0.05, 0.075, 0.375, 0.05, -0.075, 0.375, 0.05, 0.075, -0.375, -0.05, -0.075, -0.375, -0.05, 0.075, -0.375, 0.05, -0.075, -0.375 )
+[sub_resource type="BoxShape" id=5]
+margin = 0.1
+extents = Vector3( 0.058, 0.077, 0.688 )
 
 [sub_resource type="SphereMesh" id=6]
 material = ExtResource( 3 )
@@ -48,20 +49,25 @@ script = ExtResource( 2 )
 
 [node name="MeshInstance2" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.375 )
+visible = false
 mesh = SubResource( 4 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.375 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.35, 0.525 )
 shape = SubResource( 5 )
 
 [node name="GrabPosition" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.6 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.35, 0.6 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
+visible = false
 mesh = SubResource( 6 )
 material/0 = null
 
 [node name="ThudPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 1 )
 max_db = 0.1
+
+[node name="arm_gltf" parent="." instance=ExtResource( 4 )]
+transform = Transform( -0.15, 0, -2.26494e-08, 0, 0.15, 0, 2.26494e-08, 0, -0.15, 0.01, -0.3, 0 )

@@ -81,7 +81,8 @@ float dither8x8internal(vec2 position, float brightness) {
 		if (index == 63) limit = 0.34375;
 	}
 	
-	return brightness < limit ? 0.0 : 1.0;
+//    return 1.0;
+	return brightness < limit ? 0.75 : 1.0;
 }
 
 //Dithering function
