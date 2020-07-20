@@ -1,7 +1,9 @@
 extends RigidBody
 
-var thrust = 20
-var torque_thrust = thrust*.25
+var linear_thrust = 80
+var linear_damping = 10
+var torque_thrust = 40*.80
+var damping = .5
 
 onready var hud = get_parent().find_node("HUD")
 
@@ -30,20 +32,38 @@ func _integrate_forces(state):
 
 func _physics_process(delta):
     var torque_thrust_delta = torque_thrust*delta
-    var thrust_delta = thrust*delta
+    var linear_thrust_delta = linear_thrust*delta
     
-    var velocity = Vector3()
-    var torque = Vector3()
+    
+    damping = 20
+    
+#    var velocity = linear_velocity * -1 * (1-.5)
+    var velocity = Vector3.ZERO
+#    var velocity = Vector3.ZERO \
+#            - (linear_velocity.normalized() \
+#            * Vector3(linear_damping*delta, linear_damping*delta, linear_damping*delta))
+    var torque = angular_velocity * -1 * (1-.8)
+#    var torque = Vector3.ZERO \
+#            - (angular_velocity.normalized() \
+#            * Vector3(damping*delta, damping*delta, damping*delta))
     
     if Input.is_action_pressed("drone_pitch_down"):
-        torque += global_transform.basis.x.normalized() * torque_thrust_delta * Input.get_action_strength("drone_pitch_down")
+        torque += global_transform.basis.x.normalized() \
+                * torque_thrust_delta \
+                * Input.get_action_strength("drone_pitch_down")
     if Input.is_action_pressed("drone_pitch_up"):
-        torque += global_transform.basis.x.normalized() * -torque_thrust_delta * Input.get_action_strength("drone_pitch_up")
+        torque += global_transform.basis.x.normalized() \
+                * -torque_thrust_delta \
+                * Input.get_action_strength("drone_pitch_up")
         
     if Input.is_action_pressed("drone_left"):
-        velocity += global_transform.basis.x.normalized() * thrust_delta * Input.get_action_strength("drone_left")
+        velocity += global_transform.basis.x.normalized() \
+                * linear_thrust_delta \
+                * Input.get_action_strength("drone_left")
     if Input.is_action_pressed("drone_right"):
-        velocity += global_transform.basis.x.normalized() * -thrust_delta * Input.get_action_strength("drone_right")
+        velocity += global_transform.basis.x.normalized() \
+                * -linear_thrust_delta \
+                * Input.get_action_strength("drone_right")
         
     if Input.is_action_pressed("drone_roll_right"):
         torque += global_transform.basis.z.normalized() * torque_thrust_delta * Input.get_action_strength("drone_roll_right")
@@ -52,13 +72,17 @@ func _physics_process(delta):
     
     if !Input.is_action_pressed("drone_flight_meta"):    
         if Input.is_action_pressed("drone_forward"):
-            velocity += global_transform.basis.z.normalized() * thrust_delta * Input.get_action_strength("drone_forward")
+            velocity += global_transform.basis.z.normalized() * linear_thrust_delta * Input.get_action_strength("drone_forward")
         if Input.is_action_pressed("drone_backward"):
-            velocity += global_transform.basis.z.normalized() * -thrust_delta * Input.get_action_strength("drone_backward")
+            velocity += global_transform.basis.z.normalized() * -linear_thrust_delta * Input.get_action_strength("drone_backward")
         if Input.is_action_pressed("drone_yaw_right"):
             torque += global_transform.basis.y.normalized() * -torque_thrust_delta * Input.get_action_strength("drone_yaw_right")
         if Input.is_action_pressed("drone_yaw_left"):
             torque += global_transform.basis.y.normalized() * torque_thrust_delta * Input.get_action_strength("drone_yaw_left")
+        if Input.is_action_pressed("drone_up"):
+            velocity += global_transform.basis.y.normalized() * linear_thrust_delta * Input.get_action_strength("drone_up")           
+        if Input.is_action_pressed("drone_down"):
+            velocity += global_transform.basis.y.normalized() * -linear_thrust_delta * Input.get_action_strength("drone_down")           
 
     if Input.is_action_pressed("drone_brake"):
         if linear_velocity:
@@ -66,17 +90,18 @@ func _physics_process(delta):
         if angular_velocity:
             torque += angular_velocity*-1
 
-
-    if velocity.abs() > Vector3.ZERO:
-        add_central_force(velocity)
-    else:
-        velocity += linear_velocity*-1*.5
-        add_central_force(velocity)
-    if torque.abs() > Vector3.ZERO:
-        add_torque(torque)
-    else:
-        torque += angular_velocity*-1*.5
-        add_torque(torque)
+    add_central_force(velocity)
+    add_torque(torque)
+#    if velocity.abs() > Vector3.ZERO:
+#        add_central_force(velocity)
+#    else:
+#        velocity += linear_velocity*-1*.5
+#        add_central_force(velocity)
+#    if torque.abs() > Vector3.ZERO:
+#        add_torque(torque)
+#    else:
+#        torque += angular_velocity*-1*.5
+#        add_torque(torque)
 
 
 

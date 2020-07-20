@@ -1,6 +1,7 @@
 shader_type canvas_item;
 
 //Screen-space 8x8 bayer dithering effect
+uniform float threshold : hint_range(0,1);
 
 //Function to get fragment luminosity (B&W)
 float luma(vec4 color) {
@@ -82,7 +83,7 @@ float dither8x8internal(vec2 position, float brightness) {
 	}
 	
 //    return 1.0;
-	return brightness < limit ? 0.75 : 1.0;
+	return brightness < limit ? threshold : 1.0;
 }
 
 //Dithering function
