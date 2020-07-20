@@ -15,7 +15,7 @@ uniform sampler2D albedoTex : hint_albedo;
 uniform sampler2D normal_tex : hint_normal;
 
 uniform float texture_scale : hint_range(1,10);
-uniform float snap_scale : hint_range(1,50);
+uniform float snap_scale;
 
 // Added
 uniform float cull_distance : hint_range(0, 100) = 5;

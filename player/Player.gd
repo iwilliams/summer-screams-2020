@@ -1,7 +1,7 @@
 extends RigidBody
 
 var thrust = 20
-var torque_thrust = thrust*.5
+var torque_thrust = thrust*.25
 
 onready var hud = get_parent().find_node("HUD")
 
@@ -32,37 +32,54 @@ func _physics_process(delta):
     var torque_thrust_delta = torque_thrust*delta
     var thrust_delta = thrust*delta
     
-    if Input.is_action_pressed("flight_brake"):
+    var velocity = Vector3()
+    var torque = Vector3()
+    
+    if Input.is_action_pressed("drone_pitch_down"):
+        torque += global_transform.basis.x.normalized() * torque_thrust_delta * Input.get_action_strength("drone_pitch_down")
+    if Input.is_action_pressed("drone_pitch_up"):
+        torque += global_transform.basis.x.normalized() * -torque_thrust_delta * Input.get_action_strength("drone_pitch_up")
+        
+    if Input.is_action_pressed("drone_left"):
+        velocity += global_transform.basis.x.normalized() * thrust_delta * Input.get_action_strength("drone_left")
+    if Input.is_action_pressed("drone_right"):
+        velocity += global_transform.basis.x.normalized() * -thrust_delta * Input.get_action_strength("drone_right")
+        
+    if Input.is_action_pressed("drone_roll_right"):
+        torque += global_transform.basis.z.normalized() * torque_thrust_delta * Input.get_action_strength("drone_roll_right")
+    if Input.is_action_pressed("drone_roll_left"):
+        torque += global_transform.basis.z.normalized() * -torque_thrust_delta * Input.get_action_strength("drone_roll_left")
+    
+    if !Input.is_action_pressed("drone_flight_meta"):    
+        if Input.is_action_pressed("drone_forward"):
+            velocity += global_transform.basis.z.normalized() * thrust_delta * Input.get_action_strength("drone_forward")
+        if Input.is_action_pressed("drone_backward"):
+            velocity += global_transform.basis.z.normalized() * -thrust_delta * Input.get_action_strength("drone_backward")
+        if Input.is_action_pressed("drone_yaw_right"):
+            torque += global_transform.basis.y.normalized() * -torque_thrust_delta * Input.get_action_strength("drone_yaw_right")
+        if Input.is_action_pressed("drone_yaw_left"):
+            torque += global_transform.basis.y.normalized() * torque_thrust_delta * Input.get_action_strength("drone_yaw_left")
+
+    if Input.is_action_pressed("drone_brake"):
         if linear_velocity:
-            add_central_force(linear_velocity*-1)
+            velocity += linear_velocity*-1
         if angular_velocity:
-            add_torque(angular_velocity*-1)
-    elif Input.is_action_pressed("flight_meta"):
-        var torque = Vector3()
-        if Input.is_action_pressed("ui_up"):
-            torque += global_transform.basis.x.normalized() * torque_thrust_delta
-        if Input.is_action_pressed("ui_down"):
-            torque += global_transform.basis.x.normalized() * -torque_thrust_delta
-        if Input.is_action_pressed("ui_right"):
-            torque += global_transform.basis.z.normalized() * torque_thrust_delta
-        if Input.is_action_pressed("ui_left"):
-            torque += global_transform.basis.z.normalized() * -torque_thrust_delta
+            torque += angular_velocity*-1
+
+
+    if velocity.abs() > Vector3.ZERO:
+        add_central_force(velocity)
+    else:
+        velocity += linear_velocity*-1*.5
+        add_central_force(velocity)
+    if torque.abs() > Vector3.ZERO:
         add_torque(torque)
     else:
-        var velocity = Vector3()
-        if Input.is_action_pressed("ui_up"):
-            velocity += global_transform.basis.z.normalized() * thrust_delta
-        if Input.is_action_pressed("ui_down"):
-            velocity += global_transform.basis.z.normalized() * -thrust_delta
-        add_central_force(velocity)
-
-        var torque = Vector3()
-        if Input.is_action_pressed("ui_right"):
-            torque += global_transform.basis.y.normalized() * -torque_thrust_delta
-        if Input.is_action_pressed("ui_left"):
-            torque += global_transform.basis.y.normalized() * torque_thrust_delta
+        torque += angular_velocity*-1*.5
         add_torque(torque)
-        
+
+
+
     if Input.is_action_just_pressed("drone_flashlight"):
         $SpotLight.visible = !$SpotLight.visible
         
@@ -113,6 +130,7 @@ func _physics_process(delta):
             right_arm_grab_joint.set_node_a(right_arm.get_path())
             right_arm_grab_joint.set_node_b(right_body.get_path())
             right_body.get_parent().add_child(right_arm_grab_joint)
+
             
             left_arm_grab_joint = Generic6DOFJoint.new()
 #            left_arm_grab_joint.translation = left_arm.get_node("GrabPosition").global_transform.origin
@@ -120,6 +138,7 @@ func _physics_process(delta):
             left_arm_grab_joint.set_node_a(left_arm.get_path())
             left_arm_grab_joint.set_node_b(left_body.get_path())
             left_body.get_parent().add_child(left_arm_grab_joint)
+
             
 #            left_body.mode = RigidBody.MODE_STATIC
             left_body.set_mass(0.1)
@@ -128,14 +147,14 @@ func _physics_process(delta):
     
     hud.set_pos(translation, rotation_degrees)
     
-    if Input.is_action_just_pressed("ui_up"):
+    if Input.is_action_just_pressed("drone_forward"):
         $ForwardThrustPlayer.play()
-    elif Input.is_action_just_released("ui_up"):
+    elif Input.is_action_just_released("drone_forward"):
         $ForwardThrustPlayer.stop()
         
-    if Input.is_action_just_pressed("ui_down"):
+    if Input.is_action_just_pressed("drone_backward"):
         $BackwardThrustPlayer.play()
-    elif Input.is_action_just_released("ui_down"):
+    elif Input.is_action_just_released("drone_backward"):
         $BackwardThrustPlayer.stop()
         
     if Input.is_action_just_pressed("ui_left"):

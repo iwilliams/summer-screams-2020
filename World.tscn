@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Joint_2.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Hall2.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Battery.tscn" type="PackedScene" id=4]
+[ext_resource path="res://maps/Joint_2.tscn" type="PackedScene" id=1]
+[ext_resource path="res://maps/Hall2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://entities/Battery.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/spaceship-ambience.wav" type="AudioStream" id=5]
 
 [node name="Main" type="Spatial"]
@@ -23,7 +23,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.25, 0, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0, 0 )
 
 [node name="Battery2" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 1.36998 )
+transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 9.23907, 2.61635, 5.02773 )
 
 [node name="OmniLight" type="SpotLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.834194, 0.551471, 0, -0.551471, 0.834194, 7.50835, 5.33028, 5.02503 )
