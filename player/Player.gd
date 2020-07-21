@@ -1,8 +1,8 @@
 extends RigidBody
 
-var linear_thrust = 80
-var linear_damping = 10
-var torque_thrust = 40*.80
+var linear_thrust = 150
+var linear_damping = 20
+var torque_thrust = 180
 var damping = .5
 
 onready var hud = get_parent().find_node("HUD")
@@ -30,19 +30,34 @@ func _integrate_forces(state):
         local_collision_pos = state.get_contact_local_position(state.get_contact_count() - 1)
 
 
+func _create_grab_joint():
+    var type = "hinge"
+    var joint : Joint
+    if type == "hinge":
+        joint = HingeJoint.new()
+        joint.set_flag(HingeJoint.FLAG_USE_LIMIT, true)
+        joint.set_param(HingeJoint.PARAM_LIMIT_UPPER , 0)
+        joint.set_param(HingeJoint.PARAM_LIMIT_LOWER , 0)
+        joint.set_param(HingeJoint.PARAM_BIAS, .99)
+        joint.set_param(HingeJoint.PARAM_LIMIT_SOFTNESS , .99)
+        joint.set_param(HingeJoint.PARAM_LIMIT_RELAXATION , 1)
+    elif type == "pin":
+        joint = PinJoint.new()
+        joint.set_param(PinJoint.PARAM_BIAS , .99)
+    return joint
+
+
 func _physics_process(delta):
     var torque_thrust_delta = torque_thrust*delta
     var linear_thrust_delta = linear_thrust*delta
     
-    
-    damping = 20
     
 #    var velocity = linear_velocity * -1 * (1-.5)
     var velocity = Vector3.ZERO
 #    var velocity = Vector3.ZERO \
 #            - (linear_velocity.normalized() \
 #            * Vector3(linear_damping*delta, linear_damping*delta, linear_damping*delta))
-    var torque = angular_velocity * -1 * (1-.8)
+    var torque = angular_velocity * -2 * (1-.2)
 #    var torque = Vector3.ZERO \
 #            - (angular_velocity.normalized() \
 #            * Vector3(damping*delta, damping*delta, damping*delta))
@@ -86,9 +101,9 @@ func _physics_process(delta):
 
     if Input.is_action_pressed("drone_brake"):
         if linear_velocity:
-            velocity += linear_velocity*-1
+            velocity += linear_velocity*-2
         if angular_velocity:
-            torque += angular_velocity*-1
+            torque += angular_velocity*-2
 
     add_central_force(velocity)
     add_torque(torque)
@@ -149,7 +164,8 @@ func _physics_process(delta):
                     + left_arm.get_node("GrabPosition").global_transform.origin) \
                     / 2
             
-            right_arm_grab_joint = Generic6DOFJoint.new()
+#            right_arm_grab_joint = Generic6DOFJoint.new()
+            right_arm_grab_joint = _create_grab_joint()
 #            right_arm_grab_joint.translation = right_arm.get_node("GrabPosition").global_transform.origin
             right_arm_grab_joint.translation = grab_joint_position
             right_arm_grab_joint.set_node_a(right_arm.get_path())
@@ -157,7 +173,8 @@ func _physics_process(delta):
             right_body.get_parent().add_child(right_arm_grab_joint)
 
             
-            left_arm_grab_joint = Generic6DOFJoint.new()
+#            left_arm_grab_joint = Generic6DOFJoint.new()
+            left_arm_grab_joint = _create_grab_joint()
 #            left_arm_grab_joint.translation = left_arm.get_node("GrabPosition").global_transform.origin
             left_arm_grab_joint.translation = grab_joint_position
             left_arm_grab_joint.set_node_a(left_arm.get_path())
@@ -172,25 +189,29 @@ func _physics_process(delta):
     
     hud.set_pos(translation, rotation_degrees)
     
-    if Input.is_action_just_pressed("drone_forward"):
-        $ForwardThrustPlayer.play()
-    elif Input.is_action_just_released("drone_forward"):
-        $ForwardThrustPlayer.stop()
-        
-    if Input.is_action_just_pressed("drone_backward"):
-        $BackwardThrustPlayer.play()
-    elif Input.is_action_just_released("drone_backward"):
-        $BackwardThrustPlayer.stop()
-        
-    if Input.is_action_just_pressed("ui_left"):
-        $LeftThrustPlayer.play()
-    elif Input.is_action_just_released("ui_left"):
-        $LeftThrustPlayer.stop()
-        
-    if Input.is_action_just_pressed("ui_right"):
-        $RightThrustPlayer.play()
-    elif Input.is_action_just_released("ui_right"):
-        $RightThrustPlayer.stop()
+    var thrusters = {
+        $ForwardThrustPlayer: ["drone_forward"],
+        $BackwardThrustPlayer: ["drone_backward"],
+        $RightThrustPlayer: ["drone_right", "drone_yaw_right", "drone_roll_right"],
+        $LeftThrustPlayer: ["drone_left", "drone_yaw_left", "drone_roll_left"],
+        $UpThrustPlayer: ["drone_up", "drone_pitch_up"],
+        $DownThrustPlayer: ["drone_down", "drone_pitch_down"]   
+    }
+    
+    for thruster in thrusters:
+        var actions = thrusters[thruster]
+        var just_pressed = false
+        for action in actions:
+            just_pressed = just_pressed || Input.is_action_just_pressed(action)
+        if just_pressed && !thruster.playing:
+            (thruster as AudioStreamPlayer3D).pitch_scale = rand_range(.9, 1.1)
+            thruster.play()
+        else:
+            var not_pressed = true
+            for action in actions:
+                not_pressed = not_pressed && !Input.is_action_pressed(action)
+            if not_pressed && thruster.playing:
+                thruster.stop()
     
     
 var mouse_sensitivity = .1
