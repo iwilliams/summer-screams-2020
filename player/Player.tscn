@@ -154,18 +154,18 @@ process_material = SubResource( 6 )
 draw_pass_1 = SubResource( 7 )
 
 [node name="LeftArmJoint" parent="." instance=ExtResource( 9 )]
-transform = Transform( 1, 1.21181e-08, -1.71334e-09, -1.21181e-08, 0.960803, -0.277231, -1.71334e-09, 0.277231, 0.960803, 0.35, -1.11759e-08, -0.21385 )
+transform = Transform( 1, 1.26125e-08, -1.78323e-09, -1.26125e-08, 1, 0, 1.78323e-09, 2.24909e-17, 1, 0.35, -1.11759e-08, 0 )
 
 [node name="LeftArm" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 1.21181e-08, -1.71334e-09, -1.21181e-08, 0.960803, -0.277231, -1.71334e-09, 0.277231, 0.960803, 0.35, -1.11759e-08, -0.21385 )
+transform = Transform( 1, 1.26125e-08, -1.78323e-09, -1.26125e-08, 1, 0, 1.78323e-09, 2.24909e-17, 1, 0.35, -1.11759e-08, 0 )
 mass = 1.0
 
 [node name="RightArmJoint" parent="." instance=ExtResource( 9 )]
-transform = Transform( 1, 1.21181e-08, -1.71334e-09, -1.21181e-08, 0.960803, -0.277231, -1.71334e-09, 0.277231, 0.960803, -0.35, 7.45058e-09, -0.21385 )
+transform = Transform( 1, 1.26125e-08, -1.78323e-09, -1.26125e-08, 1, 0, 1.78323e-09, 2.24909e-17, 1, -0.35, 7.45058e-09, 0 )
 nodes/node_b = NodePath("../RightArm")
 angular_limit_y/upper_angle = 25.0
 angular_limit_y/lower_angle = -10.0
 
 [node name="RightArm" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 1.21181e-08, -1.71334e-09, -1.21181e-08, 0.960803, -0.277231, -1.71334e-09, 0.277231, 0.960803, -0.35, 7.45058e-09, -0.21385 )
+transform = Transform( 1, 1.26125e-08, -1.78323e-09, -1.26125e-08, 1, 0, 1.78323e-09, 2.24909e-17, 1, -0.35, 7.45058e-09, 0 )
 mass = 1.0
