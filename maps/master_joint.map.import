@@ -1,0 +1,13 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+path="res://.import/master_joint.map-8068bb30954ce791f55281f15115ba55.tres"
+
+[deps]
+
+source_file="res://maps/master_joint.map"
+dest_files=[ "res://.import/master_joint.map-8068bb30954ce791f55281f15115ba55.tres" ]
+
+[params]
+

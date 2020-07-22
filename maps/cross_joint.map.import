@@ -1,0 +1,13 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+path="res://.import/cross_joint.map-b80fcf2846adeca079205386926543b9.tres"
+
+[deps]
+
+source_file="res://maps/cross_joint.map"
+dest_files=[ "res://.import/cross_joint.map-b80fcf2846adeca079205386926543b9.tres" ]
+
+[params]
+

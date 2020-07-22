@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://assets/crt_material.tres" type="Material" id=2]
-[ext_resource path="res://World.tscn" type="PackedScene" id=3]
+[ext_resource path="res://MainMap.tscn" type="PackedScene" id=3]
 [ext_resource path="res://default_env.tres" type="Environment" id=4]
 [ext_resource path="res://test_env.tres" type="Environment" id=5]
 [ext_resource path="res://assets/dither.shader" type="Shader" id=6]
@@ -41,7 +41,7 @@ audio_listener_enable_3d = true
 shadow_atlas_size = 4096
 shadow_atlas_quad_0 = 1
 
-[node name="Main" parent="ViewportContainer/Viewport" instance=ExtResource( 3 )]
+[node name="MainMap" parent="ViewportContainer/Viewport" instance=ExtResource( 3 )]
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 material = SubResource( 2 )

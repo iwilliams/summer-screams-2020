@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" type="Resource" id=1]
+[ext_resource path="res://assets/retro_mat.tres" type="Material" id=2]
+[ext_resource path="res://addons/qodot/src/nodes/qodot_map.gd" type="Script" id=3]
+
+[node name="cross_joint" type="Spatial"]
+script = ExtResource( 3 )
+map_file = "C:/Users/iwilliams/Documents/Godot/summer-screams-2020/maps/cross_joint.map"
+inverse_scale_factor = 16.0
+entity_fgd = ExtResource( 1 )
+base_texture_dir = "res://addons/qodot/textures"
+texture_file_extension = "png"
+worldspawn_layers = [  ]
+brush_clip_texture = "special/clip"
+face_skip_texture = "special/skip"
+texture_wads = [  ]
+material_file_extension = "tres"
+default_material = ExtResource( 2 )
+uv_unwrap_texel_size = 1.0
+print_profiling_data = false
+use_trenchbroom_group_hierarchy = false
+tree_attach_batch_size = 16
+set_owner_batch_size = 16
