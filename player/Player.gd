@@ -2,7 +2,7 @@ extends RigidBody
 
 var linear_thrust = 150
 var linear_damping = 20
-var torque_thrust = 180
+var torque_thrust = 280
 var damping = .5
 
 onready var hud = get_parent().find_node("HUD")
@@ -104,9 +104,18 @@ func _physics_process(delta):
             velocity += linear_velocity*-2
         if angular_velocity:
             torque += angular_velocity*-2
+    
+    # Let the player decelerate faster then accelerating
+    var brake_force = 3.5
+    for component in ['x', 'y', 'z']:
+        if (linear_velocity[component] < 0 && velocity[component] > 0) || (linear_velocity[component] > 0 && velocity[component] < 0):
+            var force_ratio = abs(velocity[component])/linear_thrust_delta
+            velocity[component] += (linear_velocity[component] * -brake_force) * force_ratio
 
     add_central_force(velocity)
     add_torque(torque)
+    
+# Dampining
 #    if velocity.abs() > Vector3.ZERO:
 #        add_central_force(velocity)
 #    else:

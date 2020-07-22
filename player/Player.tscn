@@ -92,7 +92,7 @@ mesh = SubResource( 4 )
 material/0 = null
 
 [node name="SpotLight" type="SpotLight" parent="Player"]
-transform = Transform( 1, -1.36812e-08, 3.42024e-09, -1.39176e-08, -0.918315, 0.39585, -2.27485e-09, -0.39585, -0.918315, 0, 0.277194, 0.4 )
+transform = Transform( 1, 2.73465e-07, -3.21604e-07, 3.21604e-07, -0.986996, 0.160743, -2.73465e-07, -0.160743, -0.986996, 0, 0.145, 0 )
 light_color = Color( 0.905882, 0.905882, 0.905882, 1 )
 light_energy = 2.17
 light_indirect_energy = 1.76
