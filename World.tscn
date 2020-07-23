@@ -52,7 +52,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2838, 3, 3.98247 )
 gravity_scale = 0.0
 angular_damp = 1.0
 script = ExtResource( 2 )
-door_joint = NodePath("../Door/HingeJoint")
 
 [node name="VaultPlayer" type="AudioStreamPlayer3D" parent="Handle"]
 stream = ExtResource( 6 )

@@ -1,0 +1,13 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+path="res://.import/x_axis_joint.map-05297f0e6621e454580d07217bbb1ef2.tres"
+
+[deps]
+
+source_file="res://maps/x_axis_joint.map"
+dest_files=[ "res://.import/x_axis_joint.map-05297f0e6621e454580d07217bbb1ef2.tres" ]
+
+[params]
+

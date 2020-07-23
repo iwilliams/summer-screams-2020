@@ -1,0 +1,13 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+path="res://.import/bend.map-d8a3b769b910b49cc607620015f918d9.tres"
+
+[deps]
+
+source_file="res://maps/bend.map"
+dest_files=[ "res://.import/bend.map-d8a3b769b910b49cc607620015f918d9.tres" ]
+
+[params]
+
