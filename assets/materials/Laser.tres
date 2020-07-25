@@ -2,12 +2,12 @@
 
 [ext_resource path="res://assets/materials/laser.shader" type="Shader" id=1]
 
-[sub_resource type="OpenSimplexNoise" id=4]
+[sub_resource type="OpenSimplexNoise" id=1]
 
-[sub_resource type="NoiseTexture" id=5]
+[sub_resource type="NoiseTexture" id=2]
 seamless = true
-noise = SubResource( 4 )
+noise = SubResource( 1 )
 
 [resource]
 shader = ExtResource( 1 )
-shader_param/alphaTex = SubResource( 5 )
+shader_param/alphaTex = SubResource( 2 )

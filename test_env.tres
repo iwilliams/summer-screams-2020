@@ -1,6 +1,4 @@
-[gd_resource type="Environment" load_steps=4 format=2]
-
-[ext_resource path="res://assets/textures/color_correction2.png" type="Texture" id=1]
+[gd_resource type="Environment" load_steps=3 format=2]
 
 [sub_resource type="StreamTexture" id=1]
 flags = 4
@@ -30,4 +28,3 @@ glow_bloom = 0.44
 adjustment_enabled = true
 adjustment_contrast = 1.1
 adjustment_saturation = 1.1
-adjustment_color_correction = ExtResource( 1 )

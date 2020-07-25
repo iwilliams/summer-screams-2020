@@ -1,15 +1,28 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://entities/Laser.gd" type="Script" id=1]
 [ext_resource path="res://assets/materials/Laser.tres" type="Material" id=2]
+[ext_resource path="res://assets/materials/PSXEffect.shader" type="Shader" id=3]
 
-[sub_resource type="SphereMesh" id=5]
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 3 )
+shader_param/color = Color( 0.172549, 0.14902, 0.368627, 1 )
+shader_param/specular_intensity = 0.0
+shader_param/resolution = 256.0
+shader_param/cull_distance = 13.0
+shader_param/uv_scale = Vector2( 1, 1 )
+shader_param/uv_offset = Vector2( 0, 0 )
+shader_param/affine = true
+shader_param/use_normal_mapping = false
+
+[sub_resource type="SphereMesh" id=1]
+material = SubResource( 3 )
 radius = 0.4
 height = 0.8
 radial_segments = 8
 rings = 8
 
-[sub_resource type="ConvexPolygonShape" id=6]
+[sub_resource type="ConvexPolygonShape" id=2]
 points = PoolVector3Array( 0, 0.4, 0, 0, 0.4, 0, 0, 0.4, 0, 0, 0.4, 0, 0, 0.4, 0, 0, 0.4, 0, 0, 0.4, 0, 0, 0.4, 0, 0, 0.4, 0, 0, 0.375877, 0.136808, 0.0967379, 0.375877, 0.0967379, 0.136808, 0.375877, 8.3768e-18, 0.0967379, 0.375877, -0.0967379, 1.67536e-17, 0.375877, -0.136808, -0.0967379, 0.375877, -0.0967379, -0.136808, 0.375877, -2.51304e-17, -0.0967379, 0.375877, 0.0967379, -3.35072e-17, 0.375877, 0.136808, 0, 0.306418, 0.257115, 0.181808, 0.306418, 0.181808, 0.257115, 0.306418, 1.57432e-17, 0.181808, 0.306418, -0.181808, 3.14865e-17, 0.306418, -0.257115, -0.181808, 0.306418, -0.181808, -0.257115, 0.306418, -4.72297e-17, -0.181808, 0.306418, 0.181808, -6.29729e-17, 0.306418, 0.257115, 0, 0.2, 0.34641, 0.244949, 0.2, 0.244949, 0.34641, 0.2, 2.12108e-17, 0.244949, 0.2, -0.244949, 4.24216e-17, 0.2, -0.34641, -0.244949, 0.2, -0.244949, -0.34641, 0.2, -6.36324e-17, -0.244949, 0.2, 0.244949, -8.48432e-17, 0.2, 0.34641, 0, 0.0694593, 0.393923, 0.278546, 0.0694593, 0.278546, 0.393923, 0.0694593, 2.412e-17, 0.278546, 0.0694593, -0.278546, 4.82401e-17, 0.0694593, -0.393923, -0.278546, 0.0694593, -0.278546, -0.393923, 0.0694593, -7.23601e-17, -0.278546, 0.0694593, 0.278546, -9.64801e-17, 0.0694593, 0.393923, 0, -0.0694593, 0.393923, 0.278546, -0.0694593, 0.278546, 0.393923, -0.0694593, 2.412e-17, 0.278546, -0.0694593, -0.278546, 4.82401e-17, -0.0694593, -0.393923, -0.278546, -0.0694593, -0.278546, -0.393923, -0.0694593, -7.23601e-17, -0.278546, -0.0694593, 0.278546, -9.64801e-17, -0.0694593, 0.393923, 0, -0.2, 0.34641, 0.244949, -0.2, 0.244949, 0.34641, -0.2, 2.12108e-17, 0.244949, -0.2, -0.244949, 4.24216e-17, -0.2, -0.34641, -0.244949, -0.2, -0.244949, -0.34641, -0.2, -6.36324e-17, -0.244949, -0.2, 0.244949, -8.48432e-17, -0.2, 0.34641, 0, -0.306418, 0.257115, 0.181808, -0.306418, 0.181808, 0.257115, -0.306418, 1.57432e-17, 0.181808, -0.306418, -0.181808, 3.14865e-17, -0.306418, -0.257115, -0.181808, -0.306418, -0.181808, -0.257115, -0.306418, -4.72297e-17, -0.181808, -0.306418, 0.181808, -6.29729e-17, -0.306418, 0.257115, 0, -0.375877, 0.136808, 0.0967379, -0.375877, 0.0967379, 0.136808, -0.375877, 8.3768e-18, 0.0967379, -0.375877, -0.0967379, 1.67536e-17, -0.375877, -0.136808, -0.0967379, -0.375877, -0.0967379, -0.136808, -0.375877, -2.51304e-17, -0.0967379, -0.375877, 0.0967379, -3.35072e-17, -0.375877, 0.136808, 0, -0.4, 4.89843e-17, 3.46371e-17, -0.4, 3.46371e-17, 4.89843e-17, -0.4, 2.99932e-33, 3.46371e-17, -0.4, -3.46371e-17, 5.99864e-33, -0.4, -4.89843e-17, -3.46371e-17, -0.4, -3.46371e-17, -4.89843e-17, -0.4, -8.99796e-33, -3.46371e-17, -0.4, 3.46371e-17, -1.19973e-32, -0.4, 4.89843e-17 )
 
 [node name="Laser" type="RigidBody" groups=[
@@ -27,22 +40,22 @@ material_override = ExtResource( 2 )
 cast_shadow = 0
 
 [node name="NRaycast" type="RayCast" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0 )
 enabled = true
 cast_to = Vector3( 100, 0, 0 )
 
 [node name="ERaycast" type="RayCast" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.02 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1 )
 enabled = true
 cast_to = Vector3( 100, 0, 0 )
 
 [node name="SRaycast" type="RayCast" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.02, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0 )
 enabled = true
 cast_to = Vector3( 100, 0, 0 )
 
 [node name="WRaycast" type="RayCast" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.02 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1 )
 enabled = true
 cast_to = Vector3( 100, 0, 0 )
 
@@ -50,11 +63,11 @@ cast_to = Vector3( 100, 0, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
-mesh = SubResource( 5 )
+mesh = SubResource( 1 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-shape = SubResource( 6 )
+shape = SubResource( 2 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0 )
