@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/vault.wav-c4eefe08ef9158db6d9c542d989dfde2.sample"
+path="res://.import/thud.wav-e08e90d03448700ef70cf6ab5157322c.sample"
 
 [deps]
 
-source_file="res://assets/vault.wav"
-dest_files=[ "res://.import/vault.wav-c4eefe08ef9158db6d9c542d989dfde2.sample" ]
+source_file="res://assets/sound/thud.wav"
+dest_files=[ "res://.import/thud.wav-e08e90d03448700ef70cf6ab5157322c.sample" ]
 
 [params]
 

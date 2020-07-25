@@ -1,8 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" type="Resource" id=1]
-[ext_resource path="res://assets/retro_mat.tres" type="Material" id=2]
+[ext_resource path="res://assets/materials/retro_mat.tres" type="Material" id=2]
 [ext_resource path="res://addons/qodot/src/nodes/qodot_map.gd" type="Script" id=3]
+
 
 [node name="cross_joint" type="Spatial"]
 script = ExtResource( 3 )

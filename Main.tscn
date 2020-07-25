@@ -1,19 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
-[ext_resource path="res://assets/crt_material.tres" type="Material" id=2]
+[ext_resource path="res://assets/materials/crt_material.tres" type="Material" id=2]
 [ext_resource path="res://MainMap.tscn" type="PackedScene" id=3]
-[ext_resource path="res://default_env.tres" type="Environment" id=4]
 [ext_resource path="res://test_env.tres" type="Environment" id=5]
-[ext_resource path="res://assets/dither.shader" type="Shader" id=6]
+[ext_resource path="res://assets/materials/dither.tres" type="Material" id=6]
 
 [sub_resource type="World" id=1]
 environment = ExtResource( 5 )
-fallback_environment = ExtResource( 4 )
-
-[sub_resource type="ShaderMaterial" id=2]
-shader = ExtResource( 6 )
-shader_param/threshold = 0.6
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -44,7 +38,7 @@ shadow_atlas_quad_0 = 1
 [node name="MainMap" parent="ViewportContainer/Viewport" instance=ExtResource( 3 )]
 
 [node name="ColorRect2" type="ColorRect" parent="."]
-material = SubResource( 2 )
+material = ExtResource( 6 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {

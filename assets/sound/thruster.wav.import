@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/thruster.wav-5e95aba536b916472be9125c5ad9d60b.sample"
+path="res://.import/thruster.wav-97baece302f6bb810534b26dc81bfad9.sample"
 
 [deps]
 
-source_file="res://assets/thruster.wav"
-dest_files=[ "res://.import/thruster.wav-5e95aba536b916472be9125c5ad9d60b.sample" ]
+source_file="res://assets/sound/thruster.wav"
+dest_files=[ "res://.import/thruster.wav-97baece302f6bb810534b26dc81bfad9.sample" ]
 
 [params]
 

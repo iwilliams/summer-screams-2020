@@ -1,13 +1,13 @@
 [gd_scene load_steps=254 format=2]
 
 [ext_resource path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" type="Resource" id=1]
-[ext_resource path="res://assets/retro_mat.tres" type="Material" id=2]
+[ext_resource path="res://assets/materials/retro_mat.tres" type="Material" id=2]
 [ext_resource path="res://addons/qodot/src/nodes/qodot_map.gd" type="Script" id=3]
 [ext_resource path="res://addons/qodot/textures/base/space_panel_256.png" type="Texture" id=4]
 [ext_resource path="res://addons/qodot/textures/base/canvas_panel128x256.png" type="Texture" id=5]
 [ext_resource path="res://addons/qodot/textures/base/floor.png" type="Texture" id=6]
 [ext_resource path="res://addons/qodot/textures/base/electronics_panel128x256.png" type="Texture" id=7]
-[ext_resource path="res://assets/retro.shader" type="Shader" id=8]
+[ext_resource path="res://assets/materials/retro.shader" type="Shader" id=8]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 8 )

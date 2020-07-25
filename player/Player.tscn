@@ -3,8 +3,8 @@
 [ext_resource path="res://player/PlayerContainer.gd" type="Script" id=1]
 [ext_resource path="res://player/Player.gd" type="Script" id=2]
 [ext_resource path="res://addons/qodot/textures/base/dev_grey_256.png" type="Texture" id=3]
-[ext_resource path="res://assets/thud.wav" type="AudioStream" id=4]
-[ext_resource path="res://assets/thruster.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/sound/thud.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/sound/thruster.wav" type="AudioStream" id=5]
 [ext_resource path="res://player/Arm.tscn" type="PackedScene" id=6]
 [ext_resource path="res://player/HUD3D.tscn" type="PackedScene" id=7]
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=8]
@@ -105,37 +105,37 @@ stream = ExtResource( 4 )
 [node name="ForwardThrustPlayer" type="AudioStreamPlayer3D" parent="Player"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14076e-08, 0, -0.260976 )
 stream = ExtResource( 5 )
-unit_db = -30.0
+unit_db = -15.0
 max_db = 6.0
 
 [node name="LeftThrustPlayer" type="AudioStreamPlayer3D" parent="Player"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33822, 0, 0.0140235 )
 stream = ExtResource( 5 )
-unit_db = -30.0
+unit_db = -15.0
 max_db = 6.0
 
 [node name="DownThrustPlayer" type="AudioStreamPlayer3D" parent="Player"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.35095e-09, 0.469968, 0.0906607 )
 stream = ExtResource( 5 )
-unit_db = -30.0
+unit_db = -15.0
 max_db = 6.0
 
 [node name="UpThrustPlayer" type="AudioStreamPlayer3D" parent="Player"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.35095e-09, -0.554696, 0.0906607 )
 stream = ExtResource( 5 )
-unit_db = -30.0
+unit_db = -15.0
 max_db = 6.0
 
 [node name="RightThrustPlayer" type="AudioStreamPlayer3D" parent="Player"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.349697, 0, 0.0140234 )
 stream = ExtResource( 5 )
-unit_db = -30.0
+unit_db = -15.0
 max_db = 6.0
 
 [node name="BackwardThrustPlayer" type="AudioStreamPlayer3D" parent="Player"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.71203e-08, 0, 0.391668 )
 stream = ExtResource( 5 )
-unit_db = -30.0
+unit_db = -15.0
 max_db = 6.0
 
 [node name="OmniLight" type="OmniLight" parent="Player"]

@@ -4,8 +4,9 @@
 [ext_resource path="res://Handle.gd" type="Script" id=2]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://entities/Battery.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/spaceship-ambience.wav" type="AudioStream" id=5]
-[ext_resource path="res://assets/vault.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/sound/spaceship-ambience.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/sound/vault.wav" type="AudioStream" id=6]
+
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 1, 0, 0, 1 )
