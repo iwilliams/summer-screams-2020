@@ -176,7 +176,6 @@ func _physics_process(delta):
             left_arm_grab_joint = null
             holding = null
     else:
-        
         joint.set_param_y(17, 0)
         joint2.set_param_y(17, 0)
     
