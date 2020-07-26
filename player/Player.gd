@@ -63,24 +63,21 @@ func _teleport_state(state: PhysicsDirectBodyState, tp):
         new_position.origin -= amount
         state.set_transform(new_position)
     else:
-        var pivot = Spatial.new()
-        pivot.transform.origin = pivot_point
+        # create pivot at origin on teleporter
+        # create fake node at offset from pivot to player
+        # rotate pivot
+        # apply translation
         
-        var pivot_placeholder = Spatial.new()
-        pivot_placeholder.transform.origin = state.get_transform().origin - pivot_point
-        pivot_placeholder.transform.basis = state.get_transform().basis
-        pivot.add_child(pivot_placeholder)
-        get_tree().get_root().add_child(pivot)
+        var new_t2 = Transform()
+        new_t2.origin = state.get_transform().origin - tp["from_transform"].origin
+        new_t2.basis = state.get_transform().basis
         
-        pivot.rotate_y(-rot_diff.y)
+        new_t2 = new_t2.rotated(Vector3(0, 1, 0), -rot_diff.y)
         
-        var new_t = pivot_placeholder.global_transform
+        new_t2.origin += tp["from_transform"].origin
+        new_t2.origin -= tp["from_transform"].origin - tp["to_transform"].origin
         
-        get_tree().get_root().remove_child(pivot)
-        pivot.queue_free()
-        pivot_placeholder.queue_free()
-        
-        state.set_transform(new_t)
+        state.set_transform(new_t2)
     
         if abs(rot_diff.y) > 0:
             state.set_linear_velocity(state.get_linear_velocity().rotated(Vector3(0, 1, 0), -rot_diff.y))
