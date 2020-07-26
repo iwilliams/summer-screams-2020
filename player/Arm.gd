@@ -18,5 +18,3 @@ extends RigidBody
 #            local_collision_pos *= -1
 #        var thud_player = $ThudPlayer
 #        thud_player.transform.origin = local_collision_pos
-        
-

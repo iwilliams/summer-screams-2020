@@ -13,6 +13,8 @@ var left_arm_grab_joint: Joint = null
 onready var right_arm = get_node("../RightArm")
 onready var right_arm_joint = get_node("../RightArmJoint")
 var right_arm_grab_joint: Joint = null
+var should_teleport = null
+var holding = null
 
 func _ready():
     self.connect("body_entered", self, "_thud")
@@ -22,12 +24,32 @@ var local_collision_pos
 
 func _thud(body):
     print("thud")
-    $ThudPlayer.translation = local_collision_pos + translation
+#    $ThudPlayer.translation = local_collision_pos + translation
     $ThudPlayer.play(0)
     
-func _integrate_forces(state):
+func _integrate_forces(state: PhysicsDirectBodyState):
     if(state.get_contact_count() >= 1):  #this check is needed or it will throw errors 
         local_collision_pos = state.get_contact_local_position(state.get_contact_count() - 1)
+    
+    if should_teleport:
+        _teleport_state(state, should_teleport)
+        var left_arm_state = PhysicsServer.body_get_direct_state(RID(left_arm))
+        _teleport_state(left_arm_state, should_teleport)
+        var right_arm_state = PhysicsServer.body_get_direct_state(RID(right_arm))
+        _teleport_state(right_arm_state, should_teleport)
+        if holding:
+            _teleport_state(PhysicsServer.body_get_direct_state(RID(holding)), should_teleport)
+        should_teleport = null
+
+
+func teleport(teleport_amount):
+    should_teleport = teleport_amount
+
+
+func _teleport_state(state: PhysicsDirectBodyState, teleport_amount):
+    var new_position = state.get_transform()
+    new_position.origin -= teleport_amount
+    state.set_transform(new_position)
 
 
 func _create_grab_joint():
@@ -131,10 +153,12 @@ func _physics_process(delta):
 
     if Input.is_action_just_pressed("drone_flashlight"):
         $SpotLight.visible = !$SpotLight.visible
-        
+    
+
     var joint = (get_node("../RightArmJoint") as Generic6DOFJoint)
     var joint2 = (get_node("../LeftArmJoint") as Generic6DOFJoint)
     var joint_velocity = .5
+
     if Input.is_action_pressed("drone_tool_primary"):
         joint.set_param_y(17, -joint_velocity)
         joint2.set_param_y(17, joint_velocity)   
@@ -150,10 +174,12 @@ func _physics_process(delta):
             left_arm_grab_joint.queue_free()
             right_arm_grab_joint = null
             left_arm_grab_joint = null
+            holding = null
     else:
+        
         joint.set_param_y(17, 0)
         joint2.set_param_y(17, 0)
-        
+    
     var right_colliding_bodies = right_arm.get_colliding_bodies()
     var left_colliding_bodies = left_arm.get_colliding_bodies()
     
@@ -193,6 +219,7 @@ func _physics_process(delta):
             
 #            left_body.mode = RigidBody.MODE_STATIC
             left_body.set_mass(0.1)
+            holding = left_body
             print("GRAB")
     
     
