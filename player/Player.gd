@@ -42,14 +42,50 @@ func _integrate_forces(state: PhysicsDirectBodyState):
         should_teleport = null
 
 
-func teleport(teleport_amount):
-    should_teleport = teleport_amount
+func teleport(from_transform, to_transform, pivot_transform):
+    should_teleport = { 
+        "from_transform": from_transform, 
+        "to_transform": to_transform,
+        "pivot_transform": pivot_transform
+    }
 
 
-func _teleport_state(state: PhysicsDirectBodyState, teleport_amount):
-    var new_position = state.get_transform()
-    new_position.origin -= teleport_amount
-    state.set_transform(new_position)
+func _teleport_state(state: PhysicsDirectBodyState, tp):
+    var pivot_point = Vector3(0, 0, 10)
+    
+    var to_rot = tp["to_transform"].basis.get_euler()
+    var from_rot = tp["from_transform"].basis.get_euler()
+    var rot_diff = to_rot + from_rot
+    
+    if rot_diff.length() == 0:
+        var amount = tp["from_transform"].origin - tp["to_transform"].origin
+        var new_position = state.get_transform()
+        new_position.origin -= amount
+        state.set_transform(new_position)
+    else:
+        var pivot = Spatial.new()
+        pivot.transform.origin = pivot_point
+        
+        var pivot_placeholder = Spatial.new()
+        pivot_placeholder.transform.origin = state.get_transform().origin - pivot_point
+        pivot_placeholder.transform.basis = state.get_transform().basis
+        pivot.add_child(pivot_placeholder)
+        get_tree().get_root().add_child(pivot)
+        
+        pivot.rotate_y(-rot_diff.y)
+        
+        var new_t = pivot_placeholder.global_transform
+        
+        get_tree().get_root().remove_child(pivot)
+        pivot.queue_free()
+        pivot_placeholder.queue_free()
+        
+        state.set_transform(new_t)
+    
+        if abs(rot_diff.y) > 0:
+            state.set_linear_velocity(state.get_linear_velocity().rotated(Vector3(0, 1, 0), -rot_diff.y))
+            state.set_angular_velocity(state.get_angular_velocity().rotated(Vector3(0, 1, 0), -rot_diff.y))
+
 
 
 func _create_grab_joint():

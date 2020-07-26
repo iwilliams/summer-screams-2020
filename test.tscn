@@ -15,7 +15,7 @@ ambient_light_energy = 0.02
 environment = SubResource( 1 )
 
 [node name="PlayerContainer" parent="." instance=ExtResource( 9 )]
-visible = false
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
 
 [node name="hallway" parent="." instance=ExtResource( 2 )]
 
@@ -25,12 +25,39 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10, 0,
 [node name="bend" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0 )
 
+[node name="bend2" parent="." instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10, 0, 20 )
+
 [node name="Teleporter" parent="." instance=ExtResource( 1 )]
 transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -10, 0, 10 )
-teleporter_position_path = NodePath("../Position3D")
+teleporter_to_path = NodePath("../TeleporterTo")
+teleporter_pivot_path = NodePath("../TeleporterPivot")
 
-[node name="Position3D" type="Position3D" parent="."]
-transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
+[node name="TeleporterTo" type="Position3D" parent="."]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 
-[node name="Position3D" type="Position3D" parent="Position3D"]
+[node name="Position3D" type="Position3D" parent="TeleporterTo"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
+
+[node name="TeleporterPivot" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10 )
+
+[node name="hallway3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
+
+[node name="hallway4" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -10 )
+
+[node name="Teleporter2" parent="." instance=ExtResource( 1 )]
+transform = Transform( -1, 0, 2.06632e-07, 0, 1, 0, -2.06632e-07, 0, -1, -12, 0, -10 )
+teleporter_to_path = NodePath("../Teleporter2To")
+teleporter_pivot_path = NodePath("../Teleporter2Pivot")
+
+[node name="Teleporter2To" type="Position3D" parent="."]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -10 )
+
+[node name="Position3D" type="Position3D" parent="Teleporter2To"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
+
+[node name="Teleporter2Pivot" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -10 )
