@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://entities/Teleporter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://maps/hallway.tscn" type="PackedScene" id=2]
 [ext_resource path="res://maps/bend.tscn" type="PackedScene" id=3]
+[ext_resource path="res://maps/master_joint.tscn" type="PackedScene" id=4]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Environment" id=1]
@@ -15,51 +16,58 @@ ambient_light_energy = 0.02
 environment = SubResource( 1 )
 
 [node name="PlayerContainer" parent="." instance=ExtResource( 9 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, 0 )
 
-[node name="hallway3" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10 )
+[node name="Spatial3" type="Spatial" parent="."]
 
-[node name="hallway4" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -10 )
-
-[node name="Teleporter2" parent="." instance=ExtResource( 1 )]
-transform = Transform( -1, 0, 2.06632e-07, 0, 1, 0, -2.06632e-07, 0, -1, -12, 0, -10 )
-teleporter_to_path = NodePath("../Teleporter2To")
-teleporter_pivot_path = NodePath("../Teleporter2Pivot")
-
-[node name="Teleporter2To" type="Position3D" parent="."]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -10 )
-
-[node name="Position3D" type="Position3D" parent="Teleporter2To"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
-
-[node name="Teleporter2Pivot" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -10 )
-
-[node name="Spatial" type="Spatial" parent="."]
-
-[node name="hallway" parent="Spatial" instance=ExtResource( 2 )]
-
-[node name="hallway2" parent="Spatial" instance=ExtResource( 2 )]
+[node name="hallway4" parent="Spatial3" instance=ExtResource( 2 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10, 0, 10 )
 
-[node name="bend" parent="Spatial" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0 )
+[node name="hallway5" parent="Spatial3" instance=ExtResource( 2 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -10, 0, -10 )
 
-[node name="bend2" parent="Spatial" instance=ExtResource( 3 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10, 0, 20 )
+[node name="hallway" parent="Spatial3" instance=ExtResource( 2 )]
 
-[node name="Teleporter" parent="Spatial" instance=ExtResource( 1 )]
-transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -10, 0, 10 )
-teleporter_to_path = NodePath("../TeleporterTo")
-teleporter_pivot_path = NodePath("../TeleporterPivot")
+[node name="hallway6" parent="Spatial3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 0 )
 
-[node name="TeleporterTo" type="Position3D" parent="Spatial"]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+[node name="hallway2" parent="Spatial3" instance=ExtResource( 2 )]
+transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -10, -10, 0 )
 
-[node name="Position3D" type="Position3D" parent="Spatial/TeleporterTo"]
+[node name="bend2" parent="Spatial3" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, 1, 1, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, 1.91069e-15, -10, -20, 0 )
+
+[node name="TeleporterTo" type="Position3D" parent="Spatial3"]
+transform = Transform( -1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, -1, 0, 0, 0 )
+
+[node name="Position3D" type="Position3D" parent="Spatial3/TeleporterTo"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
 
-[node name="TeleporterPivot" type="Position3D" parent="Spatial"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10 )
+[node name="master_joint" parent="Spatial3" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0 )
+
+[node name="hallway3" parent="Spatial3" instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1.91069e-15, 1, -10, 10, 0 )
+
+[node name="bend3" parent="Spatial3" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, 1, -1, -4.37114e-08, -4.37114e-08, 4.37114e-08, -1, 1.91069e-15, -10, 20, -9.53674e-07 )
+
+[node name="Teleporter" parent="Spatial3" instance=ExtResource( 1 )]
+transform = Transform( 1.62921e-07, -1, -3.25841e-07, -1, -1.62921e-07, 0, -5.30863e-14, 3.25841e-07, -1, -10, -10, 0 )
+teleporter_to_path = NodePath("../TeleporterTo")
+
+[node name="Teleporter2" parent="Spatial3" instance=ExtResource( 1 )]
+transform = Transform( 1.62921e-07, 1, -3.25841e-07, 1, -1.62921e-07, 0, -5.30863e-14, -3.25841e-07, -1, -10, 10, 0 )
+teleporter_to_path = NodePath("../TeleporterTo")
+
+[node name="Teleporter3" parent="Spatial3" instance=ExtResource( 1 )]
+transform = Transform( -1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, -20, 0, 0 )
+teleporter_to_path = NodePath("../TeleporterTo")
+
+[node name="Teleporter4" parent="Spatial3" instance=ExtResource( 1 )]
+transform = Transform( -4.56956e-08, 0, -1, 0, 1, 0, 1, 0, -4.56956e-08, -10, 0, 10 )
+teleporter_to_path = NodePath("../TeleporterTo")
+
+[node name="Teleporter5" parent="Spatial3" instance=ExtResource( 1 )]
+transform = Transform( -4.17272e-08, 0, 1, 0, 1, 0, -1, 0, -4.17272e-08, -10, 0, -10 )
+teleporter_to_path = NodePath("../TeleporterTo")

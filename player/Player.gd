@@ -42,46 +42,52 @@ func _integrate_forces(state: PhysicsDirectBodyState):
         should_teleport = null
 
 
-func teleport(from_transform, to_transform, pivot_transform):
+func teleport(from_transform, to_transform):
     should_teleport = { 
         "from_transform": from_transform, 
-        "to_transform": to_transform,
-        "pivot_transform": pivot_transform
+        "to_transform": to_transform
     }
 
 
 func _teleport_state(state: PhysicsDirectBodyState, tp):
-    var pivot_point = Vector3(0, 0, 10)
-    
     var to_rot = tp["to_transform"].basis.get_euler()
     var from_rot = tp["from_transform"].basis.get_euler()
     var rot_diff = to_rot + from_rot
+            
+    var new_t = Transform()
+    new_t.origin = state.get_transform().origin - tp["from_transform"].origin
+    new_t.basis = state.get_transform().basis
+
+    if rot_diff.y != 0.0:
+        new_t = new_t.rotated(Vector3(0, 1, 0), -rot_diff.y)
+        state.set_linear_velocity(state.get_linear_velocity().rotated(Vector3(0, 1, 0), -rot_diff.y))
+        state.set_angular_velocity(state.get_angular_velocity().rotated(Vector3(0, 1, 0), -rot_diff.y))
     
-    if rot_diff.length() == 0:
-        var amount = tp["from_transform"].origin - tp["to_transform"].origin
-        var new_position = state.get_transform()
-        new_position.origin -= amount
-        state.set_transform(new_position)
-    else:
-        # create pivot at origin on teleporter
-        # create fake node at offset from pivot to player
-        # rotate pivot
-        # apply translation
+    if rot_diff.z != 0.0:
+        new_t = new_t.rotated(Vector3(0, 0, 1), rot_diff.z)
+        state.set_linear_velocity(state.get_linear_velocity().rotated(Vector3(0, 0, 1), rot_diff.z))
+        state.set_angular_velocity(state.get_angular_velocity().rotated(Vector3(0, 0, 1), rot_diff.z))
         
-        var new_t2 = Transform()
-        new_t2.origin = state.get_transform().origin - tp["from_transform"].origin
-        new_t2.basis = state.get_transform().basis
+    if rot_diff.x != 0.0:
+        new_t = new_t.rotated(Vector3(1, 0, 0), -rot_diff.x)
+        state.set_linear_velocity(state.get_linear_velocity().rotated(Vector3(1, 0, 0), -rot_diff.x))
+        state.set_angular_velocity(state.get_angular_velocity().rotated(Vector3(0, 0, 0), -rot_diff.x))
+                    
+    new_t.origin += tp["from_transform"].origin
+    new_t.origin -= tp["from_transform"].origin - tp["to_transform"].origin
         
-        new_t2 = new_t2.rotated(Vector3(0, 1, 0), -rot_diff.y)
-        
-        new_t2.origin += tp["from_transform"].origin
-        new_t2.origin -= tp["from_transform"].origin - tp["to_transform"].origin
-        
-        state.set_transform(new_t2)
     
-        if abs(rot_diff.y) > 0:
-            state.set_linear_velocity(state.get_linear_velocity().rotated(Vector3(0, 1, 0), -rot_diff.y))
-            state.set_angular_velocity(state.get_angular_velocity().rotated(Vector3(0, 1, 0), -rot_diff.y))
+    state.set_transform(new_t)
+        
+#    if rot_diff.z != 0.0:
+#        var to_basis = tp["to_transform"].basis as Basis
+#        var from_basis = tp["from_transform"].basis as Basis
+#
+#        var test_diff = to_basis.z - from_basis.z
+#
+#        new_t = new_t.rotated(Vector3(0, 0, 1), rot_diff.z)
+#        state.set_linear_velocity(state.get_linear_velocity().rotated(Vector3(0, 0, 1), rot_diff.z))
+#        state.set_angular_velocity(state.get_angular_velocity().rotated(Vector3(0, 0, 1), rot_diff.z))
 
 
 
