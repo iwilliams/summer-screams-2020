@@ -38,7 +38,6 @@ transform = Transform( -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0, 1, -10, -1
 transform = Transform( -4.37114e-08, 0, 1, 1, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, 1.91069e-15, -10, -20, 0 )
 
 [node name="TeleporterTo" type="Position3D" parent="Spatial3"]
-transform = Transform( -1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, -1, 0, 0, 0 )
 
 [node name="Position3D" type="Position3D" parent="Spatial3/TeleporterTo"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )

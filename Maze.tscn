@@ -26,15 +26,6 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 1
 [node name="joiner5" parent="." instance=ExtResource( 4 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -8, 36 )
 
-[node name="Teleporter" parent="." instance=ExtResource( 5 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 8, 30 )
-
-[node name="TeleporterPosition" type="Position3D" parent="."]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 10 )
-
-[node name="Position3D" type="Position3D" parent="TeleporterPosition"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
-
 [node name="tri_joint" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.9992 )
 
@@ -59,11 +50,23 @@ transform = Transform( 1.91069e-15, 1, 4.37114e-08, 4.37114e-08, -4.37114e-08, 1
 [node name="joiner7" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1.91069e-15, 1, 4.37114e-08, 4.37114e-08, -4.37114e-08, 1, 1, 0, -4.37114e-08, 16, 0, 68 )
 
+[node name="TeleporterPosition" type="Position3D" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 10 )
+
+[node name="Position3D" type="Position3D" parent="TeleporterPosition"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
+
+[node name="Teleporter" parent="." instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 8, 30 )
+teleporter_to_path = NodePath("../TeleporterPosition")
+
 [node name="Teleporter2" parent="." instance=ExtResource( 5 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8, -8, 50 )
+teleporter_to_path = NodePath("../TeleporterPosition")
 
 [node name="Teleporter3" parent="." instance=ExtResource( 5 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16, 0, 62 )
+teleporter_to_path = NodePath("../TeleporterPosition")
 
 [node name="bend5" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1.91069e-15, 0, -1, 4.37114e-08, 1, 0, 1, -4.37114e-08, 1.91069e-15, 8, -8, 40 )
