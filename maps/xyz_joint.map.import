@@ -1,0 +1,13 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+path="res://.import/xyz_joint.map-7e0ab25dbe411546a81faee8e168361f.tres"
+
+[deps]
+
+source_file="res://maps/xyz_joint.map"
+dest_files=[ "res://.import/xyz_joint.map-7e0ab25dbe411546a81faee8e168361f.tres" ]
+
+[params]
+

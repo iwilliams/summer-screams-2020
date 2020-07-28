@@ -1,6 +1,8 @@
 extends RigidBody
 
-export(NodePath) var anchor_node
+export(NodePath) var anchor_node_path
+onready var anchor_node = get_node(anchor_node_path)
+
 export(bool) var locked = false
 
 onready var joint := HingeJoint.new()
@@ -15,7 +17,10 @@ func _ready():
     else:
         joint.set_param(HingeJoint.PARAM_LIMIT_LOWER, deg2rad(-180))
     joint.set_node_a(self.get_path())
-    joint.set_node_b(get_node(anchor_node).get_path())
+    if anchor_node is QodotMap:
+        joint.set_node_b(anchor_node.get_child(0).get_path())
+    else:
+        joint.set_node_b(get_node(anchor_node).get_path())
     joint.transform = joint_spawn.transform
     add_child(joint)
 

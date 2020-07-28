@@ -5,6 +5,7 @@ onready var teleporter_to: Position3D = get_node(teleporter_to_path)
 
 
 func _ready():
+    $MeshInstance.queue_free()
     connect("body_entered", self, "body_entered")
 
 

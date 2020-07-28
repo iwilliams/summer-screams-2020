@@ -1,0 +1,13 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+path="res://.import/quad_joint.map-9f3d55b779ce19d60b87ec5e25c19c52.tres"
+
+[deps]
+
+source_file="res://maps/quad_joint.map"
+dest_files=[ "res://.import/quad_joint.map-9f3d55b779ce19d60b87ec5e25c19c52.tres" ]
+
+[params]
+

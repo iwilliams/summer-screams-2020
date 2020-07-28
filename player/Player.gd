@@ -74,21 +74,9 @@ func _teleport_state(state: PhysicsDirectBodyState, tp):
         state.set_angular_velocity(state.get_angular_velocity().rotated(Vector3(0, 0, 0), -rot_diff.x))
                     
     new_t.origin += tp["from_transform"].origin
-    new_t.origin -= tp["from_transform"].origin - tp["to_transform"].origin
-        
+    new_t.origin -= tp["from_transform"].origin - tp["to_transform"].origin  
     
     state.set_transform(new_t)
-        
-#    if rot_diff.z != 0.0:
-#        var to_basis = tp["to_transform"].basis as Basis
-#        var from_basis = tp["from_transform"].basis as Basis
-#
-#        var test_diff = to_basis.z - from_basis.z
-#
-#        new_t = new_t.rotated(Vector3(0, 0, 1), rot_diff.z)
-#        state.set_linear_velocity(state.get_linear_velocity().rotated(Vector3(0, 0, 1), rot_diff.z))
-#        state.set_angular_velocity(state.get_angular_velocity().rotated(Vector3(0, 0, 1), rot_diff.z))
-
 
 
 func _create_grab_joint():
