@@ -32,24 +32,26 @@ func _integrate_forces(state: PhysicsDirectBodyState):
         local_collision_pos = state.get_contact_local_position(state.get_contact_count() - 1)
     
     if should_teleport:
-        _teleport_state(state, should_teleport)
+        _teleport_state(state, should_teleport, self)
         var left_arm_state = PhysicsServer.body_get_direct_state(RID(left_arm))
-        _teleport_state(left_arm_state, should_teleport)
+        _teleport_state(left_arm_state, should_teleport, left_arm)
         var right_arm_state = PhysicsServer.body_get_direct_state(RID(right_arm))
-        _teleport_state(right_arm_state, should_teleport)
+        _teleport_state(right_arm_state, should_teleport, right_arm)
         if holding:
-            _teleport_state(PhysicsServer.body_get_direct_state(RID(holding)), should_teleport)
+            _teleport_state(PhysicsServer.body_get_direct_state(RID(holding)), should_teleport, holding)
         should_teleport = null
 
 
-func teleport(from_transform, to_transform):
-    should_teleport = { 
-        "from_transform": from_transform, 
-        "to_transform": to_transform
+func teleport(from, to):
+    should_teleport = {
+        "from_transform": from.global_transform,
+        "from_body": from,
+        "to_transform": to.global_transform,
+        "to_body": to
     }
 
 
-func _teleport_state(state: PhysicsDirectBodyState, tp):
+func _teleport_state(state: PhysicsDirectBodyState, tp, body):
     var to_rot = tp["to_transform"].basis.get_euler()
     var from_rot = tp["from_transform"].basis.get_euler()
     var rot_diff = to_rot + from_rot
@@ -62,12 +64,12 @@ func _teleport_state(state: PhysicsDirectBodyState, tp):
         new_t = new_t.rotated(Vector3(0, 1, 0), -rot_diff.y)
         state.set_linear_velocity(state.get_linear_velocity().rotated(Vector3(0, 1, 0), -rot_diff.y))
         state.set_angular_velocity(state.get_angular_velocity().rotated(Vector3(0, 1, 0), -rot_diff.y))
-    
+
     if rot_diff.z != 0.0:
         new_t = new_t.rotated(Vector3(0, 0, 1), rot_diff.z)
         state.set_linear_velocity(state.get_linear_velocity().rotated(Vector3(0, 0, 1), rot_diff.z))
         state.set_angular_velocity(state.get_angular_velocity().rotated(Vector3(0, 0, 1), rot_diff.z))
-        
+
     if rot_diff.x != 0.0:
         new_t = new_t.rotated(Vector3(1, 0, 0), -rot_diff.x)
         state.set_linear_velocity(state.get_linear_velocity().rotated(Vector3(1, 0, 0), -rot_diff.x))
@@ -76,7 +78,17 @@ func _teleport_state(state: PhysicsDirectBodyState, tp):
     new_t.origin += tp["from_transform"].origin
     new_t.origin -= tp["from_transform"].origin - tp["to_transform"].origin  
     
+
+    # this is the global direction vector the player is facing, one unit forward minus the players global offset
+    var global_player_direction = body.to_global( Vector3.FORWARD ) - body.global_transform.origin
+    # now add this direction to the global position of the portal and transform this into local coordinate system of the portal. this is the relative (to the portal) viewing vector of the player.
+    var relative_player_direction = tp["from_body"].to_local( tp["from_transform"].origin + global_player_direction)
+    # transform this relative direction to global from the coordinate system of the other portal
+    var new_direction = tp["to_body"].to_global( relative_player_direction ) - tp["to_transform"].origin
+
     state.set_transform(new_t)
+    
+    pass
 
 
 func _create_grab_joint():

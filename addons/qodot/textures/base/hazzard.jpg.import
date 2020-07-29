@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/portal_256.png-d3347f3504242c3473dc453985f8479f.s3tc.stex"
-path.etc2="res://.import/portal_256.png-d3347f3504242c3473dc453985f8479f.etc2.stex"
+path.s3tc="res://.import/hazzard.jpg-5a23fe4a2c8613c28899eeafe1292d92.s3tc.stex"
+path.etc2="res://.import/hazzard.jpg-5a23fe4a2c8613c28899eeafe1292d92.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://addons/qodot/textures/base/portal_256.png"
-dest_files=[ "res://.import/portal_256.png-d3347f3504242c3473dc453985f8479f.s3tc.stex", "res://.import/portal_256.png-d3347f3504242c3473dc453985f8479f.etc2.stex" ]
+source_file="res://addons/qodot/textures/base/hazzard.jpg"
+dest_files=[ "res://.import/hazzard.jpg-5a23fe4a2c8613c28899eeafe1292d92.s3tc.stex", "res://.import/hazzard.jpg-5a23fe4a2c8613c28899eeafe1292d92.etc2.stex" ]
 
 [params]
 
@@ -23,9 +23,9 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=false
-flags/mipmaps=true
-flags/anisotropic=true
-flags/srgb=2
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false

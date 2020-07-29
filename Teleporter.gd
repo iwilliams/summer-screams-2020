@@ -12,6 +12,6 @@ func _ready():
 func body_entered(body):
     if body is RigidBody && body.has_method("teleport"):       
         body.teleport(
-            global_transform, 
-            teleporter_to.global_transform
+            self, 
+            teleporter_to
         )

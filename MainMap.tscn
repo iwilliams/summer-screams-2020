@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://maps/hallway.tscn" type="PackedScene" id=1]
-[ext_resource path="res://maps/x_axis_joint.tscn" type="PackedScene" id=2]
+[ext_resource path="res://maps/main_room.tscn" type="PackedScene" id=2]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://maps/bend.tscn" type="PackedScene" id=4]
 [ext_resource path="res://entities/Door.tscn" type="PackedScene" id=5]
@@ -10,18 +10,17 @@
 [ext_resource path="res://maps/joiner.tscn" type="PackedScene" id=8]
 [ext_resource path="res://entities/Battery.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Maze.tscn" type="PackedScene" id=10]
+[ext_resource path="res://maps/hazzard_joiner.tscn" type="PackedScene" id=11]
 
 [node name="MainMap" type="Spatial"]
 
-[node name="x_axis_joint" parent="." instance=ExtResource( 2 )]
-
 [node name="Door" parent="." instance=ExtResource( 5 )]
-transform = Transform( 2.65431e-14, 1.62921e-07, 1, 1, -1.62921e-07, 0, 1.62921e-07, 1, -1.62921e-07, 0, -3.4, 0 )
-anchor_node_path = NodePath("../joiner4")
+transform = Transform( 2.65431e-14, 1.62921e-07, 1, 1, -1.62921e-07, 0, 1.62921e-07, 1, -1.62921e-07, 0, -7.9, 0 )
+anchor_node_path = NodePath("../hazzard_joiner")
 locked = true
 
 [node name="Handle" parent="." instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 1, -2.8, 0 )
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 1, -7.3, 0 )
 door = NodePath("../Door")
 
 [node name="PlayerContainer" parent="." instance=ExtResource( 3 )]
@@ -30,13 +29,13 @@ door = NodePath("../Door")
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, -10 )
 
 [node name="hallway5" parent="." instance=ExtResource( 1 )]
-transform = Transform( 2.65431e-14, 1.62921e-07, 1, 1, -1.62921e-07, 0, 1.62921e-07, 1, -1.62921e-07, 0, -10, 0 )
+transform = Transform( 2.65431e-14, 1.62921e-07, 1, 1, -1.62921e-07, 0, 1.62921e-07, 1, -1.62921e-07, 0, -14.5, 0 )
 
 [node name="joiner" parent="." instance=ExtResource( 8 )]
 transform = Transform( 2.65431e-14, 1.62921e-07, 1, 1, -1.62921e-07, 0, 1.62921e-07, 1, -1.62921e-07, 0, 4, 0 )
 
-[node name="joiner4" parent="." instance=ExtResource( 8 )]
-transform = Transform( 2.65431e-14, 1.62921e-07, 1, 1, -1.62921e-07, 0, 1.62921e-07, 1, -1.62921e-07, 0, -4, 0 )
+[node name="hazzard_joiner" parent="." instance=ExtResource( 11 )]
+transform = Transform( 2.65431e-14, 1.62921e-07, 1, 1, -1.62921e-07, 0, 1.62921e-07, 1, -1.62921e-07, 0, -8.5, 0 )
 
 [node name="joiner2" parent="." instance=ExtResource( 8 )]
 transform = Transform( 2.65431e-14, 1.62921e-07, 1, 1.1921e-07, 1, -1.62921e-07, -1, 1.1921e-07, 7.1215e-15, 0, -2.38419e-07, -4 )
@@ -53,26 +52,25 @@ transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 20, 
 [node name="hallway7" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 20, 0 )
 
-[node name="Laser" parent="." instance=ExtResource( 7 )]
+[node name="lasers" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18 )
+
+[node name="Laser" parent="lasers" instance=ExtResource( 7 )]
 transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -1, 0, 2 )
-is_on = true
+is_on = false
 is_mirror = false
 
-[node name="OmniLight" parent="Laser" index="8"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.12132, 0, 0 )
-visible = true
-
-[node name="Laser2" parent="." instance=ExtResource( 7 )]
+[node name="Laser2" parent="lasers" instance=ExtResource( 7 )]
 transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 2, 0, 1 )
 is_on = false
 is_mirror = true
 
-[node name="Laser3" parent="." instance=ExtResource( 7 )]
+[node name="Laser3" parent="lasers" instance=ExtResource( 7 )]
 transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -1, 1, -1 )
 is_on = false
 is_mirror = true
 
-[node name="Laser4" parent="." instance=ExtResource( 7 )]
+[node name="Laser4" parent="lasers" instance=ExtResource( 7 )]
 transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 1, 0, -1 )
 is_on = false
 is_mirror = true
@@ -84,18 +82,26 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -20 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 65 )
 
 [node name="SpotLight" type="SpotLight" parent="."]
-transform = Transform( -2.50718e-08, -0.819152, 0.573576, -3.58063e-08, 0.573576, 0.819152, -1, 0, -4.37114e-08, 3.7, 0.0999999, 0.3 )
+transform = Transform( -2.18557e-08, -0.866026, 0.5, -3.78552e-08, 0.5, 0.866026, -1, -2.13163e-14, -4.37114e-08, 2.8, -5, 0 )
 light_color = Color( 1, 0, 0, 1 )
-light_energy = 5.48
-
-[node name="SpotLight2" type="SpotLight" parent="."]
-transform = Transform( 1.12495e-07, 0.819152, -0.573576, -3.58063e-08, 0.573576, 0.819152, 1, -7.16126e-08, 9.3855e-08, -3.7, 0.0999999, 0.3 )
-light_color = Color( 1, 0, 0, 1 )
-light_energy = 5.48
+light_energy = 0.45
+spot_range = 6.7
+spot_attenuation = 0.637281
 
 [node name="Maze" parent="." instance=ExtResource( 10 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 10 )
 
-[editable path="x_axis_joint"]
+[node name="main_room" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 0, -2.5, 0 )
 
-[editable path="Laser"]
+[node name="Battery2" parent="." instance=ExtResource( 9 )]
+transform = Transform( 0.642788, -0.766044, 0, 0.766044, 0.642788, 0, 0, 0, 1, 2.3, -4.4, 1.2 )
+
+[node name="Battery3" parent="." instance=ExtResource( 9 )]
+transform = Transform( 0.642788, -0.766044, 0, 0.766044, 0.642788, 0, 0, 0, 1, 2.3, -4.4, 0.4 )
+
+[node name="Battery4" parent="." instance=ExtResource( 9 )]
+transform = Transform( 0.642788, -0.766044, 0, 0.766044, 0.642788, 0, 0, 0, 1, 2.3, -4.4, -0.3 )
+
+[node name="Battery5" parent="." instance=ExtResource( 9 )]
+transform = Transform( 0.642788, -0.766044, 0, 0.766044, 0.642788, 0, 0, 0, 1, 2.3, -4.4, -1 )
