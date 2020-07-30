@@ -398,6 +398,7 @@ drone_down={
 
 [rendering]
 
+quality/shading/force_vertex_shading=true
 environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"
 quality/dynamic_fonts/use_oversampling=false
