@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/grate.png-aa1cb6357be2713e1598c5767833df9a.s3tc.stex"
-path.etc2="res://.import/grate.png-aa1cb6357be2713e1598c5767833df9a.etc2.stex"
+path.s3tc="res://.import/custom_panel.png-3548cecbdcb4ec8288cc8a4db17a6d0b.s3tc.stex"
+path.etc2="res://.import/custom_panel.png-3548cecbdcb4ec8288cc8a4db17a6d0b.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://addons/qodot/textures/base/grate.png"
-dest_files=[ "res://.import/grate.png-aa1cb6357be2713e1598c5767833df9a.s3tc.stex", "res://.import/grate.png-aa1cb6357be2713e1598c5767833df9a.etc2.stex" ]
+source_file="res://addons/qodot/textures/base/custom_panel.png"
+dest_files=[ "res://.import/custom_panel.png-3548cecbdcb4ec8288cc8a4db17a6d0b.s3tc.stex", "res://.import/custom_panel.png-3548cecbdcb4ec8288cc8a4db17a6d0b.etc2.stex" ]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://maps/hallway.tscn" type="PackedScene" id=1]
 [ext_resource path="res://maps/main_room.tscn" type="PackedScene" id=2]
@@ -13,19 +13,9 @@
 [ext_resource path="res://maps/hazzard_joiner.tscn" type="PackedScene" id=11]
 [ext_resource path="res://entities/Space.tscn" type="PackedScene" id=12]
 [ext_resource path="res://maps/master_joint.tscn" type="PackedScene" id=13]
+[ext_resource path="res://levels/Reactor.tscn" type="PackedScene" id=14]
 
 [node name="MainMap" type="Spatial"]
-
-[node name="Door" parent="." instance=ExtResource( 5 )]
-transform = Transform( 2.65431e-14, 1.62921e-07, 1, 1, -1.62921e-07, 0, 1.62921e-07, 1, -1.62921e-07, 0, -7.9, 0 )
-anchor_node_path = NodePath("../hazzard_joiner")
-locked = true
-
-[node name="Handle" parent="." instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 1, -7.3, 0 )
-door = NodePath("../Door")
-
-[node name="PlayerContainer" parent="." instance=ExtResource( 3 )]
 
 [node name="hallway4" parent="." instance=ExtResource( 1 )]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, -10 )
@@ -36,37 +26,26 @@ transform = Transform( 2.65431e-14, 1.62921e-07, 1, 1, -1.62921e-07, 0, 1.62921e
 [node name="joiner" parent="." instance=ExtResource( 8 )]
 transform = Transform( 2.65431e-14, 1.62921e-07, 1, 1, -1.62921e-07, 0, 1.62921e-07, 1, -1.62921e-07, 0, 4, 0 )
 
-[node name="hazzard_joiner" parent="." instance=ExtResource( 11 )]
-transform = Transform( 2.65431e-14, 1.62921e-07, 1, 1, -1.62921e-07, 0, 1.62921e-07, 1, -1.62921e-07, 0, -8.5, 0 )
+[node name="Spatial6" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00557186, -7.85, 0 )
+
+[node name="Handle2" parent="Spatial6" instance=ExtResource( 6 )]
+transform = Transform( 1.31134e-07, 1, 0, -1, 1.31134e-07, 0, 0, 0, 1, -5.96046e-08, 0.5, 0 )
+door = NodePath("../Door2")
+
+[node name="Door2" parent="Spatial6" instance=ExtResource( 5 )]
+transform = Transform( -2.18557e-07, -1, 0, 1, -2.18557e-07, 0, 0, 0, 1, 0, 0, 0 )
+anchor_node_path = NodePath("../hazzard_joiner")
+locked = true
+
+[node name="hazzard_joiner" parent="Spatial6" instance=ExtResource( 11 )]
+transform = Transform( 2.65431e-14, 1.62921e-07, 1, 1, -1.62921e-07, 0, 1.62921e-07, 1, -1.62921e-07, 0.00557186, -0.650001, 0 )
 
 [node name="joiner2" parent="." instance=ExtResource( 8 )]
 transform = Transform( 2.65431e-14, 1.62921e-07, 1, 1.1921e-07, 1, -1.62921e-07, -1, 1.1921e-07, 7.1215e-15, 0, -2.38419e-07, -4 )
 
 [node name="joiner3" parent="." instance=ExtResource( 8 )]
-transform = Transform( 2.65431e-14, 1.62921e-07, 1, 1.1921e-07, 1, -1.62921e-07, -1, 1.1921e-07, 7.1215e-15, 0, -2.38419e-07, 4 )
-
-[node name="Laser" parent="." instance=ExtResource( 7 )]
-transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -1, 0, -28 )
-is_on = false
-is_mirror = false
-
-[node name="Laser2" parent="." instance=ExtResource( 7 )]
-transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 2, 0, -29 )
-is_on = false
-is_mirror = true
-
-[node name="Laser3" parent="." instance=ExtResource( 7 )]
-transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -1, 1, -31 )
-is_on = false
-is_mirror = true
-
-[node name="Laser4" parent="." instance=ExtResource( 7 )]
-transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 1, 0, -31 )
-is_on = false
-is_mirror = true
-
-[node name="lasers" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18 )
+transform = Transform( -2.98023e-08, -1.62921e-07, -1, 1.1921e-07, 1, -1.62921e-07, 1, -1.1921e-07, -2.98023e-08, 0, -2.38419e-07, 4 )
 
 [node name="Battery" parent="." instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 65 )
@@ -128,5 +107,37 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 3
 [node name="joiner5" parent="Spatial3" instance=ExtResource( 8 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -3.375 )
 
+[node name="PlayerContainer" parent="." instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.4, -19.375 )
+
+[node name="Reactor" parent="." instance=ExtResource( 14 )]
+
 [node name="master_joint" parent="." instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.375 )
+
+[node name="Handle" parent="." instance=ExtResource( 6 )]
+transform = Transform( -8.9407e-08, -1, 0, 1, -8.9407e-08, 0, 3.55413e-16, 0, 1, -2.98023e-08, 7.4, -19.4 )
+door = NodePath("../Door")
+
+[node name="Door" parent="." instance=ExtResource( 5 )]
+transform = Transform( 0, 1.62921e-07, 1, 1, -1.62921e-07, 0, 1.62921e-07, 1, -1.62921e-07, 0, 8, -19.4 )
+anchor_node_path = NodePath("../Reactor/joiner4")
+locked = true
+
+[node name="Spatial7" type="Spatial" parent="."]
+transform = Transform( 0, 1.62921e-07, 1, 1, -1.62921e-07, 0, 1.62921e-07, 1, -1.62921e-07, 0, 8, -19.4 )
+
+[node name="Spatial4" type="Spatial" parent="."]
+transform = Transform( 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 0, 8, -19.4 )
+
+[node name="Spatial5" type="Spatial" parent="."]
+
+[node name="Laser" parent="Spatial5" instance=ExtResource( 7 )]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -2, 0, 0 )
+is_on = true
+is_mirror = false
+
+[node name="Laser2" parent="Spatial5" instance=ExtResource( 7 )]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 2, 0, -1 )
+is_on = false
+is_mirror = true

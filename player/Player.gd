@@ -240,19 +240,21 @@ func _physics_process(delta):
 #            right_arm_grab_joint = Generic6DOFJoint.new()
             right_arm_grab_joint = _create_grab_joint()
 #            right_arm_grab_joint.translation = right_arm.get_node("GrabPosition").global_transform.origin
-            right_arm_grab_joint.translation = grab_joint_position
+            right_body.get_parent().add_child(right_arm_grab_joint)
+            right_arm_grab_joint.global_transform.origin = grab_joint_position
             right_arm_grab_joint.set_node_a(right_arm.get_path())
             right_arm_grab_joint.set_node_b(right_body.get_path())
-            right_body.get_parent().add_child(right_arm_grab_joint)
+
 
             
 #            left_arm_grab_joint = Generic6DOFJoint.new()
             left_arm_grab_joint = _create_grab_joint()
 #            left_arm_grab_joint.translation = left_arm.get_node("GrabPosition").global_transform.origin
-            left_arm_grab_joint.translation = grab_joint_position
+            left_body.get_parent().add_child(left_arm_grab_joint)
+            left_arm_grab_joint.global_transform.origin = grab_joint_position
             left_arm_grab_joint.set_node_a(left_arm.get_path())
             left_arm_grab_joint.set_node_b(left_body.get_path())
-            left_body.get_parent().add_child(left_arm_grab_joint)
+
 
             
 #            left_body.mode = RigidBody.MODE_STATIC

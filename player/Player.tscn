@@ -61,11 +61,10 @@ shape = SubResource( 2 )
 
 [node name="SpotLight" type="SpotLight" parent="Player"]
 transform = Transform( 1, 2.73465e-07, -3.21604e-07, 3.21604e-07, -0.986996, 0.160743, -2.73465e-07, -0.160743, -0.986996, 0, 0.145, 0 )
-light_color = Color( 0.905882, 0.905882, 0.905882, 1 )
-light_energy = 0.5
-light_indirect_energy = 1.76
+light_energy = 0.57
 shadow_enabled = true
-spot_range = 7.7
+spot_range = 8.6
+spot_attenuation = 0.615572
 
 [node name="ThudPlayer" type="AudioStreamPlayer3D" parent="Player"]
 stream = ExtResource( 4 )
