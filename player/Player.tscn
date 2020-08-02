@@ -6,8 +6,9 @@
 [ext_resource path="res://assets/sound/thruster.wav" type="AudioStream" id=5]
 [ext_resource path="res://player/Arm.tscn" type="PackedScene" id=6]
 [ext_resource path="res://player/HUD3D.tscn" type="PackedScene" id=7]
-[ext_resource path="res://HUD.tscn" type="PackedScene" id=8]
+[ext_resource path="res://player/HUD.tscn" type="PackedScene" id=8]
 [ext_resource path="res://player/ArmJoint.tscn" type="PackedScene" id=9]
+
 
 [sub_resource type="World" id=1]
 
