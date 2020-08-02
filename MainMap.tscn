@@ -30,7 +30,7 @@ transform = Transform( 2.65431e-14, 1.62921e-07, 1, 1, -1.62921e-07, 0, 1.62921e
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00557186, -7.85, 0 )
 
 [node name="Handle2" parent="Spatial6" instance=ExtResource( 6 )]
-transform = Transform( 1.31134e-07, 1, 0, -1, 1.31134e-07, 0, 0, 0, 1, -5.96046e-08, 0.5, 0 )
+transform = Transform( 1.31134e-07, 1, 0, -1, 1.31134e-07, 0, 0, 0, 1, 0, 0.44, 0 )
 door = NodePath("../Door2")
 
 [node name="Door2" parent="Spatial6" instance=ExtResource( 5 )]
