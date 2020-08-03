@@ -28,10 +28,6 @@ transform = Transform( 2.65431e-14, 1.62921e-07, 1, 1, -1.62921e-07, 0, 1.62921e
 [node name="Spatial6" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00557186, -7.85, 0 )
 
-[node name="Handle2" parent="Spatial6" instance=ExtResource( 6 )]
-transform = Transform( 3.30012e-15, 7.54979e-08, -1, -1, 4.37114e-08, 0, -4.37114e-08, -1, -7.54979e-08, 0, 0.44, 0 )
-door = NodePath("../Door2")
-
 [node name="Door2" parent="Spatial6" instance=ExtResource( 5 )]
 transform = Transform( -2.18557e-07, -1, 0, 1, -2.18557e-07, 0, 0, 0, 1, 0, 0, 0 )
 anchor_node_path = NodePath("../hazzard_joiner")
@@ -78,6 +74,7 @@ transform = Transform( 0.642788, -0.766044, 0, 0.766044, 0.642788, 0, 0, 0, 1, 2
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 20, 0 )
 
 [node name="Space" parent="." instance=ExtResource( 12 )]
+transform = Transform( 0.707107, 0.707107, -1.50996e-07, 0.707107, -0.707107, 4.36444e-09, -1.03684e-07, -1.09856e-07, -1, -5.65685, 25.6569, -1.42109e-14 )
 
 [node name="Spatial" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.375 )
@@ -107,7 +104,6 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 3
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -3.375 )
 
 [node name="PlayerContainer" parent="." instance=ExtResource( 3 )]
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.4, -19.375 )
 
 [node name="Reactor" parent="." instance=ExtResource( 14 )]
 

@@ -3,7 +3,7 @@
 [ext_resource path="res://addons/qodot/textures/base/space.png" type="Texture" id=1]
 [ext_resource path="res://assets/materials/PSXEffect.shader" type="Shader" id=2]
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
 shader_param/color = Color( 1, 1, 1, 1 )
 shader_param/specular_intensity = 0.0
@@ -16,13 +16,13 @@ shader_param/use_normal_mapping = false
 shader_param/albedoTex = ExtResource( 1 )
 
 [sub_resource type="PlaneMesh" id=2]
-material = SubResource( 3 )
+material = SubResource( 1 )
 size = Vector2( 10, 10 )
 subdivide_width = 10
 subdivide_depth = 10
 
 [node name="Space" type="Spatial"]
-transform = Transform( -0.707107, 0.707107, 0, -0.707107, -0.707107, 0, 0, 0, 1, -7, 26, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="Space" type="MeshInstance" parent="."]
 mesh = SubResource( 2 )
@@ -49,9 +49,9 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="SpotLight" type="SpotLight" parent="."]
-transform = Transform( 0.707107, 0.707107, 0, 0, 0, 1, 0.707107, -0.707107, -7.52316e-37, -1.41421, 7.07107, 0 )
+transform = Transform( 0.707107, 0.707107, 0, 0, 0, 1, 0.707107, -0.707107, 0, 0, 5.071, 0 )
 light_energy = 5.83
-spot_range = 11.1
+spot_range = 9.0
 spot_attenuation = 1.36604
 spot_angle = 69.0
 spot_angle_attenuation = 1.6818
