@@ -9,11 +9,12 @@ shader = ExtResource( 3 )
 shader_param/color = Color( 1, 1, 1, 1 )
 shader_param/specular_intensity = 0.0
 shader_param/resolution = 256.0
-shader_param/cull_distance = 13.0
+shader_param/cull_distance = 30.0
 shader_param/uv_scale = Vector2( 1, 1 )
 shader_param/uv_offset = Vector2( 0, 0 )
 shader_param/affine = false
 shader_param/use_normal_mapping = false
+shader_param/snapRes = 50.0
 shader_param/albedoTex = ExtResource( 2 )
 
 [node name="arm_gltf" instance=ExtResource( 1 )]

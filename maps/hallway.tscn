@@ -19,6 +19,7 @@ shader_param/uv_scale = Vector2( 1, 1 )
 shader_param/uv_offset = Vector2( 0, 0 )
 shader_param/affine = true
 shader_param/use_normal_mapping = false
+shader_param/snapRes = 50.0
 shader_param/albedoTex = ExtResource( 4 )
 
 [sub_resource type="ShaderMaterial" id=2]
@@ -31,6 +32,7 @@ shader_param/uv_scale = Vector2( 1, 1 )
 shader_param/uv_offset = Vector2( 0, 0 )
 shader_param/affine = true
 shader_param/use_normal_mapping = false
+shader_param/snapRes = 50.0
 shader_param/albedoTex = ExtResource( 6 )
 
 [sub_resource type="ShaderMaterial" id=3]
@@ -43,6 +45,7 @@ shader_param/uv_scale = Vector2( 1, 1 )
 shader_param/uv_offset = Vector2( 0, 0 )
 shader_param/affine = true
 shader_param/use_normal_mapping = false
+shader_param/snapRes = 50.0
 shader_param/albedoTex = ExtResource( 5 )
 
 [sub_resource type="ShaderMaterial" id=4]
@@ -55,6 +58,7 @@ shader_param/uv_scale = Vector2( 1, 1 )
 shader_param/uv_offset = Vector2( 0, 0 )
 shader_param/affine = true
 shader_param/use_normal_mapping = false
+shader_param/snapRes = 50.0
 shader_param/albedoTex = ExtResource( 7 )
 
 [sub_resource type="ArrayMesh" id=5]

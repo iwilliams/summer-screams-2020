@@ -12,29 +12,21 @@ uniform bool affine = true;
 uniform bool use_normal_mapping = false; // possible performance improvement if not needed
 
 varying vec4 vertex_coordinates;
+//Geometric resolution for vert sna[
+uniform float snapRes = 50.0;
+
 
 void vertex() {
 	UV = UV * uv_scale + uv_offset;
 	
-	float vertex_distance = length((MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
-	
-	VERTEX = (MODELVIEW_MATRIX * vec4(VERTEX, 1.0)).xyz;
-	float vPos_w = (PROJECTION_MATRIX * vec4(VERTEX, 1.0)).w;
-	VERTEX.xy = vPos_w * floor(resolution * VERTEX.xy / vPos_w) / resolution;
+
+    VERTEX = (MODELVIEW_MATRIX * vec4(VERTEX, 1.0)).xyz;
+	VERTEX.xyz = floor(VERTEX.xyz * snapRes) / snapRes;
+    float vertex_distance = length((MODELVIEW_MATRIX * vec4(VERTEX, 1.0)));
+
+//	float vPos_w = (PROJECTION_MATRIX * vec4(VERTEX, 1.0)).w;
+//	VERTEX.xy = vPos_w * floor(resolution * VERTEX.xy / vPos_w) / resolution;
 	vertex_coordinates = vec4(UV * VERTEX.z, VERTEX.z, .0);
-	
-	NORMAL = (MODELVIEW_MATRIX * vec4(NORMAL, 0.0)).xyz;
-	float nPos_w = (PROJECTION_MATRIX * vec4(NORMAL, 0.0)).w;
-	NORMAL.xy = nPos_w * floor(resolution * NORMAL.xy / nPos_w) / resolution;
-	
-	if (use_normal_mapping)
-		BINORMAL = (MODELVIEW_MATRIX * vec4(BINORMAL, 0.0)).xyz;
-		float bnPos_w = (PROJECTION_MATRIX * vec4(BINORMAL, 0.0)).w;
-		BINORMAL.xy = bnPos_w * floor(resolution * BINORMAL.xy / bnPos_w) / resolution;
-		
-		TANGENT = (MODELVIEW_MATRIX * vec4(TANGENT, 0.0)).xyz;
-		float tPos_w = (PROJECTION_MATRIX * vec4(TANGENT, 0.0)).w;
-		TANGENT.xy = tPos_w * floor(resolution * TANGENT.xy / tPos_w) / resolution;
 	
 	if (vertex_distance > cull_distance)
 		VERTEX = vec3(.0);

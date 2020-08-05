@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://maps/hallway.tscn" type="PackedScene" id=1]
 [ext_resource path="res://maps/main_room.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://levels/start.tscn" type="PackedScene" id=4]
 [ext_resource path="res://entities/Door.tscn" type="PackedScene" id=5]
 [ext_resource path="res://entities/Handle.tscn" type="PackedScene" id=6]
+[ext_resource path="res://entities/GreenKey.tscn" type="PackedScene" id=7]
 [ext_resource path="res://maps/joiner.tscn" type="PackedScene" id=8]
 [ext_resource path="res://entities/Battery.tscn" type="PackedScene" id=9]
 [ext_resource path="res://levels/Maze.tscn" type="PackedScene" id=10]
@@ -13,6 +14,7 @@
 [ext_resource path="res://entities/Space.tscn" type="PackedScene" id=12]
 [ext_resource path="res://maps/master_joint.tscn" type="PackedScene" id=13]
 [ext_resource path="res://levels/Reactor.tscn" type="PackedScene" id=14]
+[ext_resource path="res://entities/RedKey.tscn" type="PackedScene" id=15]
 
 [node name="MainMap" type="Spatial"]
 
@@ -57,18 +59,6 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 1
 
 [node name="main_room" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 0, -2.5, 0 )
-
-[node name="Battery2" parent="." instance=ExtResource( 9 )]
-transform = Transform( 0.642788, -0.766044, 0, 0.766044, 0.642788, 0, 0, 0, 1, 2.3, -4.4, 1.2 )
-
-[node name="Battery3" parent="." instance=ExtResource( 9 )]
-transform = Transform( 0.642788, -0.766044, 0, 0.766044, 0.642788, 0, 0, 0, 1, 2.3, -4.4, 0.4 )
-
-[node name="Battery4" parent="." instance=ExtResource( 9 )]
-transform = Transform( 0.642788, -0.766044, 0, 0.766044, 0.642788, 0, 0, 0, 1, 2.3, -4.4, -0.3 )
-
-[node name="Battery5" parent="." instance=ExtResource( 9 )]
-transform = Transform( 0.642788, -0.766044, 0, 0.766044, 0.642788, 0, 0, 0, 1, 2.3, -4.4, -1 )
 
 [node name="Start" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 20, 0 )
@@ -118,3 +108,9 @@ door = NodePath("../Door")
 transform = Transform( 0, 1.62921e-07, 1, 1, -1.62921e-07, 0, 1.62921e-07, 1, -1.62921e-07, 0, 8, -19.4 )
 anchor_node_path = NodePath("../Reactor/joiner4")
 locked = true
+
+[node name="RedKey" parent="." instance=ExtResource( 15 )]
+transform = Transform( 0.0376722, -0.866025, 0.498579, 0.06525, 0.5, 0.863564, -0.997158, -2.98023e-08, 0.0753442, 2.52846, -4.42058, -5.96046e-08 )
+
+[node name="GreenKey" parent="." instance=ExtResource( 7 )]
+transform = Transform( 0.5, -0.866025, 0, 0.866025, 0.5, 0, 0, 0, 1, 2.52846, -4.42058, 0.9 )

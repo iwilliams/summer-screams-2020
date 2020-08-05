@@ -210,6 +210,10 @@ config/name="summer-screams-2020"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[debug]
+
+settings/fps/force_fps=24
+
 [display]
 
 window/size/width=640

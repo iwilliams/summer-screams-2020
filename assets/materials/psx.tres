@@ -12,3 +12,4 @@ shader_param/uv_scale = Vector2( 1, 1 )
 shader_param/uv_offset = Vector2( 0, 0 )
 shader_param/affine = true
 shader_param/use_normal_mapping = false
+shader_param/snapRes = 50.0
