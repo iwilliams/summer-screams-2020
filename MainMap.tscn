@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://maps/hallway.tscn" type="PackedScene" id=1]
 [ext_resource path="res://maps/main_room.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://maps/master_joint.tscn" type="PackedScene" id=13]
 [ext_resource path="res://levels/Reactor.tscn" type="PackedScene" id=14]
 [ext_resource path="res://entities/RedKey.tscn" type="PackedScene" id=15]
+[ext_resource path="res://entities/Cable.tscn" type="PackedScene" id=16]
 
 [node name="MainMap" type="Spatial"]
 
@@ -94,6 +95,7 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 3
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -3.375 )
 
 [node name="PlayerContainer" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="Reactor" parent="." instance=ExtResource( 14 )]
 
@@ -101,11 +103,11 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.375 )
 
 [node name="Handle" parent="." instance=ExtResource( 6 )]
-transform = Transform( -4.37114e-08, -1, 3.17764e-23, 1, -4.37114e-08, -3.55413e-16, 3.55413e-16, 1.62408e-23, 1, -2.98023e-08, 7.4, -19.4 )
+transform = Transform( 1, -1.62921e-07, -4.37114e-08, -4.37114e-08, -1.62921e-07, -1, 1.62921e-07, 1, -1.62921e-07, 0, 8.14581, -19.4 )
 door = NodePath("../Door")
 
 [node name="Door" parent="." instance=ExtResource( 5 )]
-transform = Transform( 0, 1.62921e-07, 1, 1, -1.62921e-07, 0, 1.62921e-07, 1, -1.62921e-07, 0, 8, -19.4 )
+transform = Transform( 0, 1.62921e-07, 1, 1, -1.62921e-07, 0, 1.62921e-07, 1, -1.62921e-07, 0, 8.24843, -19.4 )
 anchor_node_path = NodePath("../Reactor/joiner4")
 locked = true
 
@@ -114,3 +116,8 @@ transform = Transform( 0.0376722, -0.866025, 0.498579, 0.06525, 0.5, 0.863564, -
 
 [node name="GreenKey" parent="." instance=ExtResource( 7 )]
 transform = Transform( 0.5, -0.866025, 0, 0.866025, 0.5, 0, 0, 0, 1, 2.52846, -4.42058, 0.9 )
+
+[node name="Cable" parent="." instance=ExtResource( 16 )]
+transform = Transform( 7.54979e-08, 1, 0, -1, 7.54979e-08, 0, 0, 0, 1, -1.8669, 1.53514, 0 )
+
+[editable path="Reactor"]

@@ -264,6 +264,7 @@ func _physics_process(delta):
     
     
     hud.set_pos(translation, rotation_degrees)
+    hud.set_player_transform(transform, rotation_degrees)
     
     var thrusters = {
         $ForwardThrustPlayer: ["drone_forward"],

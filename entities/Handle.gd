@@ -1,28 +1,20 @@
 extends RigidBody
 
 export(NodePath) var door: NodePath
-var initial_rotation_degrees
-var last_rotation_degrees
-var ticks = 0
-var rotations setget, _get_rotations
 var open = false
-
+var initial_up: Vector3
+var initial_right: Vector3
 
 onready var joint := HingeJoint.new()
 
-func _get_local_angular_velocity():
-    return angular_velocity.rotated(rotation.normalized(), -rotation.length())
-
-func _get_rotations():
-    return floor(ticks/360)
-    
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    initial_rotation_degrees = rotation_degrees
-    last_rotation_degrees = rotation_degrees.rotated(initial_rotation_degrees.normalized(), deg2rad(initial_rotation_degrees.length()))
+    initial_up = transform.basis.y
+    initial_right = transform.basis.x
+
     joint.set_flag(HingeJoint.FLAG_USE_LIMIT, true)
     joint.set_param(HingeJoint.PARAM_BIAS, .99)
-    joint.set_param(HingeJoint.PARAM_LIMIT_LOWER, deg2rad(0))
+    joint.set_param(HingeJoint.PARAM_LIMIT_LOWER, deg2rad(1))
     joint.set_param(HingeJoint.PARAM_LIMIT_UPPER, deg2rad(135))
     joint.set_node_a(self.get_path())
     joint.set_node_b(get_node(door).get_path())
@@ -33,24 +25,29 @@ func _ready():
 func _physics_process(delta):
     if open:
         return
-    # This still isn't right
-    var local_angular_velocity = angular_velocity.rotated(initial_rotation_degrees.normalized(), -deg2rad(initial_rotation_degrees.length()))
-    var local_rotation_degrees = rotation_degrees.rotated(initial_rotation_degrees.normalized(), deg2rad(initial_rotation_degrees.length()))
-    var deltar = abs(abs(last_rotation_degrees.x) - abs(local_rotation_degrees.x))
-    if local_angular_velocity.x > 0:
-        ticks += deltar
+        
+    var now_up = transform.basis.y
+    var rot = initial_up.dot(now_up)
+    rot += 1
+    rot /= 2
+    rot *= 180
+    if initial_right.dot(now_up) < 0:
+        rot = 180 - rot
+        pass
     else:
-        ticks -= deltar
+        rot = 180 + rot
 
-    last_rotation_degrees = local_rotation_degrees
-    var upper_lim = joint.get_param(HingeJoint.PARAM_LIMIT_UPPER)
-    if ticks > 50 && upper_lim <= deg2rad(360):
-        joint.set_param(HingeJoint.PARAM_LIMIT_UPPER, deg2rad(360))
-    elif ticks < 50 && upper_lim > deg2rad(135):
+    if rot <= 90:
+        joint.set_param(HingeJoint.PARAM_LIMIT_LOWER, deg2rad(1))
         joint.set_param(HingeJoint.PARAM_LIMIT_UPPER, deg2rad(135))
+    elif rot > 90  && rot < 270:
+        joint.set_param(HingeJoint.PARAM_LIMIT_LOWER, deg2rad(1))
+        joint.set_param(HingeJoint.PARAM_LIMIT_UPPER, deg2rad(360))
+    elif rot >= 270 && rot < 355:
+        joint.set_param(HingeJoint.PARAM_LIMIT_LOWER, deg2rad(-90))
+        joint.set_param(HingeJoint.PARAM_LIMIT_UPPER, deg2rad(-10))
 
-  
-    if _get_rotations() >= 1 && get_node(door).locked:
+    if floor(rot) == 350 && !open:
         get_node(door).unlock()
         joint.set_param(HingeJoint.PARAM_LIMIT_UPPER, deg2rad(0))
         joint.set_param(HingeJoint.PARAM_LIMIT_LOWER, deg2rad(0))

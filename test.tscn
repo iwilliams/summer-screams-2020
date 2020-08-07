@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://entities/Laser.tscn" type="PackedScene" id=1]
+[ext_resource path="res://entities/Socket.tscn" type="PackedScene" id=1]
+[ext_resource path="res://maps/hallway.tscn" type="PackedScene" id=2]
+[ext_resource path="res://entities/Cable.tscn" type="PackedScene" id=3]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Environment" id=1]
@@ -15,9 +17,12 @@ environment = SubResource( 1 )
 [node name="PlayerContainer" parent="." instance=ExtResource( 9 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, 0 )
 
-[node name="Spatial" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0 )
+[node name="hallway" parent="." instance=ExtResource( 2 )]
 
-[node name="Laser" parent="Spatial" instance=ExtResource( 1 )]
-is_on = true
-is_mirror = false
+[node name="Cable" parent="." instance=ExtResource( 3 )]
+
+[node name="Socket" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.09604e-07, -2.50745 )
+
+[node name="Socket2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 1.71833, 1.93201e-07, 2.53957 )
