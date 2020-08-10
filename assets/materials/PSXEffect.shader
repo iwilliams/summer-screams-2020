@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode skip_vertex_transform, diffuse_lambert_wrap, specular_phong, shadows_disabled;
+render_mode skip_vertex_transform, diffuse_lambert_wrap, specular_phong;//, shadows_disabled;
 
 uniform vec4 color : hint_color;
 uniform sampler2D albedoTex : hint_albedo;
@@ -26,8 +26,8 @@ void vertex() {
 //	VERTEX.xy = vPos_w * floor(resolution * VERTEX.xy / vPos_w) / resolution;
 	vertex_coordinates = vec4(UV * VERTEX.z, VERTEX.z, .0);
 	
-	if (vertex_distance > cull_distance)
-		VERTEX = vec3(.0);
+//	if (vertex_distance > cull_distance)
+//		VERTEX = vec3(.0);
         
 //    if (!OUTPUT_IS_SRGB) {
 //		COLOR.rgb = mix( pow((COLOR.rgb + vec3(0.055)) * (1.0 / (1.0 + 0.055)), vec3(2.4)), COLOR.rgb* (1.0 / 12.92), lessThan(COLOR.rgb,vec3(0.04045)) );

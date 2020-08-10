@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/models/cave/Cave.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/models/gem/Gem.tscn" type="PackedScene" id=2]
+
+[node name="Mine" type="Spatial"]
+
+[node name="Cave" parent="." instance=ExtResource( 1 )]
+
+[node name="Gem" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -0.945189, 0.326525, 0, -0.326525, -0.945189, -0.332501, -0.958532, -8.88642 )
+
+[node name="Gem2" parent="." instance=ExtResource( 2 )]
+transform = Transform( -0.171671, -0.230013, -0.957926, -0.985154, 0.0400817, 0.166927, 0, 0.972362, -0.233479, 2.62273, -4.90204, -2.34431 )

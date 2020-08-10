@@ -1,0 +1,508 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://entities/Laser.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/models/joiner/Joiner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/models/master_joint/MasterJoint.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/models/cap/Cap.tscn" type="PackedScene" id=4]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Spatial" type="Spatial" parent="."]
+
+[node name="MasterJoint" parent="Spatial" instance=ExtResource( 3 )]
+
+[node name="Joiner2" parent="Spatial/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -3.353, 0, 0 )
+
+[node name="Joiner3" parent="Spatial/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, -3.353 )
+
+[node name="Joiner4" parent="Spatial/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, 3.353 )
+
+[node name="MasterJoint2" parent="Spatial" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.706, 0, 0 )
+
+[node name="Cap" parent="Spatial/MasterJoint2" instance=ExtResource( 4 )]
+transform = Transform( 2.50343e-07, 0, -1, 0, 1, 0, 1, 0, 2.50343e-07, 3.353, 0, 0 )
+
+[node name="Joiner2" parent="Spatial/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -3.353, 0, 0 )
+
+[node name="Joiner3" parent="Spatial/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, -3.353 )
+
+[node name="Joiner4" parent="Spatial/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, 3.353 )
+
+[node name="MasterJoint3" parent="Spatial" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.706, 0, 0 )
+
+[node name="Cap" parent="Spatial/MasterJoint3" instance=ExtResource( 4 )]
+transform = Transform( 2.50343e-07, 0, -1, 0, 1, 0, 1, 0, 2.50343e-07, 3.353, 0, 0 )
+
+[node name="Joiner3" parent="Spatial/MasterJoint3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, -3.353 )
+
+[node name="Joiner4" parent="Spatial/MasterJoint3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, 3.353 )
+
+[node name="Spatial2" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.706, 0 )
+
+[node name="MasterJoint" parent="Spatial2" instance=ExtResource( 3 )]
+
+[node name="Joiner2" parent="Spatial2/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -3.353, 0, 0 )
+
+[node name="Joiner3" parent="Spatial2/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, -3.353 )
+
+[node name="Joiner4" parent="Spatial2/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, 3.353 )
+
+[node name="Joiner5" parent="Spatial2/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 3.353, 0 )
+
+[node name="Joiner6" parent="Spatial2/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, -3.353, 0 )
+
+[node name="MasterJoint2" parent="Spatial2" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.706, 0, 0 )
+
+[node name="Cap" parent="Spatial2/MasterJoint2" instance=ExtResource( 4 )]
+transform = Transform( 2.50343e-07, 0, -1, 0, 1, 0, 1, 0, 2.50343e-07, 3.353, 0, 0 )
+
+[node name="Joiner2" parent="Spatial2/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -3.353, 0, 0 )
+
+[node name="Joiner3" parent="Spatial2/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, -3.353 )
+
+[node name="Joiner4" parent="Spatial2/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, 3.353 )
+
+[node name="Joiner5" parent="Spatial2/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 3.353, 0 )
+
+[node name="Joiner6" parent="Spatial2/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, -3.353, 0 )
+
+[node name="MasterJoint3" parent="Spatial2" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.706, 0, 0 )
+
+[node name="Cap" parent="Spatial2/MasterJoint3" instance=ExtResource( 4 )]
+transform = Transform( 2.50343e-07, 0, -1, 0, 1, 0, 1, 0, 2.50343e-07, 3.353, 0, 0 )
+
+[node name="Joiner3" parent="Spatial2/MasterJoint3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, -3.353 )
+
+[node name="Joiner4" parent="Spatial2/MasterJoint3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, 3.353 )
+
+[node name="Joiner5" parent="Spatial2/MasterJoint3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 3.353, 0 )
+
+[node name="Joiner6" parent="Spatial2/MasterJoint3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, -3.353, 0 )
+
+[node name="Spatial3" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.706, 0 )
+
+[node name="MasterJoint" parent="Spatial3" instance=ExtResource( 3 )]
+
+[node name="Joiner2" parent="Spatial3/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -3.353, 0, 0 )
+
+[node name="Joiner3" parent="Spatial3/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, -3.353 )
+
+[node name="Joiner5" parent="Spatial3/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 3.353, 0 )
+
+[node name="Joiner6" parent="Spatial3/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, -3.353, 0 )
+
+[node name="MasterJoint2" parent="Spatial3" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.706, 0, 0 )
+
+[node name="Cap" parent="Spatial3/MasterJoint2" instance=ExtResource( 4 )]
+transform = Transform( 2.50343e-07, 0, -1, 0, 1, 0, 1, 0, 2.50343e-07, 3.353, 0, 0 )
+
+[node name="Joiner2" parent="Spatial3/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -3.353, 0, 0 )
+
+[node name="Joiner3" parent="Spatial3/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, -3.353 )
+
+[node name="Joiner5" parent="Spatial3/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 3.353, 0 )
+
+[node name="Joiner6" parent="Spatial3/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, -3.353, 0 )
+
+[node name="MasterJoint3" parent="Spatial3" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.706, 0, 0 )
+
+[node name="Cap" parent="Spatial3/MasterJoint3" instance=ExtResource( 4 )]
+transform = Transform( 2.50343e-07, 0, -1, 0, 1, 0, 1, 0, 2.50343e-07, 3.353, 0, 0 )
+
+[node name="Joiner4" parent="Spatial3/MasterJoint3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, 3.353 )
+
+[node name="Joiner5" parent="Spatial3/MasterJoint3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 3.353, 0 )
+
+[node name="Joiner6" parent="Spatial3/MasterJoint3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, -3.353, 0 )
+
+[node name="Spatial4" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.706 )
+
+[node name="MasterJoint" parent="Spatial4" instance=ExtResource( 3 )]
+
+[node name="Joiner2" parent="Spatial4/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -3.353, 0, 0 )
+
+[node name="Joiner3" parent="Spatial4/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, -3.353 )
+
+[node name="Joiner4" parent="Spatial4/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, 3.353 )
+
+[node name="MasterJoint2" parent="Spatial4" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.706, 0, 0 )
+
+[node name="Cap" parent="Spatial4/MasterJoint2" instance=ExtResource( 4 )]
+transform = Transform( 2.50343e-07, 0, -1, 0, 1, 0, 1, 0, 2.50343e-07, 3.353, 0, 0 )
+
+[node name="Joiner2" parent="Spatial4/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -3.353, 0, 0 )
+
+[node name="Joiner3" parent="Spatial4/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, -3.353 )
+
+[node name="Joiner4" parent="Spatial4/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, 3.353 )
+
+[node name="Laser" parent="Spatial4/MasterJoint2" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.76837e-07, 0, 0 )
+is_on = false
+is_mirror = true
+
+[node name="MasterJoint3" parent="Spatial4" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.706, 0, 0 )
+
+[node name="Cap" parent="Spatial4/MasterJoint3" instance=ExtResource( 4 )]
+transform = Transform( 2.50343e-07, 0, -1, 0, 1, 0, 1, 0, 2.50343e-07, 3.353, 0, 0 )
+
+[node name="Joiner3" parent="Spatial4/MasterJoint3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, -3.353 )
+
+[node name="Joiner4" parent="Spatial4/MasterJoint3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, 3.353 )
+
+[node name="Spatial5" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.706, 6.706 )
+
+[node name="MasterJoint" parent="Spatial5" instance=ExtResource( 3 )]
+
+[node name="Joiner2" parent="Spatial5/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -3.353, 0, 0 )
+
+[node name="Joiner3" parent="Spatial5/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, -3.353 )
+
+[node name="Joiner4" parent="Spatial5/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, 3.353 )
+
+[node name="Joiner5" parent="Spatial5/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 3.353, 0 )
+
+[node name="Joiner6" parent="Spatial5/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, -3.353, 0 )
+
+[node name="MasterJoint2" parent="Spatial5" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.706, 0, 0 )
+
+[node name="Cap" parent="Spatial5/MasterJoint2" instance=ExtResource( 4 )]
+transform = Transform( 2.50343e-07, 0, -1, 0, 1, 0, 1, 0, 2.50343e-07, 3.353, 0, 0 )
+
+[node name="Joiner2" parent="Spatial5/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -3.353, 0, 0 )
+
+[node name="Joiner3" parent="Spatial5/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, -3.353 )
+
+[node name="Joiner4" parent="Spatial5/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, 3.353 )
+
+[node name="Joiner5" parent="Spatial5/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 3.353, 0 )
+
+[node name="Joiner6" parent="Spatial5/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, -3.353, 0 )
+
+[node name="Laser" parent="Spatial5/MasterJoint2" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 1, -4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1.91069e-15, -4.76837e-07, 0, -4.76837e-07 )
+is_on = false
+is_mirror = true
+
+[node name="MasterJoint3" parent="Spatial5" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.706, 0, 0 )
+
+[node name="Cap" parent="Spatial5/MasterJoint3" instance=ExtResource( 4 )]
+transform = Transform( 2.50343e-07, 0, -1, 0, 1, 0, 1, 0, 2.50343e-07, 3.353, 0, 0 )
+
+[node name="Joiner3" parent="Spatial5/MasterJoint3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, -3.353 )
+
+[node name="Joiner4" parent="Spatial5/MasterJoint3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, 3.353 )
+
+[node name="Joiner5" parent="Spatial5/MasterJoint3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 3.353, 0 )
+
+[node name="Joiner6" parent="Spatial5/MasterJoint3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, -3.353, 0 )
+
+[node name="Laser" parent="Spatial5/MasterJoint3" instance=ExtResource( 1 )]
+is_on = true
+is_mirror = false
+
+[node name="Spatial6" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.706, 6.706 )
+
+[node name="MasterJoint" parent="Spatial6" instance=ExtResource( 3 )]
+
+[node name="Joiner2" parent="Spatial6/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -3.353, 0, 0 )
+
+[node name="Joiner3" parent="Spatial6/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, -3.353 )
+
+[node name="Joiner4" parent="Spatial6/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, 3.353 )
+
+[node name="Joiner5" parent="Spatial6/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 3.353, 0 )
+
+[node name="Joiner6" parent="Spatial6/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, -3.353, 0 )
+
+[node name="MasterJoint2" parent="Spatial6" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.706, 0, 0 )
+
+[node name="Cap" parent="Spatial6/MasterJoint2" instance=ExtResource( 4 )]
+transform = Transform( 2.50343e-07, 0, -1, 0, 1, 0, 1, 0, 2.50343e-07, 3.353, 0, 0 )
+
+[node name="Joiner2" parent="Spatial6/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -3.353, 0, 0 )
+
+[node name="Joiner3" parent="Spatial6/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, -3.353 )
+
+[node name="Joiner4" parent="Spatial6/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, 3.353 )
+
+[node name="Joiner5" parent="Spatial6/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 3.353, 0 )
+
+[node name="Joiner6" parent="Spatial6/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, -3.353, 0 )
+
+[node name="MasterJoint3" parent="Spatial6" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.706, 0, 0 )
+
+[node name="Cap" parent="Spatial6/MasterJoint3" instance=ExtResource( 4 )]
+transform = Transform( 2.50343e-07, 0, -1, 0, 1, 0, 1, 0, 2.50343e-07, 3.353, 0, 0 )
+
+[node name="Joiner3" parent="Spatial6/MasterJoint3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, -3.353 )
+
+[node name="Joiner4" parent="Spatial6/MasterJoint3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, 3.353 )
+
+[node name="Joiner5" parent="Spatial6/MasterJoint3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 3.353, 0 )
+
+[node name="Joiner6" parent="Spatial6/MasterJoint3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, -3.353, 0 )
+
+[node name="Laser" parent="Spatial6/MasterJoint3" instance=ExtResource( 1 )]
+is_on = false
+is_mirror = false
+
+[node name="Spatial7" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.706 )
+
+[node name="MasterJoint" parent="Spatial7" instance=ExtResource( 3 )]
+
+[node name="Joiner2" parent="Spatial7/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -3.353, 0, 0 )
+
+[node name="Joiner3" parent="Spatial7/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, -3.353 )
+
+[node name="Joiner4" parent="Spatial7/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, 3.353 )
+
+[node name="MasterJoint2" parent="Spatial7" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.706, 0, 0 )
+
+[node name="Cap" parent="Spatial7/MasterJoint2" instance=ExtResource( 4 )]
+transform = Transform( 2.50343e-07, 0, -1, 0, 1, 0, 1, 0, 2.50343e-07, 3.353, 0, 0 )
+
+[node name="Joiner2" parent="Spatial7/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -3.353, 0, 0 )
+
+[node name="Joiner3" parent="Spatial7/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, -3.353 )
+
+[node name="Joiner4" parent="Spatial7/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, 3.353 )
+
+[node name="Laser" parent="Spatial7/MasterJoint2" instance=ExtResource( 1 )]
+transform = Transform( 0.258819, -0.965926, 0, 0.965926, 0.258819, 0, 0, 0, 1, 0, 0, 0 )
+is_on = false
+is_mirror = true
+
+[node name="MasterJoint3" parent="Spatial7" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.706, 0, 0 )
+
+[node name="Cap" parent="Spatial7/MasterJoint3" instance=ExtResource( 4 )]
+transform = Transform( 2.50343e-07, 0, -1, 0, 1, 0, 1, 0, 2.50343e-07, 3.353, 0, 0 )
+
+[node name="Joiner3" parent="Spatial7/MasterJoint3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, -3.353 )
+
+[node name="Joiner4" parent="Spatial7/MasterJoint3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, 3.353 )
+
+[node name="Spatial8" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.706, -6.706 )
+
+[node name="MasterJoint" parent="Spatial8" instance=ExtResource( 3 )]
+
+[node name="Joiner2" parent="Spatial8/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -3.353, 0, 0 )
+
+[node name="Joiner3" parent="Spatial8/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, -3.353 )
+
+[node name="Joiner4" parent="Spatial8/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, 3.353 )
+
+[node name="Joiner5" parent="Spatial8/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 3.353, 0 )
+
+[node name="Joiner6" parent="Spatial8/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, -3.353, 0 )
+
+[node name="MasterJoint2" parent="Spatial8" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.706, 0, 0 )
+
+[node name="Cap" parent="Spatial8/MasterJoint2" instance=ExtResource( 4 )]
+transform = Transform( 2.50343e-07, 0, -1, 0, 1, 0, 1, 0, 2.50343e-07, 3.353, 0, 0 )
+
+[node name="Joiner2" parent="Spatial8/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -3.353, 0, 0 )
+
+[node name="Joiner3" parent="Spatial8/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, -3.353 )
+
+[node name="Joiner4" parent="Spatial8/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, 3.353 )
+
+[node name="Joiner5" parent="Spatial8/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 3.353, 0 )
+
+[node name="Joiner6" parent="Spatial8/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, -3.353, 0 )
+
+[node name="MasterJoint3" parent="Spatial8" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.706, 0, 0 )
+
+[node name="Cap" parent="Spatial8/MasterJoint3" instance=ExtResource( 4 )]
+transform = Transform( 2.50343e-07, 0, -1, 0, 1, 0, 1, 0, 2.50343e-07, 3.353, 0, 0 )
+
+[node name="Joiner3" parent="Spatial8/MasterJoint3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, -3.353 )
+
+[node name="Joiner4" parent="Spatial8/MasterJoint3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, 3.353 )
+
+[node name="Joiner5" parent="Spatial8/MasterJoint3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 3.353, 0 )
+
+[node name="Joiner6" parent="Spatial8/MasterJoint3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, -3.353, 0 )
+
+[node name="Spatial9" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.706, -6.706 )
+
+[node name="MasterJoint" parent="Spatial9" instance=ExtResource( 3 )]
+
+[node name="Joiner2" parent="Spatial9/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -3.353, 0, 0 )
+
+[node name="Joiner3" parent="Spatial9/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, -3.353 )
+
+[node name="Joiner4" parent="Spatial9/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, 3.353 )
+
+[node name="Joiner5" parent="Spatial9/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 3.353, 0 )
+
+[node name="Joiner6" parent="Spatial9/MasterJoint" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, -3.353, 0 )
+
+[node name="MasterJoint2" parent="Spatial9" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.706, 0, 0 )
+
+[node name="Cap" parent="Spatial9/MasterJoint2" instance=ExtResource( 4 )]
+transform = Transform( 2.50343e-07, 0, -1, 0, 1, 0, 1, 0, 2.50343e-07, 3.353, 0, 0 )
+
+[node name="Joiner2" parent="Spatial9/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -3.353, 0, 0 )
+
+[node name="Joiner3" parent="Spatial9/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, -3.353 )
+
+[node name="Joiner4" parent="Spatial9/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, 3.353 )
+
+[node name="Joiner5" parent="Spatial9/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 3.353, 0 )
+
+[node name="Joiner6" parent="Spatial9/MasterJoint2" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, -3.353, 0 )
+
+[node name="Laser" parent="Spatial9/MasterJoint2" instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -2.06632e-07, 0, 1, 0, 2.06632e-07, 0, -1, 0, 0, 4.76837e-07 )
+is_on = false
+is_mirror = true
+
+[node name="MasterJoint3" parent="Spatial9" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.706, 0, 0 )
+
+[node name="Cap" parent="Spatial9/MasterJoint3" instance=ExtResource( 4 )]
+transform = Transform( 2.50343e-07, 0, -1, 0, 1, 0, 1, 0, 2.50343e-07, 3.353, 0, 0 )
+
+[node name="Joiner3" parent="Spatial9/MasterJoint3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, -3.353 )
+
+[node name="Joiner4" parent="Spatial9/MasterJoint3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 1.19209e-07, 0, 1, 0, -1.19209e-07, 0, 1, 0, 0, 3.353 )
+
+[node name="Joiner5" parent="Spatial9/MasterJoint3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 3.353, 0 )
+
+[node name="Joiner6" parent="Spatial9/MasterJoint3" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, -3.353, 0 )
+
+[node name="Laser" parent="Spatial9/MasterJoint3" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.76837e-07, 0, 0 )
+is_on = false
+is_mirror = true

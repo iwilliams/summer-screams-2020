@@ -44,13 +44,11 @@ void vertex() {
 void fragment() {
 	vec2 base_uv = UV;
 	vec4 albedo_tex = texture(texture_albedo,base_uv);
-	albedo_tex *= COLOR;
-	ALBEDO = albedo.rgb * albedo_tex.rgb * mix(.6, 1., texture(alphaTex, UV).r);
-	METALLIC = metallic;
-	ROUGHNESS = roughness;
-	SPECULAR = specular;
+//	albedo_tex *= COLOR;
+    ALBEDO.rgb = COLOR.rgb * albedo_tex.rgb;
+//	ALBEDO = albedo.rgb * albedo_tex.rgb * mix(.6, 1., texture(alphaTex, UV).r);
     vec4 alpha_tex = texture(alphaTex, UV);
-    EMISSION = vec3(mix(.1, .6, alpha_tex.r * ALBEDO.r), 0., 0.);
+    EMISSION = vec3(mix(.1, .2, alpha_tex.r * ALBEDO.r), 0., 0.);
 //    ALPHA = mix(.7, .9, texture(alphaTex, UV).r);
 }
 "

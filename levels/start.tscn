@@ -1,24 +1,20 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://maps/joiner.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/models/joiner/Joiner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://maps/hallway.tscn" type="PackedScene" id=2]
-[ext_resource path="res://maps/bend.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/models/bend_joint/BendJoint.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/models/cap/Cap.tscn" type="PackedScene" id=4]
 
 [node name="Spatial" type="Spatial"]
 
 [node name="hallway" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.686274, 0, 0 )
 
-[node name="hallway2" parent="." instance=ExtResource( 2 )]
-transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -10, -10, 0 )
+[node name="Cap" parent="." instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5.31373, 0, 0 )
 
-[node name="joiner" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0 )
+[node name="Joiner" parent="." instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.68627, 0, 0 )
 
-[node name="joiner2" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0 )
-
-[node name="joiner3" parent="." instance=ExtResource( 1 )]
-transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -10, -4, 0 )
-
-[node name="bend" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -10, 0, 0 )
+[node name="BendJoint" parent="." instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 4.37114e-08, 1, 1, 1.91069e-15, 4.37114e-08, 0, 1, -4.37114e-08, -10, 0, 0 )

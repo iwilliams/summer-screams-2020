@@ -6,6 +6,7 @@ var torque_thrust = 280
 var damping = .5
 
 onready var hud = get_parent().find_node("HUD")
+onready var hud3d = get_parent().find_node("Hud3D")
 
 onready var left_arm = get_node("../LeftArm")
 onready var left_arm_joint = get_node("../LeftArmJoint")
@@ -32,15 +33,24 @@ func _integrate_forces(state: PhysicsDirectBodyState):
         local_collision_pos = state.get_contact_local_position(state.get_contact_count() - 1)
     
     if should_teleport:
-        _teleport_state(state, should_teleport, self)
+        var tp = should_teleport
+        var to_rot = tp["to_transform"].basis.get_euler()
+        var from_rot = tp["from_transform"].basis.get_euler()
+        var rot_diff = to_rot + from_rot
+        
+        
+        _teleport_state(state, should_teleport, self, rot_diff)
         var left_arm_state = PhysicsServer.body_get_direct_state(RID(left_arm))
-        _teleport_state(left_arm_state, should_teleport, left_arm)
+        _teleport_state(left_arm_state, should_teleport, left_arm, rot_diff)
         var right_arm_state = PhysicsServer.body_get_direct_state(RID(right_arm))
-        _teleport_state(right_arm_state, should_teleport, right_arm)
+        _teleport_state(right_arm_state, should_teleport, right_arm, rot_diff)
         if holding:
-            _teleport_state(PhysicsServer.body_get_direct_state(RID(holding)), should_teleport, holding)
+            _teleport_state(PhysicsServer.body_get_direct_state(RID(holding)), should_teleport, holding, rot_diff)
         should_teleport = null
-
+        hud3d.rot_thrust_vector(rot_diff)
+        hud3d.set_player_velocity(state.linear_velocity)
+    else:
+        hud3d.set_player_velocity(linear_velocity)
 
 func teleport(from, to):
     should_teleport = {
@@ -51,11 +61,7 @@ func teleport(from, to):
     }
 
 
-func _teleport_state(state: PhysicsDirectBodyState, tp, body):
-    var to_rot = tp["to_transform"].basis.get_euler()
-    var from_rot = tp["from_transform"].basis.get_euler()
-    var rot_diff = to_rot + from_rot
-            
+func _teleport_state(state: PhysicsDirectBodyState, tp, body, rot_diff):           
     var new_t = Transform()
     new_t.origin = state.get_transform().origin - tp["from_transform"].origin
     new_t.basis = state.get_transform().basis
@@ -292,10 +298,10 @@ func _physics_process(delta):
     
     
 var mouse_sensitivity = .1
-        
+var free_look = false
 onready var cam = find_node("Pivot")
 func _input(event):
-    if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+    if free_look && event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
         var movement = event.relative
         cam.rotation.x += deg2rad(movement.y * mouse_sensitivity)
         cam.rotation.x = clamp(cam.rotation.x, deg2rad(-45), deg2rad(45))
