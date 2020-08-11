@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/models/joiner/Joiner.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/models/mines/Mines.tscn" type="PackedScene" id=2]
+
+[node name="Mines" type="Spatial"]
+
+[node name="Mines" parent="." instance=ExtResource( 2 )]
+
+[node name="Joiner" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5389, -13.6678, 20.9111 )
