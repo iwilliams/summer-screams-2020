@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/models/main_room/MainRoom.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/models/joiner/Joiner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/models/tooth/Tooth.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/sound/breathe.wav" type="AudioStream" id=4]
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 0.5, 2, 0.25 )
+
+[sub_resource type="ConvexPolygonShape" id=2]
+points = PoolVector3Array( -0.25, 1, 0.125, 0.25, 1, -0.125, 0.25, 1, 0.125, -0.25, 1, -0.125, -0.25, -1, 0.125, 0.25, -1, -0.125, 0.25, -1, 0.125, -0.25, -1, -0.125, 0.25, 1, 0.125, -0.25, 1, -0.125, 0.25, 1, -0.125, -0.25, 1, 0.125, 0.25, -1, 0.125, -0.25, -1, -0.125, 0.25, -1, -0.125, -0.25, -1, 0.125, 0.25, 1, 0.125, -0.25, -1, 0.125, -0.25, 1, 0.125, 0.25, -1, 0.125, 0.25, 1, -0.125, -0.25, -1, -0.125, -0.25, 1, -0.125, 0.25, -1, -0.125 )
 
 [node name="MainRoom" type="Spatial"]
 
@@ -18,3 +26,101 @@ transform = Transform( 0.889873, -0.163555, -0.425882, 0.0106422, -0.92583, 0.37
 
 [node name="Joiner4" parent="." instance=ExtResource( 2 )]
 transform = Transform( -0.0341711, -0.377928, -0.925204, 0.0106422, -0.92583, 0.37779, -0.999359, 0.00306325, 0.0356586, 14.0999, -1.19421, -0.102376 )
+
+[node name="RigidBody" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.35148, -1.62265, 0 )
+gravity_scale = 0.0
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody"]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
+shape = SubResource( 2 )
+
+[node name="SliderJoint" type="SliderJoint" parent="RigidBody"]
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../MainRoom")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 0.959933, 5.95795e-09, 0.280231, -0.136209, 0.873925, 0.466586, -0.244901, -0.486061, 0.838909, 20.8185, -27.1352, -2.52324 )
+stream = ExtResource( 4 )
+autoplay = true
+max_distance = 33.0
+
+[node name="Tooth" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 0.873925, 0.486061, 0, -0.486061, 0.873925, 21.0864, -26.2956, -3.17063 )
+
+[node name="Generic6DOFJoint" type="SliderJoint" parent="Tooth"]
+transform = Transform( -0.0641666, 0, 0.997939, 0, 1, 0, -0.997939, 0, -0.0641666, 0, 0, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../MainRoom")
+linear_limit/lower_distance = 0.0
+linear_motion/restitution = 0.01
+linear_motion/damping = 1.0
+
+[node name="Tooth2" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.974683, -7.45058e-09, 0.22359, -0.108679, 0.873925, 0.473755, -0.195401, -0.486061, 0.8518, 20.6428, -26.3155, -3.09672 )
+
+[node name="Generic6DOFJoint" type="SliderJoint" parent="Tooth2"]
+transform = Transform( -0.0641666, -7.45058e-09, 0.997939, -5.96046e-08, 1, -7.45058e-09, -0.997939, 0, -0.0641666, 0, 0, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../MainRoom")
+linear_limit/lower_distance = 0.0
+linear_motion/restitution = 0.01
+linear_motion/damping = 1.0
+
+[node name="Tooth3" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.751207, 1.49012e-08, 0.660067, -0.320833, 0.873925, 0.365132, -0.576849, -0.486061, 0.656498, 20.1172, -26.362, -2.8229 )
+
+[node name="Generic6DOFJoint" type="SliderJoint" parent="Tooth3"]
+transform = Transform( -0.0641666, 0, 0.997939, 0, 1, 0, -0.997939, 0, -0.0641666, 0, 0, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../MainRoom")
+linear_limit/lower_distance = 0.0
+linear_motion/restitution = 0.01
+linear_motion/damping = 1.0
+
+[node name="Tooth4" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.74615, -2.98023e-08, -0.665778, 0.323608, 0.873925, 0.362675, 0.58184, -0.486061, 0.652079, 21.6146, -26.2887, -2.98207 )
+
+[node name="Generic6DOFJoint" type="SliderJoint" parent="Tooth4"]
+transform = Transform( -0.0641666, 0, 0.997939, 0, 1, 0, -0.997939, 0, -0.0641666, 0, 0, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../MainRoom")
+linear_limit/lower_distance = 0.0
+linear_motion/restitution = 0.01
+linear_motion/damping = 1.0
+
+[node name="Tooth5" parent="." instance=ExtResource( 3 )]
+transform = Transform( -0.908231, 0.135301, -0.395993, 0.203402, 0.969718, -0.135184, 0.365711, -0.203324, -0.908248, 21.3665, -26.2758, -2.31721 )
+
+[node name="Generic6DOFJoint" type="SliderJoint" parent="Tooth5"]
+transform = Transform( -0.0641666, 0, 0.997939, 0, 1, 0, -0.997939, 0, -0.0641666, 0, 0, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../MainRoom")
+linear_limit/lower_distance = 0.0
+linear_motion/restitution = 0.01
+linear_motion/damping = 1.0
+
+[node name="Tooth6" parent="." instance=ExtResource( 3 )]
+transform = Transform( -0.974691, 0.135301, -0.177965, 0.167127, 0.969718, -0.178089, 0.14848, -0.203324, -0.967788, 20.9296, -26.2144, -2.1482 )
+
+[node name="Generic6DOFJoint" type="SliderJoint" parent="Tooth6"]
+transform = Transform( -0.0641666, 0, 0.997939, 0, 1, 0, -0.997939, 0, -0.0641666, 0, 0, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../MainRoom")
+linear_limit/lower_distance = 0.0
+linear_motion/restitution = 0.01
+linear_motion/damping = 1.0
+
+[node name="Tooth7" parent="." instance=ExtResource( 3 )]
+transform = Transform( -0.942553, 0.150701, 0.298132, 0.0803518, 0.968536, -0.235546, -0.324248, -0.198059, -0.925006, 20.424, -26.2813, -2.09034 )
+
+[node name="Generic6DOFJoint" type="SliderJoint" parent="Tooth7"]
+transform = Transform( -0.0641666, 0, 0.997939, 0, 1, 0, -0.997939, 0, -0.0641666, 0, 0, 0 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../MainRoom")
+linear_limit/lower_distance = 0.0
+linear_motion/restitution = 0.01
+linear_motion/damping = 1.0

@@ -1,13 +1,17 @@
 shader_type spatial;
-render_mode skip_vertex_transform, diffuse_lambert_wrap, specular_phong;//, shadows_disabled;
+render_mode skip_vertex_transform, diffuse_lambert_wrap, shadows_disabled;
 
 uniform vec4 color : hint_color;
+uniform vec4 emission: hint_color;
 uniform sampler2D albedoTex : hint_albedo;
+uniform sampler2D albedoTex2 : hint_albedo;
 //uniform float resolution = 256;
 
 uniform vec2 uv_scale = vec2(1.0, 1.0);
 uniform vec2 uv_offset = vec2(.0, .0);
 uniform bool affine = true;
+uniform bool vertexColorBlend = false;
+uniform bool breathe = false;
 
 const float snapRes = 50.0;
 const float cull_distance = 30.;
@@ -16,6 +20,14 @@ varying vec4 vertex_coordinates;
 
 void vertex() {
 	UV = UV * uv_scale + uv_offset;
+
+    if (breathe) {
+        float scaler = 1.;
+        if (vertexColorBlend) {
+            scaler *= COLOR.r;
+        }
+        UV = UV + (sin(TIME)*(.05*scaler));   
+    }
 	
 
     VERTEX = (MODELVIEW_MATRIX * vec4(VERTEX, 1.0)).xyz;
@@ -36,11 +48,21 @@ void vertex() {
 
 void fragment() {
 	vec4 tex;
+    vec2 uvCoords;
+    
 	if (affine) {
-		tex = texture(albedoTex, vertex_coordinates.xy / vertex_coordinates.z);
+        uvCoords = vertex_coordinates.xy / vertex_coordinates.z;
 	} else {
- 		tex = texture(albedoTex, vec2(UV.x, UV.y));
+ 		uvCoords = vec2(UV.x, UV.y);
 	}
-	
-	ALBEDO = tex.rgb * COLOR.rgb * color.rgb;
+    tex = texture(albedoTex, uvCoords);
+
+    
+    if (vertexColorBlend) {
+        vec4 tex2 = texture(albedoTex2, uvCoords);
+        ALBEDO = mix(tex2, tex, COLOR.r).rgb;
+    } else {
+	   ALBEDO = tex.rgb * COLOR.rgb * color.rgb;
+    }
+    EMISSION = emission.rgb;
 }

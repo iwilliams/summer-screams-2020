@@ -1,10 +1,10 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=2]
 
-[ext_resource path="res://assets/materials/PSXEffect.shader" type="Shader" id=1]
-[ext_resource path="res://addons/qodot/textures/base/custom_panel.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/pvm.png" type="Texture" id=1]
+[ext_resource path="res://assets/materials/PSXEffect.shader" type="Shader" id=2]
 
 [resource]
-shader = ExtResource( 1 )
+shader = ExtResource( 2 )
 shader_param/color = Color( 1, 1, 1, 1 )
 shader_param/emission = null
 shader_param/uv_scale = Vector2( 1, 1 )
@@ -12,4 +12,4 @@ shader_param/uv_offset = Vector2( 0, 0 )
 shader_param/affine = true
 shader_param/vertexColorBlend = false
 shader_param/breathe = false
-shader_param/albedoTex = ExtResource( 2 )
+shader_param/albedoTex = ExtResource( 1 )
