@@ -9,13 +9,19 @@ onready var hud = get_parent().find_node("HUD")
 onready var hud3d = get_parent().find_node("Hud3D")
 
 onready var left_arm = get_node("../LeftArm")
-onready var left_arm_joint = get_node("../LeftArmJoint")
+onready var left_arm_joint = get_node("LeftArmJoint")
 var left_arm_grab_joint: Joint = null
 onready var right_arm = get_node("../RightArm")
-onready var right_arm_joint = get_node("../RightArmJoint")
+onready var right_arm_joint = get_node("RightArmJoint")
 var right_arm_grab_joint: Joint = null
 var should_teleport = null
 var holding = null
+var stored_velocity = Vector3.ZERO
+
+
+onready var claw_opening_player = find_node("ClawOpeningPlayer")
+onready var claw_closing_player = find_node("ClawClosingPlayer")
+
 
 func _ready():
     self.connect("body_entered", self, "_thud")
@@ -196,25 +202,36 @@ func _physics_process(delta):
 
 
 
+    # Drone flashlight
     if Input.is_action_just_pressed("drone_flashlight"):
         $SpotLight.visible = !$SpotLight.visible
     
 
-    var joint = (get_node("../RightArmJoint") as Generic6DOFJoint)
-    var joint2 = (get_node("../LeftArmJoint") as Generic6DOFJoint)
+    var joint = (get_node("RightArmJoint") as Generic6DOFJoint)
+    var joint2 = (get_node("LeftArmJoint") as Generic6DOFJoint)
     var joint_velocity = .5
 
     if Input.is_action_pressed("drone_tool_primary"):
         joint.set_param_y(17, -joint_velocity)
         joint2.set_param_y(17, joint_velocity)   
+        if !claw_closing_player.playing:
+            claw_closing_player.play()
+        if claw_opening_player.playing:
+            claw_opening_player.stop()
     elif Input.is_action_pressed("drone_tool_secondary"):
         joint.set_param_y(17, joint_velocity)
         joint2.set_param_y(17, -joint_velocity)
-        
+        if !claw_opening_player.playing:
+            claw_opening_player.play()
+        if claw_closing_player.playing:
+            claw_closing_player.stop()
+
         if left_arm_grab_joint:
             get_node(right_arm_grab_joint.get_node_b()).set_mass(1)
-            right_arm_grab_joint.get_parent().remove_child(right_arm_grab_joint)
-            left_arm_grab_joint.get_parent().remove_child(left_arm_grab_joint)
+#            right_arm_grab_joint.get_parent().remove_child(right_arm_grab_joint)
+#            left_arm_grab_joint.get_parent().remove_child(left_arm_grab_joint)
+            remove_child(right_arm_grab_joint)
+            remove_child(left_arm_grab_joint)
             right_arm_grab_joint.queue_free()
             left_arm_grab_joint.queue_free()
             right_arm_grab_joint = null
@@ -223,6 +240,10 @@ func _physics_process(delta):
     else:
         joint.set_param_y(17, 0)
         joint2.set_param_y(17, 0)
+        if claw_closing_player.playing:
+            claw_closing_player.stop()
+        if claw_opening_player.playing:
+            claw_opening_player.stop()
     
     var right_colliding_bodies = right_arm.get_colliding_bodies()
     var left_colliding_bodies = left_arm.get_colliding_bodies()
@@ -246,8 +267,9 @@ func _physics_process(delta):
 #            right_arm_grab_joint = Generic6DOFJoint.new()
             right_arm_grab_joint = _create_grab_joint()
 #            right_arm_grab_joint.translation = right_arm.get_node("GrabPosition").global_transform.origin
-            right_body.get_parent().add_child(right_arm_grab_joint)
-            right_arm_grab_joint.global_transform.origin = grab_joint_position
+#            right_body.get_parent().add_child(right_arm_grab_joint)
+            add_child(right_arm_grab_joint)
+#            right_arm_grab_joint.global_transform.origin = grab_joint_position
             right_arm_grab_joint.set_node_a(right_arm.get_path())
             right_arm_grab_joint.set_node_b(right_body.get_path())
 
@@ -256,8 +278,9 @@ func _physics_process(delta):
 #            left_arm_grab_joint = Generic6DOFJoint.new()
             left_arm_grab_joint = _create_grab_joint()
 #            left_arm_grab_joint.translation = left_arm.get_node("GrabPosition").global_transform.origin
-            left_body.get_parent().add_child(left_arm_grab_joint)
-            left_arm_grab_joint.global_transform.origin = grab_joint_position
+#            left_body.get_parent().add_child(left_arm_grab_joint)
+            add_child(left_arm_grab_joint)
+#            left_arm_grab_joint.global_transform.origin = grab_joint_position
             left_arm_grab_joint.set_node_a(left_arm.get_path())
             left_arm_grab_joint.set_node_b(left_body.get_path())
 
@@ -267,6 +290,13 @@ func _physics_process(delta):
             left_body.set_mass(0.1)
             holding = left_body
             print("GRAB")
+            
+    if holding && (holding as Spatial).name.begins_with("Tooth") && !holding.out:
+        stored_velocity += velocity + torque
+        if stored_velocity.length() > 700:
+            holding.pull_out();
+    elif stored_velocity != Vector3.ZERO:
+        stored_velocity = Vector3.ZERO
     
     
     hud.set_pos(translation, rotation_degrees)

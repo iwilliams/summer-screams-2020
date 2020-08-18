@@ -1,36 +1,15 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://entities/Socket.tscn" type="PackedScene" id=1]
 [ext_resource path="res://maps/hallway.tscn" type="PackedScene" id=2]
 [ext_resource path="res://entities/Cable.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/models/flesh/Flesh.tscn" type="PackedScene" id=4]
+[ext_resource path="res://entities/Tentacle.tscn" type="PackedScene" id=5]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Environment" id=1]
 ambient_light_color = Color( 0.984375, 0.974778, 0.974778, 1 )
 ambient_light_energy = 0.02
-
-[sub_resource type="CubeMesh" id=2]
-size = Vector3( 0.8, 2, 0.8 )
-
-[sub_resource type="ConvexPolygonShape" id=3]
-points = PoolVector3Array( -0.4, 1, 0.4, 0.4, 1, -0.4, 0.4, 1, 0.4, -0.4, 1, -0.4, -0.4, -1, 0.4, 0.4, -1, -0.4, 0.4, -1, 0.4, -0.4, -1, -0.4, 0.4, 1, 0.4, -0.4, 1, -0.4, 0.4, 1, -0.4, -0.4, 1, 0.4, 0.4, -1, 0.4, -0.4, -1, -0.4, 0.4, -1, -0.4, -0.4, -1, 0.4, 0.4, 1, 0.4, -0.4, -1, 0.4, -0.4, 1, 0.4, 0.4, -1, 0.4, 0.4, 1, -0.4, -0.4, -1, -0.4, -0.4, 1, -0.4, 0.4, -1, -0.4 )
-
-[sub_resource type="Animation" id=4]
-resource_name = "flail"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 30, 0, 0 ), Vector3( -30, 0, 0 ), Vector3( 30, 0, 0 ) ]
-}
 
 [node name="Spatial" type="Spatial"]
 
@@ -53,21 +32,7 @@ transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.09
 [node name="Socket2" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, 1, 0, -1, -1.62921e-07, 1.71833, 1.93201e-07, 2.53957 )
 
-[node name="StaticBody" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.970279, -0.241988, 0, 0.241988, 0.970279, 4, -2.18783, 0 )
-
-[node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
-mesh = SubResource( 2 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
-shape = SubResource( 3 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody"]
-autoplay = "flail"
-anims/flail = SubResource( 4 )
+[node name="Tentacle" parent="." instance=ExtResource( 5 )]
 
 [node name="Flesh" parent="." instance=ExtResource( 4 )]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, -3, 0, 0 )

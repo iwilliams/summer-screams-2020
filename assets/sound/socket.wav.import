@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/socket.wav-9b91a493f50b5e3eb26d01ce04390d73.sample"
+
+[deps]
+
+source_file="res://assets/sound/socket.wav"
+dest_files=[ "res://.import/socket.wav-9b91a493f50b5e3eb26d01ce04390d73.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

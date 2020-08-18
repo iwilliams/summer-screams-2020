@@ -3,7 +3,7 @@ extends Control
 
 func _ready():
     get_tree().get_root().connect("size_changed", self, "myfunc")
-    Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+#    Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
 func _input(event):

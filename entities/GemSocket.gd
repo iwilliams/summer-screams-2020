@@ -2,6 +2,8 @@ extends Area
 
 var joint = null
 
+onready var socket_player = get_parent().find_node("SocketPlayer")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
     connect("area_entered", self, "_area_entered")
@@ -14,4 +16,5 @@ func _area_entered(area: Area):
         joint.set_node_b(area.get_parent().get_path())
         add_child(joint)
         get_parent().find_node("ray").visible = true
+        socket_player.play()
         print("Gotcha")

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/claw_closing.wav-f7f9ab235985e161b0eb9930393bfcad.sample"
+
+[deps]
+
+source_file="res://assets/sound/claw_closing.wav"
+dest_files=[ "res://.import/claw_closing.wav-f7f9ab235985e161b0eb9930393bfcad.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0
