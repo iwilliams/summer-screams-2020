@@ -5,7 +5,7 @@ extends RigidBody
 export(bool) var is_on = false
 export(bool) var is_mirror = false
 
-var thickness = .1
+var thickness = .2
 var last_collider: PhysicsBody = null
 #onready var ig: ImmediateGeometry = find_node("ImmediateGeometry")
 

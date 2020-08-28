@@ -13,10 +13,16 @@ uniform bool affine = true;
 uniform bool vertexColorBlend = false;
 uniform bool breathe = false;
 
-const float snapRes = 50.0;
+const float snapRes = 35.0;
 const float cull_distance = 30.;
 
 varying vec4 vertex_coordinates;
+
+uniform bool posterize = true;
+//Gamma
+uniform float gamma = 0.6;
+//Number of colors for posterization
+uniform float numColors = 24.0;
 
 void vertex() {
 	UV = UV * uv_scale + uv_offset;
@@ -51,18 +57,30 @@ void fragment() {
     vec2 uvCoords;
     
 	if (affine) {
-        uvCoords = vertex_coordinates.xy / vertex_coordinates.z;
+        uvCoords = mix(vertex_coordinates.xy / vertex_coordinates.z, UV.xy, .7);
 	} else {
  		uvCoords = vec2(UV.x, UV.y);
 	}
     tex = texture(albedoTex, uvCoords);
 
-    
+    vec3 c;
+
     if (vertexColorBlend) {
         vec4 tex2 = texture(albedoTex2, uvCoords);
-        ALBEDO = mix(tex2, tex, COLOR.r).rgb;
+        c = mix(tex2, tex, COLOR.r).rgb;
     } else {
-	   ALBEDO = tex.rgb * COLOR.rgb * color.rgb;
+	   c = tex.rgb * COLOR.rgb * color.rgb;
     }
+    
+    if (posterize) {
+        c = pow(c, vec3(gamma, gamma, gamma));
+        c = c * numColors;
+        c = floor(c);
+        c = c / numColors;
+        c = pow(c, vec3(1.0/gamma));
+    }
+	ALBEDO = c;
+    
+    
     EMISSION = emission.rgb;
 }

@@ -21,6 +21,7 @@ var stored_velocity = Vector3.ZERO
 
 onready var claw_opening_player = find_node("ClawOpeningPlayer")
 onready var claw_closing_player = find_node("ClawClosingPlayer")
+onready var grab_player = find_node("GrabPlayer")
 
 
 func _ready():
@@ -32,7 +33,8 @@ var local_collision_pos
 func _thud(body):
     print("thud")
 #    $ThudPlayer.translation = local_collision_pos + translation
-    $ThudPlayer.play(0)
+    if !$ThudPlayer.playing:
+        $ThudPlayer.play(0)
     
 func _integrate_forces(state: PhysicsDirectBodyState):
     if(state.get_contact_count() >= 1):  #this check is needed or it will throw errors 
@@ -104,7 +106,7 @@ func _teleport_state(state: PhysicsDirectBodyState, tp, body, rot_diff):
 
 
 func _create_grab_joint():
-    var type = "hinge"
+    var type = "6DOF"
     var joint : Joint
     if type == "hinge":
         joint = HingeJoint.new()
@@ -117,6 +119,8 @@ func _create_grab_joint():
     elif type == "pin":
         joint = PinJoint.new()
         joint.set_param(PinJoint.PARAM_BIAS , .99)
+    elif type == "6DOF":
+        joint = Generic6DOFJoint.new()
     return joint
 
 
@@ -211,7 +215,7 @@ func _physics_process(delta):
     var joint2 = (get_node("LeftArmJoint") as Generic6DOFJoint)
     var joint_velocity = .5
 
-    if Input.is_action_pressed("drone_tool_primary"):
+    if Input.is_action_pressed("drone_tool_primary") && !holding:
         joint.set_param_y(17, -joint_velocity)
         joint2.set_param_y(17, joint_velocity)   
         if !claw_closing_player.playing:
@@ -249,6 +253,7 @@ func _physics_process(delta):
     var left_colliding_bodies = left_arm.get_colliding_bodies()
     
     if Input.is_action_pressed("drone_tool_primary") \
+            && !holding \
             && right_colliding_bodies.size() > 0 \
             && left_colliding_bodies.size() > 0:
         var right_body = right_colliding_bodies[0]
@@ -284,12 +289,11 @@ func _physics_process(delta):
             left_arm_grab_joint.set_node_a(left_arm.get_path())
             left_arm_grab_joint.set_node_b(left_body.get_path())
 
-
+            grab_player.play()
             
 #            left_body.mode = RigidBody.MODE_STATIC
             left_body.set_mass(0.1)
             holding = left_body
-            print("GRAB")
             
     if holding && (holding as Spatial).name.begins_with("Tooth") && !holding.out:
         stored_velocity += velocity + torque

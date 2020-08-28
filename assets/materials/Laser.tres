@@ -2,22 +2,22 @@
 
 [ext_resource path="res://assets/materials/laser.shader" type="Shader" id=1]
 
-[sub_resource type="Gradient" id=2]
+[sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.974609, 0, 0, 1, 0.0664063, 1, 0, 1 )
 
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
 
-[sub_resource type="OpenSimplexNoise" id=4]
+[sub_resource type="OpenSimplexNoise" id=3]
 
-[sub_resource type="NoiseTexture" id=5]
+[sub_resource type="NoiseTexture" id=4]
 seamless = true
-noise = SubResource( 4 )
+noise = SubResource( 3 )
 
 [resource]
 shader = ExtResource( 1 )
 shader_param/duv = Vector2( 1, 0 )
 shader_param/alphaMax = 1.0
 shader_param/alphaMin = 0.2
-shader_param/albedoTex = SubResource( 3 )
-shader_param/alphaTex = SubResource( 5 )
+shader_param/albedoTex = SubResource( 2 )
+shader_param/alphaTex = SubResource( 4 )

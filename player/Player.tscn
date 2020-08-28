@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://player/PlayerContainer.gd" type="Script" id=1]
 [ext_resource path="res://player/Player.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://player/Arm.tscn" type="PackedScene" id=6]
 [ext_resource path="res://player/HUD3D.tscn" type="PackedScene" id=7]
 [ext_resource path="res://player/HUD.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/sound/pickup.wav" type="AudioStream" id=9]
 [ext_resource path="res://assets/sound/claw_opening.wav" type="AudioStream" id=10]
 [ext_resource path="res://player/RightArm.tscn" type="PackedScene" id=11]
 
@@ -133,6 +134,10 @@ angular_limit_y/lower_angle = -10.0
 angular_motor_y/enabled = true
 angular_motor_y/target_velocity = 2.0
 angular_motor_y/force_limit = 100.0
+
+[node name="GrabPlayer" type="AudioStreamPlayer3D" parent="Player"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.349952, 0.859787 )
+stream = ExtResource( 9 )
 
 [node name="LeftArm" parent="." instance=ExtResource( 6 )]
 transform = Transform( -4.19282e-08, -5.28819e-16, 1, -1.26125e-08, 1, 0, -1, -1.26125e-08, -4.19282e-08, 0, 0, 0 )

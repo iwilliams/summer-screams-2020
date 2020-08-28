@@ -1,7 +1,7 @@
 extends RigidBody
 
-export(NodePath) var anchor_node_path
-onready var anchor_node = get_node(anchor_node_path)
+#export(NodePath) var anchor_node_path
+var anchor_node
 
 export(bool) var locked = false
 

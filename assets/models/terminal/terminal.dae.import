@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/red_key_2.dae-4012adcd34594b4c1cd305c6cbdeee89.scn"
+path="res://.import/terminal.dae-0ddb1778b10368f26e01d97fe6e31f99.scn"
 
 [deps]
 
-source_file="res://assets/models/red_key_2.dae"
-dest_files=[ "res://.import/red_key_2.dae-4012adcd34594b4c1cd305c6cbdeee89.scn" ]
+source_file="res://assets/models/terminal/terminal.dae"
+dest_files=[ "res://.import/terminal.dae-0ddb1778b10368f26e01d97fe6e31f99.scn" ]
 
 [params]
 
@@ -16,12 +16,12 @@ nodes/root_name="Scene Root"
 nodes/root_scale=1.0
 nodes/custom_script=""
 nodes/storage=0
-materials/location=1
-materials/storage=1
-materials/keep_on_reimport=true
+materials/location=0
+materials/storage=0
+materials/keep_on_reimport=false
 meshes/compress=true
 meshes/ensure_tangents=true
-meshes/storage=0
+meshes/storage=1
 meshes/light_baking=0
 meshes/lightmap_texel_size=0.1
 skins/use_named_skins=true
