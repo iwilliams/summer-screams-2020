@@ -101,14 +101,6 @@ angular_limit_x/enabled = false
 angular_limit_y/enabled = false
 angular_limit_z/enabled = false
 
-[node name="Laser2" parent="." instance=ExtResource( 4 )]
-transform = Transform( 0.144699, 0.0456957, -0.98842, -0.667817, -0.732594, -0.131633, -0.730125, 0.679131, -0.0754894, 33.0173, 12.4044, -7.34853 )
-is_on = true
-
-[node name="Laser3" parent="." instance=ExtResource( 4 )]
-transform = Transform( 0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 23.0173, 13.4044, -4.34853 )
-is_on = true
-
 [node name="Terminal" parent="." instance=ExtResource( 3 )]
 transform = Transform( 0.0151343, -0.0858317, 0.996195, -0.642215, 0.762799, 0.075479, -0.766375, -0.640914, -0.043578, 27.0173, 7.20443, -2.34853 )
 
