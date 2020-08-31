@@ -167,6 +167,8 @@ func _physics_process(delta):
         torque += global_transform.basis.x.normalized() \
                 * torque_thrust_delta \
                 * mouse_movement.y
+                
+    mouse_movement = Vector2.ZERO
         
     if Input.is_action_pressed("drone_roll_right"):
         torque += global_transform.basis.z.normalized() * torque_thrust_delta * Input.get_action_strength("drone_roll_right")

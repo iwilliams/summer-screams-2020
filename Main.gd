@@ -12,7 +12,7 @@ func _ready():
         $VideoPlayer.connect("finished", self, "load_map")
         $VideoPlayer.play()
     
-#    Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+    Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func load_map():
     $VideoPlayer.queue_free()
