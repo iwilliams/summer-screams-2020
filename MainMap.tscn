@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://levels/MainRoom.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/Control.tscn" type="PackedScene" id=2]
@@ -10,13 +10,19 @@
 [ext_resource path="res://assets/sound/organic_ambience.ogg" type="AudioStream" id=8]
 [ext_resource path="res://levels/Inside.tscn" type="PackedScene" id=9]
 
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 6, 4, 5 )
+
 [node name="MainMap" type="Spatial"]
 script = ExtResource( 7 )
 
 [node name="MainRoom" parent="." instance=ExtResource( 1 )]
 
 [node name="PlayerContainer" parent="." instance=ExtResource( 3 )]
-transform = Transform( -5.96046e-08, 0, -1, 0, 1, 0, 1, 0, -5.96046e-08, 22, -35, -9 )
+transform = Transform( -4.37114e-08, 4.37114e-08, -1, 1, 1.91069e-15, -4.37114e-08, 0, -1, -4.37114e-08, -22.3, 31, 2 )
+
+[node name="Spawn" type="Spatial" parent="."]
+transform = Transform( -4.37114e-08, 4.37114e-08, -1, 1, 1.91069e-15, -4.37114e-08, 0, -1, -4.37114e-08, -22.3, 31, 2 )
 
 [node name="Entrance" parent="." instance=ExtResource( 4 )]
 
@@ -34,3 +40,14 @@ autoplay = true
 [node name="inside_bgm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 autoplay = true
+
+[node name="MainRoomTrigger" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="MainRoomTrigger"]
+shape = SubResource( 1 )
+[connection signal="completed" from="Mines" to="." method="mines_completed"]
+[connection signal="completed" from="Control" to="." method="control_completed"]
+[connection signal="completed" from="Inside" to="." method="_on_Inside_completed"]
+[connection signal="hurt" from="Inside" to="." method="_on_Inside_hurt"]
+[connection signal="body_entered" from="MainRoomTrigger" to="." method="_on_MainRoomTrigger_body_entered"]

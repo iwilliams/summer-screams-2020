@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/models/joiner/Joiner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/models/control/Control.tscn" type="PackedScene" id=2]
@@ -7,13 +7,19 @@
 [ext_resource path="res://assets/textures/hazzard.tres" type="Material" id=5]
 [ext_resource path="res://assets/textures/metal_plate.tres" type="Material" id=6]
 [ext_resource path="res://assets/models/control/door.mesh" type="ArrayMesh" id=7]
+[ext_resource path="res://levels/Control.gd" type="Script" id=8]
+[ext_resource path="res://assets/sound/light_turn_on.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/sound/door.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/sound/puzzle_solved.wav" type="AudioStream" id=11]
 
 [sub_resource type="ConvexPolygonShape" id=1]
 points = PoolVector3Array( -58.37, 15.6853, -1.7207, -64.3702, 15.6853, 1.7207, -58.37, 15.6853, 1.7207, -58.37, 15.6853, 1.7207, -64.3702, 13.9729, 1.7207, -58.37, 13.9729, 1.7207, -64.3699, 13.9729, -1.7207, -58.37, 15.6853, -1.7207, -58.3698, 13.9729, -1.7207, -1.99994, 13.973, -1.7207, 2.00006, 15.6853, -1.7207, 2.00012, 13.9732, -1.7207, 6.00006, 15.6853, -1.7207, 6.00009, 13.9733, -1.7207, 2.00006, 15.6853, 1.7207, -2, 15.6853, -1.7207, -2, 15.6853, 1.7207, 6.00006, 15.6853, 1.7207, 2.00006, 13.9729, 1.7207, 6.00006, 13.9729, 1.7207, -2, 13.9729, 1.7207, 2.00006, 15.6853, 1.7207, -2, 15.6853, 1.7207, 6.00006, 15.6853, -1.7207, 6.00006, 15.6853, 1.7207, 58.3701, 15.6853, -1.7207, 58.3701, 15.6853, 1.7207, 58.3701, 15.6853, 1.7207, 58.3701, 13.9729, 1.7207, 58.3701, 15.6853, -1.7207, 58.3701, 13.9733, -1.7207, -5.99979, 13.973, -1.7207, -2, 15.6853, -1.7207, -6, 13.9729, 1.7207, -6, 15.6853, 1.7207, 64.3702, 13.9733, -1.7207, 64.3702, 15.6853, -1.7207, 64.3702, 15.6853, 1.7207, 64.3702, 13.9729, 1.7207, 64.3702, 15.6853, -1.7207, 64.3702, 15.6853, 1.7207, -6, 15.6853, -1.7207, -6, 15.6853, 1.7207, -6, 15.6853, -1.7207, -64.3702, 15.6853, -1.7207, -64.3702, 15.6853, 1.7207, -64.3702, 15.6853, -1.7207, -1.99994, 13.973, -1.7207, -2, 15.6853, -1.7207, 2.00006, 15.6853, -1.7207, 2.00006, 15.6853, -1.7207, 6.00009, 13.9733, -1.7207, 6.00006, 15.6853, -1.7207, 58.3701, 15.6853, -1.7207, 64.3702, 15.6853, 1.7207, 64.3702, 13.9733, -1.7207, 64.3702, 15.6853, -1.7207, 64.3702, 13.9733, -1.7207, 62.3701, 7.97333, -1.7207, 58.3701, 11.9733, -1.7207, -64.3702, 15.6853, -1.7207, -64.3702, 13.9729, 1.7207, -64.3702, 15.6853, 1.7207, -62.3699, 7.97333, -1.7207, -64.3701, -14.9447, -1.7207, -64.37, 7.97333, -1.7207, 58.3701, -18.9447, -1.7207, 62.3701, -14.9447, 1.7207, 62.3701, -14.9447, -1.7207, -62.3699, -14.9447, 1.7207, -58.3699, -18.9447, -1.7207, -62.3699, -14.9447, -1.7207, 64.3702, 13.9729, 1.7207, 58.3701, 13.9729, 1.7207, 58.3701, 11.9733, 1.7207, 62.3701, 7.97333, -1.7207, 58.3701, 11.9733, 1.7207, 58.3701, 11.9733, -1.7207, 62.3701, -14.9447, -1.7207, 64.3701, -20.9447, -1.7207, 58.3701, -18.9447, -1.7207, -5.99994, -18.9447, 1.7207, -58.3699, -20.9442, 1.7207, -5.99991, -20.9442, 1.7207, 6.00006, -18.9447, -1.7207, 58.37, -20.9445, -1.7207, 6, -20.9445, -1.7207, -62.3699, -14.9447, 1.7207, -62.3699, 7.97333, -1.7207, -62.3699, 7.97333, 1.7207, -5.99994, -18.9447, -1.7207, -58.3699, -18.9447, 1.7207, -5.99994, -18.9447, 1.7207, 62.3701, -14.9447, 1.7207, 64.3702, 7.97322, 1.7207, 62.3701, 7.97333, 1.7207, 62.3701, 7.97333, -1.7207, 62.3701, -14.9447, 1.7207, 62.3701, 7.97333, 1.7207, 58.3701, -18.9447, 1.7207, 64.3702, -20.9442, 1.7207, -58.3699, -18.9447, -1.7207, -58.37, -20.9444, -1.7207, -64.3702, -20.9442, -1.7207, -64.3702, -20.9442, 1.7207, -58.3699, -18.9447, 1.7207, -62.3699, -14.9447, 1.7207, 6.00006, -18.9447, -1.7207, 2.00006, -14.9447, 1.7207, 6.00006, -18.9447, 1.7207, -5.99994, -18.9447, -1.7207, -1.99997, -20.9444, -1.7207, -5.99997, -20.9444, -1.7207, 6.00006, -18.9447, 1.7207, 2.00012, -20.9442, 1.7207, 6.00012, -20.9442, 1.7207, -1.99994, 7.97333, -1.7207, -5.99994, 11.9733, 1.7207, -5.99994, 11.9733, -1.7207, -1.99994, 7.97333, 1.7207, -1.99994, -14.9447, -1.7207, -1.99994, -14.9447, 1.7207, 2.00006, -14.9447, -1.7207, 2.00006, 7.97333, 1.7207, 2.00006, -14.9447, 1.7207, -1.99994, 13.973, -1.7207, -5.99994, 11.9733, -1.7207, -5.99979, 13.973, -1.7207, 2.00006, 7.97333, -1.7207, -1.99994, 13.973, -1.7207, 2.00012, 13.9732, -1.7207, 2.00006, 13.9729, 1.7207, 6.00006, 11.9733, 1.7207, 6.00006, 13.9729, 1.7207, 2.00006, -14.9447, 1.7207, -1.99994, 7.97333, 1.7207, -1.99994, -14.9447, 1.7207, -1.99991, -20.9442, 1.7207, 2.00006, 13.9729, 1.7207, 2.00006, 7.97333, 1.7207, 2.00006, -14.9447, -1.7207, -1.99994, -14.9447, -1.7207, -1.99994, 7.97333, -1.7207, -1.99994, -14.9447, -1.7207, -5.99994, -18.9447, 1.7207, -1.99994, -14.9447, 1.7207, 58.3701, -20.9442, 1.7207, 58.3701, -18.9447, -1.7207, 6.00006, -18.9447, 1.7207, 58.3701, -18.9447, 1.7207, 2, -20.9445, -1.7207, 6.00006, 13.9729, 1.7207, 6.00006, 11.9733, -1.7207, 2.00006, 7.97333, 1.7207, 2.00006, 7.97333, -1.7207, 6.00006, 11.9733, -1.7207, -58.3698, 13.9729, -1.7207, -5.99994, 11.9733, -1.7207, -58.3699, 11.9733, -1.7207, -5.99994, 11.9733, -1.7207, -58.3699, 11.9733, 1.7207, -58.3699, 11.9733, -1.7207, -2, 13.9729, 1.7207, -5.99994, 11.9733, 1.7207, 64.3701, -14.9447, -1.7207, 58.3701, 11.9733, -1.7207, 6.00006, 11.9733, 1.7207, 6.00006, 11.9733, -1.7207, 6.00009, 13.9733, -1.7207, 58.3701, 11.9733, -1.7207, 6.00006, 11.9733, -1.7207, -6, 13.9729, 1.7207, -58.3699, 11.9733, 1.7207, -64.3702, -14.9447, 1.7207, -62.3699, 7.97333, 1.7207, -64.3702, 7.97333, 1.7207, -62.3699, 7.97333, -1.7207, -64.3699, 13.9729, -1.7207, -58.3699, 11.9733, 1.7207, -62.3699, 7.97333, -1.7207, -58.3699, 11.9733, -1.7207, -64.3702, 13.9729, 1.7207, 6.00006, -18.9447, -1.7207, 58.3701, 11.9733, -1.7207, 2.00006, -14.9447, -1.7207, -5.99994, -18.9447, -1.7207, -58.3699, 11.9733, -1.7207, -62.3699, 7.97333, -1.7207, 58.3701, 11.9733, 1.7207, 2.00006, -14.9447, -1.7207, 2.00006, -14.9447, 1.7207, 6.00006, -18.9447, 1.7207, 62.3701, 7.97333, -1.7207, 62.3701, 7.97333, 1.7207, 58.3701, 11.9733, 1.7207, 6.00006, -18.9447, 1.7207, 62.3701, 7.97333, 1.7207, -5.99994, -18.9447, 1.7207, -58.3699, 11.9733, 1.7207, -62.3699, 7.97333, 1.7207, -58.3699, 11.9733, 1.7207, -1.99994, -14.9447, -1.7207, -1.99994, -14.9447, 1.7207, -62.3699, 7.97333, -1.7207, -5.99994, -18.9447, 1.7207, -5.99994, -18.9447, -1.7207, 64.3702, 15.6853, 1.7207, 64.3702, 13.9729, 1.7207, 64.3702, 13.9733, -1.7207, 58.3701, 13.9733, -1.7207, 64.3701, 7.97343, -1.7207, -64.3702, 15.6853, -1.7207, -64.3699, 13.9729, -1.7207, -64.3702, 13.9729, 1.7207, -62.3699, -14.9447, -1.7207, -64.3701, -14.9447, -1.7207, 58.3701, -18.9447, 1.7207, -58.3699, -18.9447, 1.7207, 62.3701, 7.97333, 1.7207, 64.3702, 7.97322, 1.7207, 64.3702, 13.9729, 1.7207, 62.3701, 7.97333, 1.7207, 6.00006, -18.9447, -1.7207, 58.3701, -18.9447, -1.7207, 58.37, -20.9445, -1.7207, -62.3699, -14.9447, -1.7207, -58.3699, -18.9447, -1.7207, 64.3702, -14.9447, 1.7207, 62.3701, -14.9447, -1.7207, 58.3701, -20.9442, 1.7207, 64.3702, -20.9442, 1.7207, 58.3701, -18.9447, 1.7207, 2.00006, -14.9447, -1.7207, -1.99994, 7.97333, 1.7207, -1.99994, 7.97333, -1.7207, 2.00006, 7.97333, -1.7207, 6.00006, 11.9733, 1.7207, -2, 13.9729, 1.7207, -1.99994, 7.97333, 1.7207, 2.00006, -14.9447, -1.7207, 2, -20.9445, -1.7207, -1.99997, -20.9444, -1.7207, -5.99994, -18.9447, -1.7207, 6.00006, -18.9447, -1.7207, 6.00006, 11.9733, 1.7207, 6.00009, 13.9733, -1.7207, -5.99979, 13.973, -1.7207, -5.99994, 11.9733, 1.7207, -6, 13.9729, 1.7207, -5.99994, 11.9733, 1.7207, 58.3701, 11.9733, 1.7207, -58.37, 13.9729, 1.7207, -64.37, 7.97333, -1.7207, -62.3699, 7.97333, 1.7207, 62.3701, 7.97333, -1.7207, -1.99994, -14.9447, -1.7207, 58.3701, 11.9733, -1.7207, 6.00006, -18.9447, -1.7207, 2.00006, -14.9447, 1.7207, -1.99994, -14.9447, 1.7207, -58.3699, 11.9733, -1.7207, -62.3699, 7.97333, 1.7207 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "Activate"
-length = 1.5
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 5.61377, 3.27782, 6.00871 )
+
+[sub_resource type="Animation" id=3]
+length = 10.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("DoorBottom:translation")
 tracks/0/interp = 1
@@ -21,7 +27,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 1, 3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 27.9195, 11.8814, -13.7142 ), Vector3( 27.9195, 14.0443, -13.7142 ) ]
@@ -33,30 +39,246 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 1, 3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 27.9195, 9.90944, -13.7142 ), Vector3( 27.9195, 7.72808, -13.7142 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("SpotLight:visible")
+tracks/2/path = NodePath("OmniLight:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false, true ]
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("OmniLight2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("OmniLight3:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 3.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Laser:is_on")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Laser2:is_on")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Laser3:is_on")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/8/type = "method"
+tracks/8/path = NodePath("OmniLight/AudioStreamPlayer3D")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/9/type = "method"
+tracks/9/path = NodePath("OmniLight2/AudioStreamPlayer3D")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/10/type = "method"
+tracks/10/path = NodePath("OmniLight3/AudioStreamPlayer3D")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 3.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+tracks/11/type = "method"
+tracks/11/path = NodePath("DoorPlayer")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Off"
+tracks/0/type = "value"
+tracks/0/path = NodePath("OmniLight:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("OmniLight2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("OmniLight3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("DoorTop:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 27.9195, 9.90944, -13.7142 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("DoorBottom:translation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 27.9195, 11.8814, -13.7142 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Laser:is_on")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Laser2:is_on")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Laser3:is_on")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [node name="Control" type="Spatial"]
+script = ExtResource( 8 )
 
 [node name="Control" parent="." instance=ExtResource( 2 )]
 
 [node name="DoorTop" type="StaticBody" parent="."]
-transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 27.9195, 9.90944, -13.7142 )
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 27.9195, 7.72808, -13.7142 )
 
 [node name="door" type="MeshInstance" parent="DoorTop"]
 transform = Transform( 0.063, 0, 0, 0, 0.063, 0, 0, 0, 0.063, 0, 0, 0 )
@@ -68,8 +290,14 @@ material/1 = ExtResource( 6 )
 transform = Transform( 0.063, 0, 0, 0, 0.063, 0, 0, 0, 0.063, 0, 0, 0 )
 shape = SubResource( 1 )
 
+[node name="DoorPlayer" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 27.9195, 9.90944, -13.7142 )
+stream = ExtResource( 10 )
+unit_db = 20.0
+max_db = 6.0
+
 [node name="DoorBottom" type="StaticBody" parent="."]
-transform = Transform( 1, -1.50996e-07, -1.50996e-07, -1.50996e-07, -1, 0, -1.50996e-07, 2.27997e-14, -1, 27.9195, 11.8814, -13.7142 )
+transform = Transform( 1, -1.50996e-07, -1.50996e-07, -1.50996e-07, -1, 0, -1.50996e-07, 2.27997e-14, -1, 27.9195, 14.0443, -13.7142 )
 
 [node name="door" type="MeshInstance" parent="DoorBottom"]
 transform = Transform( 0.063, 0, 0, 0, 0.063, 0, 0, 0, 0.063, 0, 0, 0 )
@@ -81,20 +309,72 @@ material/1 = ExtResource( 6 )
 transform = Transform( 0.063, 0, 0, 0, 0.063, 0, 0, 0, 0.063, 0, 0, 0 )
 shape = SubResource( 1 )
 
+[node name="Area" type="Area" parent="."]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 27.7509, 10.9, -21.5 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.13102, 0, 0 )
+shape = SubResource( 2 )
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.8196, 10.9, -20.069 )
+light_energy = 0.5
+omni_range = 8.40989
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="OmniLight"]
+stream = ExtResource( 9 )
+
+[node name="OmniLight2" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.8196, 10.9, -7.40323 )
+light_energy = 0.5
+omni_range = 8.40989
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="OmniLight2"]
+stream = ExtResource( 9 )
+
+[node name="CompletePlayer" type="AudioStreamPlayer3D" parent="OmniLight2"]
+stream = ExtResource( 11 )
+unit_db = 10.0
+
+[node name="OmniLight3" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.8196, 11.4438, 2.95141 )
+light_color = Color( 0.92549, 0.352941, 0.490196, 1 )
+light_energy = 0.5
+omni_range = 8.40989
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="OmniLight3"]
+stream = ExtResource( 9 )
+
 [node name="Joiner" parent="." instance=ExtResource( 1 )]
 transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 21, 10.9, -21.5 )
 
-[node name="SpotLight" type="SpotLight" parent="."]
-transform = Transform( -1, -1.90703e-07, 3.39523e-07, 2.80244e-07, 0.252947, 0.96748, -2.70383e-07, 0.96748, -0.252947, 27.9013, 16.4849, -1.71939 )
-visible = false
-spot_range = 34.1547
-spot_angle = 31.5771
-
 [node name="Laser" parent="." instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.9591, 14.2876, -7.21201 )
-is_on = true
+transform = Transform( -0.125359, -0.0239998, -0.991821, -0.188033, 0.982163, 0, 0.97413, 0.186495, -0.127636, 27.7766, 8.53688, -8.18349 )
 
 [node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="Laser"]
+transform = Transform( 1, -1.49012e-08, 7.45058e-09, 0, 1, -1.86265e-09, -7.45058e-09, -1.86265e-09, 1, 9.53674e-07, -0.496771, -3.8147e-06 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../Control")
+angular_limit_x/enabled = false
+angular_limit_y/enabled = false
+angular_limit_z/enabled = false
+
+[node name="Laser2" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1.91069e-15, -1, 4.37114e-08, 0.258819, -4.2222e-08, -0.965926, 0.965926, 1.13133e-08, 0.258819, 34.7031, 12.3116, -6.34435 )
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="Laser2"]
+transform = Transform( 1, -1.49012e-08, 7.45058e-09, 0, 1, -1.86265e-09, -7.45058e-09, -1.86265e-09, 1, 9.53674e-07, -0.496771, -3.8147e-06 )
+nodes/node_a = NodePath("..")
+nodes/node_b = NodePath("../../Control")
+angular_limit_x/enabled = false
+angular_limit_y/enabled = false
+angular_limit_z/enabled = false
+
+[node name="Laser3" parent="." instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 1, 4.37114e-08, -0.604974, -6.12492e-08, 0.796245, 0.796245, 8.3607e-09, 0.604974, 21.0396, 9.45554, -6.1365 )
+
+[node name="Generic6DOFJoint" type="Generic6DOFJoint" parent="Laser3"]
+transform = Transform( 1, -1.49012e-08, 7.45058e-09, 0, 1, -1.86265e-09, -7.45058e-09, -1.86265e-09, 1, 9.53674e-07, -0.496771, -3.8147e-06 )
 nodes/node_a = NodePath("..")
 nodes/node_b = NodePath("../../Control")
 angular_limit_x/enabled = false
@@ -111,6 +391,11 @@ transform = Transform( 0.931558, 0.295886, 0.211309, -0.35611, 0.859785, 0.36599
 transform = Transform( 0.866025, -0.498097, -0.0435779, 0.5, 0.86273, 0.0754791, -3.72529e-09, -0.0871557, 0.996195, 24.9453, 8.60341, 1.8004 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Activate"
+autoplay = "Off"
 playback_speed = 0.5
-anims/Activate = SubResource( 2 )
+anims/Activate = SubResource( 3 )
+anims/Off = SubResource( 4 )
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
+[connection signal="activated" from="Terminal" to="." method="terminal_activated"]
+[connection signal="activated" from="Terminal2" to="." method="terminal_activated"]
+[connection signal="activated" from="Terminal3" to="." method="terminal_activated"]

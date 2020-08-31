@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/light_turn_on.wav-3e1a7f2cfb935b810add4991e873a0c9.sample"
+
+[deps]
+
+source_file="res://assets/sound/light_turn_on.wav"
+dest_files=[ "res://.import/light_turn_on.wav-3e1a7f2cfb935b810add4991e873a0c9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

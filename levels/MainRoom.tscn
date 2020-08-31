@@ -1,14 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/models/main_room/MainRoom.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/models/joiner/Joiner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/models/core_door/CoreDoor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://entities/DoorContainer.tscn" type="PackedScene" id=7]
-
-[sub_resource type="CubeMesh" id=1]
-size = Vector3( 0.5, 2, 0.25 )
-
-[sub_resource type="ConvexPolygonShape" id=2]
-points = PoolVector3Array( -0.25, 1, 0.125, 0.25, 1, -0.125, 0.25, 1, 0.125, -0.25, 1, -0.125, -0.25, -1, 0.125, 0.25, -1, -0.125, 0.25, -1, 0.125, -0.25, -1, -0.125, 0.25, 1, 0.125, -0.25, 1, -0.125, 0.25, 1, -0.125, -0.25, 1, 0.125, 0.25, -1, 0.125, -0.25, -1, -0.125, 0.25, -1, -0.125, -0.25, -1, 0.125, 0.25, 1, 0.125, -0.25, -1, 0.125, -0.25, 1, 0.125, 0.25, -1, 0.125, 0.25, 1, -0.125, -0.25, -1, -0.125, -0.25, 1, -0.125, 0.25, -1, -0.125 )
 
 [node name="MainRoom" type="Spatial"]
 
@@ -31,20 +26,5 @@ transform = Transform( 0.889873, -0.163555, -0.425882, 0.0106422, -0.92583, 0.37
 transform = Transform( -0.889873, 0.163555, -0.425882, -0.0106419, 0.92583, 0.37779, 0.456084, 0.340718, -0.82213, 9.33997, -1.85308, 7.92242 )
 anchor_node_path = NodePath("../Joiner3")
 
-[node name="Joiner4" parent="." instance=ExtResource( 2 )]
-transform = Transform( -0.0341711, -0.377928, -0.925204, 0.0106422, -0.92583, 0.37779, -0.999359, 0.00306325, 0.0356586, 14.0999, -1.19421, -0.102376 )
-
-[node name="RigidBody" type="RigidBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.35148, -1.62265, 0 )
-gravity_scale = 0.0
-
-[node name="MeshInstance" type="MeshInstance" parent="RigidBody"]
-mesh = SubResource( 1 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
-shape = SubResource( 2 )
-
-[node name="SliderJoint" type="SliderJoint" parent="RigidBody"]
-nodes/node_a = NodePath("..")
-nodes/node_b = NodePath("../../MainRoom")
+[node name="CoreDoor" parent="." instance=ExtResource( 3 )]
+transform = Transform( -0.0171907, -0.395886, -0.918139, 0.00291815, -0.91829, 0.395896, -0.999848, 0.00412649, 0.0169413, 14.2961, -1.27515, -0.00447119 )

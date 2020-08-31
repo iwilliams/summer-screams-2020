@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://entities/Tooth.gd" type="Script" id=1]
 [ext_resource path="res://assets/sound/breathe.wav" type="AudioStream" id=2]
@@ -6,16 +6,67 @@
 [ext_resource path="res://entities/Tentacle.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/models/inside/Inside.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/models/screw_socket/ScrewSocket.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/sound/heartbeat.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/sound/monster3.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/sound/monster_2.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/sound/monster_1.wav" type="AudioStream" id=10]
+[ext_resource path="res://levels/Inside.gd" type="Script" id=11]
+[ext_resource path="res://assets/sound/tooth_pull.wav" type="AudioStream" id=12]
+[ext_resource path="res://assets/sound/shaking.wav" type="AudioStream" id=13]
 
 [node name="Inside" type="Spatial"]
+script = ExtResource( 11 )
 
 [node name="Inside" parent="." instance=ExtResource( 5 )]
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-transform = Transform( 0.959933, -3.94557e-07, 0.280231, -0.136209, 0.873925, 0.466586, -0.244901, -0.486061, 0.838909, 20.8185, -25.9853, -2.52324 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.8185, -27.3488, -2.52324 )
 stream = ExtResource( 2 )
+unit_db = 10.0
 autoplay = true
 max_distance = 33.0
+
+[node name="Scream1" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.8185, -27.3488, -2.52324 )
+stream = ExtResource( 10 )
+unit_db = 20.0
+max_db = 6.0
+
+[node name="Shake" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.8185, -27.3488, -2.52324 )
+stream = ExtResource( 13 )
+unit_db = 20.0
+max_db = 6.0
+
+[node name="Scream2" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.8185, -27.3488, -2.52324 )
+stream = ExtResource( 9 )
+unit_db = 20.0
+max_db = 6.0
+
+[node name="Scream3" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.8185, -27.3488, -2.52324 )
+stream = ExtResource( 8 )
+unit_db = 20.0
+max_db = 6.0
+
+[node name="Scream4" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.9721, -35.2947, -8.07974 )
+stream = ExtResource( 10 )
+unit_db = 20.0
+max_db = 6.0
+
+[node name="Scream5" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.9721, -35.2947, -8.07974 )
+stream = ExtResource( 9 )
+unit_db = 20.0
+max_db = 6.0
+
+[node name="Scream6" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21.9721, -35.2947, -8.07974 )
+stream = ExtResource( 8 )
+unit_db = 20.0
+max_db = 6.0
 
 [node name="Tooth" parent="." instance=ExtResource( 3 )]
 transform = Transform( 0.901206, -1.49012e-08, -0.433392, 0.179222, 0.910489, 0.372679, 0.394598, -0.413534, 0.820538, 21.3629, -26.3059, -3.05674 )
@@ -31,6 +82,10 @@ angular_limit/upper = 15.0
 angular_limit/lower = -15.0
 angular_limit/relaxation = 0.01
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Tooth"]
+transform = Transform( 0.901205, 0.179222, 0.394598, -7.45057e-08, 0.910488, -0.413534, -0.433391, 0.372679, 0.820537, -0.0678406, 0.0710964, -0.141069 )
+stream = ExtResource( 12 )
+
 [node name="Tooth3" parent="." instance=ExtResource( 3 )]
 transform = Transform( 0.965423, -2.23517e-08, 0.26069, -0.107804, 0.910489, 0.399235, -0.237355, -0.413534, 0.879006, 20.639, -26.3174, -3.08208 )
 script = ExtResource( 1 )
@@ -44,6 +99,10 @@ angular_limit/enable = true
 angular_limit/upper = 15.0
 angular_limit/lower = -15.0
 angular_limit/relaxation = 0.01
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Tooth3"]
+transform = Transform( 1, 2.23517e-08, -5.06639e-07, -7.45058e-09, 1, -2.38419e-07, -1.49012e-08, -5.96046e-08, 1, 0, 0, -0.157986 )
+stream = ExtResource( 12 )
 
 [node name="Tooth4" parent="." instance=ExtResource( 3 )]
 transform = Transform( -0.933071, 0.0731549, -0.352173, 0.0372196, 0.99348, 0.107758, 0.35776, 0.0874381, -0.929711, 21.2254, -26.179, -2.20854 )
@@ -59,6 +118,10 @@ angular_limit/upper = 15.0
 angular_limit/lower = -15.0
 angular_limit/relaxation = 0.01
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Tooth4"]
+transform = Transform( 1, -9.68575e-08, 3.27826e-07, 7.45058e-09, 1, -8.9407e-08, -2.98023e-08, 7.45058e-09, 1, -3.8147e-06, 0, -0.124676 )
+stream = ExtResource( 12 )
+
 [node name="Tooth5" parent="." instance=ExtResource( 3 )]
 transform = Transform( -0.947365, -0.308898, 0.0841462, -0.268963, 0.91047, 0.31417, -0.173659, 0.275002, -0.94563, 20.5578, -26.1431, -2.0384 )
 script = ExtResource( 1 )
@@ -73,6 +136,10 @@ angular_limit/upper = 15.0
 angular_limit/lower = -15.0
 angular_limit/relaxation = 0.01
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Tooth5"]
+transform = Transform( 1, 1.19209e-07, 1.04308e-07, 4.84288e-08, 1, 2.98023e-07, 1.49012e-08, 5.96046e-08, 1, -3.8147e-06, 0, -0.271424 )
+stream = ExtResource( 12 )
+
 [node name="Tooth2" parent="." instance=ExtResource( 3 )]
 transform = Transform( 0.856601, 0.133667, 0.498366, -0.213375, 0.971173, 0.106274, -0.469794, -0.197373, 0.860428, 20.1147, -26.3365, -2.79644 )
 script = ExtResource( 1 )
@@ -86,6 +153,10 @@ angular_limit/enable = true
 angular_limit/upper = 15.0
 angular_limit/lower = -15.0
 angular_limit/relaxation = 0.01
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Tooth2"]
+transform = Transform( 1, 1.19209e-07, -7.15256e-07, -2.98023e-08, 1, -2.98023e-07, 2.98023e-08, 2.98023e-08, 1, 0, -3.8147e-06, -0.196898 )
+stream = ExtResource( 12 )
 
 [node name="Tentacle" parent="." instance=ExtResource( 4 )]
 transform = Transform( 0.762797, 0.637023, -0.111093, 0.630657, -0.770843, -0.0898446, -0.142869, -0.00152843, -0.989739, 16.7139, -29.5231, -1.11526 )
@@ -104,12 +175,26 @@ transform = Transform( 0.923344, -0.270869, -0.272149, 0, 0.70877, -0.705439, 0.
 
 [node name="ScrewSocket3" parent="." instance=ExtResource( 6 )]
 transform = Transform( 0.931895, -0.0598607, -0.357754, -0.271538, 0.5388, -0.797472, 0.240495, 0.840304, 0.485851, 21.9481, -35.8682, -13.0027 )
+is_demo = true
 
 [node name="ScrewSocket2" parent="." instance=ExtResource( 6 )]
-transform = Transform( 0.952755, 0.236088, 0.191104, 0.0807216, 0.409738, -0.908625, -0.292818, 0.881123, 0.371322, 23.0284, -37.0386, -12.5153 )
-is_demo = true
+transform = Transform( 0.952755, 0.236088, 0.191104, 0.0807216, 0.409738, -0.908625, -0.292818, 0.881123, 0.371322, 23.0415, -37.0159, -12.4666 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22.0407, -34.9832, -11.8326 )
 light_color = Color( 1, 0.701961, 0.929412, 1 )
 light_energy = 0.3
+
+[node name="HeartPlayer" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 0.931895, -0.059861, -0.357753, -0.271538, 0.5388, -0.797472, 0.240495, 0.840304, 0.485851, 21.8624, -35.0967, -11.7994 )
+stream = ExtResource( 7 )
+unit_db = 15.0
+max_db = 6.0
+autoplay = true
+[connection signal="pulled_out" from="Tooth" to="." method="_on_Tooth_pulled_out"]
+[connection signal="pulled_out" from="Tooth3" to="." method="_on_Tooth_pulled_out"]
+[connection signal="pulled_out" from="Tooth4" to="." method="_on_Tooth_pulled_out"]
+[connection signal="pulled_out" from="Tooth5" to="." method="_on_Tooth_pulled_out"]
+[connection signal="pulled_out" from="Tooth2" to="." method="_on_Tooth_pulled_out"]
+[connection signal="screwed_in" from="ScrewSocket" to="." method="_on_ScrewSocket_screwed_in"]
+[connection signal="screwed_in" from="ScrewSocket2" to="." method="_on_ScrewSocket_screwed_in"]

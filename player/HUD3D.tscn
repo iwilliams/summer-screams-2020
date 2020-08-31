@@ -1,8 +1,35 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://player/HUD3D.gd" type="Script" id=1]
 [ext_resource path="res://assets/reticle.png" type="Texture" id=2]
 [ext_resource path="res://assets/box.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Fade"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Pivot/Camera/Sprite3D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ThrustVector:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="Hud3D" type="Spatial"]
 script = ExtResource( 1 )
@@ -15,9 +42,14 @@ current = true
 
 [node name="Sprite3D" type="Sprite3D" parent="Pivot/Camera"]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -2 )
+modulate = Color( 1, 1, 1, 0 )
 texture = ExtResource( 2 )
 
 [node name="ThrustVector" type="Sprite3D" parent="."]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2, 0, 0 )
+modulate = Color( 1, 1, 1, 0 )
 billboard = 1
 texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Fade = SubResource( 1 )

@@ -1,5 +1,13 @@
 extends Control
 
+
+signal av_enabled
+signal av_disabled
+signal hud_fade_in
+signal hud_fade_out
+signal close
+
+
 onready var fps_label = find_node("FpsLabel")
 onready var time_label = find_node("TimeLabel")
 onready var pos_label = find_node("PosLabel")
@@ -35,5 +43,16 @@ func set_player_transform(transform: Transform, rotation_degrees):
 
 
 func set_pos(translation: Vector3, rotation: Vector3):
-  center.rect_rotation = rotation.z
   pos_label.text = "%d %d %d" % [translation.x, translation.y, translation.z]
+
+
+func trigger_task(task_no):
+    if task_no == 1:
+        $AnimationPlayer.play("Task1")
+    elif task_no == 2:
+        $AnimationPlayer.play("Task2")
+    elif task_no == 3:
+        $AnimationPlayer.play("Task3")
+    elif task_no == 4:
+        $AnimationPlayer.play("Task4")
+        

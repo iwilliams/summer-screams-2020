@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://assets/materials/crt_material.tres" type="Material" id=2]
-[ext_resource path="res://MainMap.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/hps1_intro.webm" type="VideoStream" id=4]
 [ext_resource path="res://test_env.tres" type="Environment" id=5]
 [ext_resource path="res://assets/materials/dither.tres" type="Material" id=6]
 
@@ -35,12 +35,34 @@ audio_listener_enable_3d = true
 shadow_atlas_size = 4096
 shadow_atlas_quad_0 = 1
 
-[node name="MainMap" parent="ViewportContainer/Viewport" instance=ExtResource( 3 )]
+[node name="MainMap" parent="ViewportContainer/Viewport" instance_placeholder="res://MainMap.tscn"]
 
-[node name="ColorRect2" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="ViewportContainer/Viewport"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HUD" parent="ViewportContainer/Viewport" instance_placeholder="res://player/HUD.tscn"]
+
+[node name="Dither" type="ColorRect" parent="."]
 material = ExtResource( 6 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="VideoPlayer" type="VideoPlayer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+stream = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioTween" type="Tween" parent="."]
+
+[node name="AVTween" type="Tween" parent="."]

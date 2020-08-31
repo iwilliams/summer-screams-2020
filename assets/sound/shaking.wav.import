@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/shaking.wav-7d97cd3e3bb7577e4cb6d56af0da0933.sample"
+
+[deps]
+
+source_file="res://assets/sound/shaking.wav"
+dest_files=[ "res://.import/shaking.wav-7d97cd3e3bb7577e4cb6d56af0da0933.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

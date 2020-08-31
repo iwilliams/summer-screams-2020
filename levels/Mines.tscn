@@ -1,11 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/models/joiner/Joiner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/models/mines/Mines.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/models/gem/Gem.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/models/pvm/Pvm.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/models/gem_socket/GemSocket.tscn" type="PackedScene" id=5]
+[ext_resource path="res://levels/Mines.gd" type="Script" id=6]
+[ext_resource path="res://assets/sound/machine_start.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/sound/machine_loop.ogg" type="AudioStream" id=8]
 
 [node name="Mines" type="Spatial"]
+script = ExtResource( 6 )
 
 [node name="Mines" parent="." instance=ExtResource( 2 )]
 
@@ -21,6 +26,9 @@ transform = Transform( 0.969999, 0.162244, -0.181046, -0.241971, 0.572435, -0.78
 [node name="Gem3" parent="." instance=ExtResource( 3 )]
 transform = Transform( 0.938127, 0.242832, 0.246881, 0.163053, 0.319201, -0.933555, -0.305501, 0.916048, 0.259856, 19.4027, -9.56145, 21.8569 )
 
+[node name="Gem4" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.269467, 0.962619, -0.0274377, -0.703999, 0.177471, -0.68767, -0.657094, 0.204621, 0.725505, 25.6475, -14.0274, 26.0097 )
+
 [node name="GemSocket" parent="." instance=ExtResource( 5 )]
 transform = Transform( 0.994835, -0.0725456, 0.0709975, 0.000273054, 0.70135, 0.712816, -0.101506, -0.709115, 0.697747, 25.6527, -14.1571, 26.1816 )
 
@@ -29,3 +37,31 @@ transform = Transform( 0.408206, 0.604363, -0.684188, 0.124076, 0.70579, 0.69747
 
 [node name="GemSocket3" parent="." instance=ExtResource( 5 )]
 transform = Transform( 0.746931, -0.595701, -0.295354, 0.628729, 0.777306, 0.0222608, 0.21632, -0.202325, 0.955128, 23.6705, -14.0115, 27.8931 )
+
+[node name="Pvm" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.996001, 0, 0.0893462, 0, 0.999999, 0, -0.0893463, 0, 0.996, 26.1588, -15.8897, 25.5207 )
+
+[node name="Pvm2" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.996001, 0, 0.0893462, 0, 0.999999, 0, -0.0893463, 0, 0.996, 25.497, -15.8897, 25.58 )
+
+[node name="Pvm3" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.996001, 0, 0.0893462, 0, 0.999999, 0, -0.0893463, 0, 0.996, 24.8327, -15.8897, 25.6396 )
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.497, -15.8897, 25.4919 )
+light_energy = 0.72
+omni_range = 1.37455
+
+[node name="MachineStartPlayer" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 0.996001, 0, 0.0893463, 0, 1, 0, -0.0893463, 0, 0.996001, 25.497, -15.8897, 25.0901 )
+stream = ExtResource( 7 )
+
+[node name="MachineLoopPlayer" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 0.996001, 0, 0.0893463, 0, 1, 0, -0.0893463, 0, 0.996001, 25.497, -15.8897, 25.0901 )
+stream = ExtResource( 8 )
+[connection signal="gem_inserted" from="GemSocket" to="." method="gem_inserted"]
+[connection signal="gem_inserted" from="GemSocket" to="Pvm2" method="turn_on"]
+[connection signal="gem_inserted" from="GemSocket2" to="." method="gem_inserted"]
+[connection signal="gem_inserted" from="GemSocket2" to="Pvm" method="turn_on"]
+[connection signal="gem_inserted" from="GemSocket3" to="." method="gem_inserted"]
+[connection signal="gem_inserted" from="GemSocket3" to="Pvm3" method="turn_on"]

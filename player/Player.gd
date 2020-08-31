@@ -5,7 +5,7 @@ var linear_damping = 20
 var torque_thrust = 280
 var damping = .5
 
-onready var hud = get_parent().find_node("HUD")
+onready var hud = get_tree().get_root().find_node("HUD", true, false)
 onready var hud3d = get_parent().find_node("Hud3D")
 
 onready var left_arm = get_node("../LeftArm")
@@ -17,6 +17,7 @@ var right_arm_grab_joint: Joint = null
 var should_teleport = null
 var holding = null
 var stored_velocity = Vector3.ZERO
+var mouse_movement = Vector2(0, 0)
 
 
 onready var claw_opening_player = find_node("ClawOpeningPlayer")
@@ -30,8 +31,10 @@ func _ready():
 
 var local_collision_pos
 
+func add_trauma(amount):
+    $Pivot/Camera.add_trauma(amount)
+
 func _thud(body):
-    print("thud")
 #    $ThudPlayer.translation = local_collision_pos + translation
     if !$ThudPlayer.playing:
         $ThudPlayer.play(0)
@@ -156,6 +159,14 @@ func _physics_process(delta):
         velocity += global_transform.basis.x.normalized() \
                 * -linear_thrust_delta \
                 * Input.get_action_strength("drone_right")
+                
+    if abs(mouse_movement.x) > 0:
+        torque += global_transform.basis.y.normalized() * torque_thrust_delta * mouse_movement.x * -1
+    
+    if abs(mouse_movement.y) > 0:
+        torque += global_transform.basis.x.normalized() \
+                * torque_thrust_delta \
+                * mouse_movement.y
         
     if Input.is_action_pressed("drone_roll_right"):
         torque += global_transform.basis.z.normalized() * torque_thrust_delta * Input.get_action_strength("drone_roll_right")
@@ -331,7 +342,7 @@ func _physics_process(delta):
                 thruster.stop()
     
     
-var mouse_sensitivity = .1
+var mouse_sensitivity = .11
 var free_look = false
 onready var cam = find_node("Pivot")
 func _input(event):
@@ -341,4 +352,6 @@ func _input(event):
         cam.rotation.x = clamp(cam.rotation.x, deg2rad(-45), deg2rad(45))
         cam.rotation.y += -deg2rad(movement.x * mouse_sensitivity)
         cam.rotation.y = clamp(cam.rotation.y, deg2rad(-45), deg2rad(45))
-
+    
+    if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+        mouse_movement = Vector2(event.relative.x * mouse_sensitivity, event.relative.y * mouse_sensitivity)

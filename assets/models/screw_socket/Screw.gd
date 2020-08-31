@@ -1,10 +1,13 @@
 extends Spatial
 
+signal screwed_in
+
 export var is_demo = false
 
-var min_distance = -.33
+var min_distance = -.30
 var max_distance = 0
 var current_distance = 0
+var done = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,5 +32,8 @@ func _physics_process(delta):
         $Screw/SliderJoint.set_param(SliderJoint.PARAM_LINEAR_LIMIT_UPPER, current_distance)
         $Screw/SliderJoint.set_param(SliderJoint.PARAM_LINEAR_LIMIT_LOWER, current_distance)
 
-    if current_distance <= min_distance:
+    if current_distance <= min_distance && !done:
+        done = true
         $Screw.axis_lock_angular_y = true
+        $LockedPlayer.play()
+        emit_signal("screwed_in")

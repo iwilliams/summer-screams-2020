@@ -12,6 +12,7 @@ uniform vec2 uv_offset = vec2(.0, .0);
 uniform bool affine = true;
 uniform bool vertexColorBlend = false;
 uniform bool breathe = false;
+uniform float saturation = 1.0;
 
 const float snapRes = 35.0;
 const float cull_distance = 30.;
@@ -79,6 +80,9 @@ void fragment() {
         c = c / numColors;
         c = pow(c, vec3(1.0/gamma));
     }
+    
+    c.rgb = mix(vec3(dot(vec3(1.0), c.rgb) * 0.33333), c.rgb, saturation);
+
 	ALBEDO = c;
     
     

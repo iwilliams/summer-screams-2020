@@ -64,22 +64,19 @@ func _process(delta):
         
     if colliding_body:
         if is_on \
-                && colliding_body.is_in_group("lasers") \
-                && colliding_body.is_mirror \
+                && colliding_body.is_in_group("terminals") \
                 && !colliding_body.is_on:
             colliding_body.is_on = true
             
         if last_collider != null \
                 && last_collider != colliding_body \
-                && last_collider.is_in_group("lasers") \
-                && last_collider.is_mirror \
+                && last_collider.is_in_group("terminals") \
                 && last_collider.is_on:
             last_collider.is_on = false
         
         if last_collider == colliding_body \
-                && colliding_body.is_in_group("lasers") \
+                && colliding_body.is_in_group("terminals") \
                 && colliding_body.is_on \
-                && colliding_body.is_mirror \
                 && !is_on:
             colliding_body.is_on = false
                 
